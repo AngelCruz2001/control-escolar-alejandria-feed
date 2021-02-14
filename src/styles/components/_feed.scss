@@ -1,0 +1,52 @@
+
+.feed__options {
+    display: grid;
+    height: 90%;
+    width: 90%;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+
+    &-opt {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        a {
+            &:hover .feed__options-opt-container {
+                background-color: lighten($color: $main-circles, $amount: 6);
+                box-shadow: 0px 0px 2px black;
+                transition: all 0.2s;
+            }
+
+            &:hover .feed__options-opt-text {
+                font-size: calc(1rem + 1.2vw);
+                color: darken($color: $gray-inputLogin, $amount: 5);
+                text-shadow: 0.2px 0.2px 0.2px $gray-inputLogin;
+                transition: all 0.2s;
+            }
+        }
+
+        &-container {
+            background-color: $main-circles;
+            height: 10vw;
+            width: 10vw;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 100%;
+            margin-bottom: 5%;
+            transition: all 0.2s;
+            &-icon {
+                color: $blue-heroLogin;
+                font-size: calc(1rem + 2.5vw);
+            }
+        }
+
+        &-text {
+            color: $gray-inputLogin;
+            font-size: calc(1rem + .9vw);
+            transition: all 0.2s;
+        }
+    }
+}

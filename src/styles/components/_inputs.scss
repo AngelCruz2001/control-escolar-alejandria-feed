@@ -1,0 +1,27 @@
+.input__container {
+    align-items: center;
+    justify-content: space-around;
+    display: flex;
+    height: 28px;
+    border-radius: 20px;
+    background-color: $gray-inputs;
+    &-content {
+        display: flex;
+        width: 90%;
+
+        align-items: center;
+        justify-content: space-evenly;
+        & i {
+            color: $gray-logout;
+            font-size: 0.8rem;
+        }
+
+        & input {
+            margin-left: 1%;
+            height: 100%;
+            width: 100%;
+            background-color: transparent;
+            color: $gray-inputsText;
+        }
+    }
+}

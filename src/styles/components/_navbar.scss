@@ -1,0 +1,39 @@
+.navbar__container {
+    display: flex;
+    justify-content: space-between;
+    background-color: $gray-navbar;
+    width: 100vw;
+    height: 14vh;
+    position: -webkit-sticky; 
+    position: sticky;
+    top: 0;
+
+    &-imagotipo {
+        display: flex;
+        align-items: center;
+        margin: 0;
+        
+        &-imagen {
+            & img {
+                width: 6.5vw;
+                height: 6.5vw;
+            }
+        }
+
+        &-text {
+            font-size: calc(0.5rem + 0.9vw);
+            text-align: center;
+        }
+    }
+
+    &-logout {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 2.5vw;
+        &-icon {
+            font-size: 2.7rem;
+            color: $gray-logout;
+        }
+    }
+}

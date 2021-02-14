@@ -1,0 +1,36 @@
+.panel__container {
+    background-color: white;
+    height: 100%;
+    width: 20%;
+    border: 1px solid $gray-panelBorder;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    &-content {
+        margin-top: 3%;
+        height: 98%;
+        width: 95%;
+        display: flex;
+        flex-direction: column;
+
+        &-item {
+            justify-content: space-around;
+            margin-top: 3%;
+            align-items: center;
+            display: flex;
+            width: 100%;
+            height: 28px;
+            border-radius: 20px;
+            background-color: $gray-inputs;
+            &-container {
+                display: flex;
+                width: 90%;
+                align-items: center;
+                justify-content: space-between;
+                color: $gray-inputsText;
+            }
+        }
+    }
+}
