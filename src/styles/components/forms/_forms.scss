@@ -12,3 +12,41 @@
         align-items: center;
     }
 }
+.form__container {
+    &-content {
+        width: 90%;
+        height: 90%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        &-inf {
+            position: relative;
+            width: 80%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+}
+
+.form__form {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    font-family: "Segoe UI" !important;
+    & p {
+        color: $white;
+        font-size: calc(0.18rem + 1vw);
+        font-weight: 400;
+        font-family: "Segoe UI";
+        margin-bottom: 0.5%;
+    }
+}
+
+.form_containerSection {
+    height: 90%;
+    width: 90%;
+}

@@ -9,27 +9,32 @@ import { useForm } from '../../hooks/useForm';
 export const Students = () => {
 
     const [formValues, handleInputChange, reset] = useForm({
-        
+        names: '',
+        surname: '',
+        Surname: '',
+        day: '',
+        month: '',
+
     });
 
 
 
     return (
-        <div className="containerSection stu__container">
-            <div className="stu__container-content">
-                <div className="stu__container-content-inf">
+        <div className="containerSection form__container">
+            <div className="form__container-content">
+                <div className="form__container-content-inf">
                     <BackTexture />
-                    <div className=" stu_containerSection">
-                        <form action="">
+                    <div className="form_containerSection">
+                        <form className="form__form" action="">
                             <div className="stu__personal">
                                 <p>Información personal</p>
-                                <div className="overTexture stu_personalInf ">
+                                <div className="overTexture">
                                     <div className="form_inputsContainer">
                                         <div className="form__inputs">
                                             <Input contentClassName="stu__inputs-name" label="Nombre(s)" />
                                             <Input contentClassName="stu__inputs-father" label="Apellido paterno" />
                                             <Input contentClassName="stu__inputs-mother" label="Apellido materno" />
-                                            <Date contentClassName="stu__inputs-dates" />
+                                            <Date contentClassNaSme="stu__inputs-dates" />
                                         </div>
                                         <div className="form__inputs">
                                             <Input contentClassName="stu__inputs-age" label="Edad" />

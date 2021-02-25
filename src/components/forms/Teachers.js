@@ -7,38 +7,38 @@ import { Select } from '../ui/inputs/Select';
 
 export const Teachers = () => {
     return (
-        <div className="containerSection stu__container">
-            <div className="stu__container-content">
-                <div className="stu__container-content-inf">
+        <div className="containerSection form__container">
+            <div className="form__container-content">
+                <div className="form__container-content-inf">
                     <BackTexture />
-                    <div className=" stu_containerSection">
-                        <form action="">
-                            <div className="stu__personal">
+                    <div className="form_containerSection">
+                        <form className="form__form" action="">
+                            <div className="tea__personal">
                                 <p>Información personal</p>
                                 <div className="overTexture ">
                                     <div className="form_inputsContainer">
                                         <div className="form__inputs">
-                                            <Input contentClassName="stu__inputs-name" label="Nombre(s)" />
-                                            <Input contentClassName="stu__inputs-father" label="Apellido paterno" />
-                                            <Input contentClassName="stu__inputs-mother" label="Apellido materno" />
-                                            <Input contentClassName="stu__inputs-RFC" label="RFC" />
+                                            <Input contentClassName="tea__inputs-name" label="Nombre(s)" />
+                                            <Input contentClassName="tea__inputs-father" label="Apellido paterno" />
+                                            <Input contentClassName="tea__inputs-mother" label="Apellido materno" />
+                                            <Input contentClassName="tea__inputs-RFC" label="RFC" />
                                         </div>
                                         <div className="form__inputs">
-                                            <Input contentClassName="stu__inputs-CURP" label="CURP" />
-                                            <Input contentClassName="stu__inputs-num" label="Dirección" placeholder="Calle y número" />
-                                            <Input contentClassName="stu__inputs-street" label="Dirección" placeholder="Calle y número" />
+                                            <Input contentClassName="tea__inputs-CURP" label="CURP" />
+                                            <Input contentClassName="tea__inputs-num" label="Dirección" placeholder="Calle y número" />
+                                            <Input contentClassName="tea__inputs-street" label="Dirección" placeholder="Calle y número" />
                                         </div>
 
                                     </div>
                                 </div>
                             </div>
-                            <div className="stu__scholar">
+                            <div className="tea__scholar">
                                 <p>Información escolar</p>
                                 <div className="overTexture ">
-                                    <div className="stu_inputsContainer">
+                                    <div className="form_inputsContainer">
                                         <div className="form__inputs">
-                                            <Select contentClassName="stu__inputs-birthplace" label="Campus" />
-                                            <Select contentClassName="stu__inputs-num1" label="Estatus" />
+                                            <Select contentClassName="tea__inputs-birthplace" label="Campus" />
+                                            <Select contentClassName="tea__inputs-num1" label="Estatus" />
                                         </div>
                                     </div>
                                 </div>

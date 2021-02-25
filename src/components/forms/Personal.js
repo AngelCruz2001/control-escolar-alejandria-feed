@@ -7,15 +7,15 @@ import { Date } from './Date'
 
 export const Personal = () => {
     return (
-        <div className="containerSection per__container">
-            <div className="per__container-content">
-                <div className="per__container-content-inf">
+        <div className="containerSection form__container">
+            <div className="form__container-content">
+                <div className="form__container-content-inf">
                     <BackTexture />
-                    <div className=" per_containerSection">
-                        <form action="">
+                    <div className=" form_containerSection">
+                        <form className="form__form" action="">
                             <div className="per__personal">
                                 <p>Información personal</p>
-                                <div className="overTexture per_personalInf ">
+                                <div className="overTexture ">
                                     <div className="form_inputsContainer">
                                         <div className="form__inputs">
                                             <Input contentClassName="per__inputs-name" label="Nombre(s)" />
@@ -39,19 +39,7 @@ export const Personal = () => {
                                     </div>
                                 </div>
                             </div>
-                            <div className="per__scholar">
-                                <p>Información escolar</p>
-                                <div className="overTexture">
-                                    <div className="form_inputsContainer">
-                                        <div className="form__inputs">
-                                            <Select contentClassName="per__inputs-birthplace" label="Campus" />
-                                            <Select contentClassName="per__inputs-num1" label="Estatus" />
-                                            <Select contentClassName="per__inputs-num2" label="Carrrera" />
-                                            <Select contentClassName="per__inputs-email" label="Grupo" />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+
                         </form>
                     </div>
                 </div>
