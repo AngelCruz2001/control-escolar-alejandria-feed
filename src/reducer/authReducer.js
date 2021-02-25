@@ -4,9 +4,11 @@ import { types } from "../types/types";
 // (user) && dispatch(login(user.uid, user.name));
 
 const initialState = JSON.parse(localStorage.getItem('user')) || {
-    uid: '',
-    name: '',
+    user: {},
     logged: false,
+    checking: false,
+
+
 };
 
 export const authReducer = (state = initialState, action) => {
@@ -15,16 +17,24 @@ export const authReducer = (state = initialState, action) => {
         case types.login:
             return {
                 ...state,
-                uid: action.payload.uid,
-                name: action.payload.name,
+                user: { ...action.payload },
                 logged: true,
             };
         case types.logout:
             return {
-                uid: '',
-                name: '',
+                ...state,
+                user: {},
                 logged: false,
-
+            }
+        case types.authCheckingStart:
+            return {
+                ...state,
+                checking: true
+            }
+        case types.authCheckingFinish:
+            return {
+                ...state,
+                checking: false
             }
         default:
             return state;

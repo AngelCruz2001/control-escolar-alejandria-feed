@@ -1,37 +1,45 @@
-import { getUser } from "../helpers/getUser";
+// import { getUser } from "../helpers/getUser";
 import { types } from "../types/types";
-import Swal from 'sweetalert2'
+// import Swal from 'sweetalert2'
 
-export const startLogin = (username, password) => {
+export const authStartChecking = (username, password) => {
+
+
     return (dispatch) => {
 
-        const infoUser = getUser(username, password);
-        console.log(infoUser)
-        if (!infoUser.error) {
-            const {uid, name} = infoUser;
-            localStorage.setItem('user', JSON.stringify({ uid, name, logged: true }))
-            dispatch(login(uid, name))
-        } else {
-            Swal.fire({
-                title: '!Oops!',
-                text: infoUser.error,
-                icon: 'question',
-                confirmButtonText: 'Tratar de nuevo'
-            })
-        }
+        dispatch(authCheckingStart());
+        setTimeout(() => {
+            dispatch(authCheckingFinish())
+            dispatch(authLogin(username, password))
+        }, 1000);
+        // Swal.fire({
+        //     title: '!Oops!',
+        //     text: infoUser.error,
+        //     icon: 'question',
+        //     confirmButtonText: 'Tratar de nuevo'
+        // })
+    }
+}
+export const authStartLogout = () => {
+    return (dispatch) => {
+        localStorage.clear()
+        dispatch(authLogout())
+
     }
 }
 
-
-export const login = (uid, name) => ({
+const authLogin = (username, password) => ({
     type: types.login,
     payload: {
-        uid,
-        name
+        username,
+        password
     }
 })
 
-export const logout = (uid, name) => ({
-    type: types.logout,
-
+const authLogout = () => ({
+    type: types.logout
 })
+
+
+const authCheckingStart = () => ({ type: types.authCheckingStart })
+const authCheckingFinish = () => ({ type: types.authCheckingFinish })

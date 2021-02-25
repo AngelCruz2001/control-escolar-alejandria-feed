@@ -1,0 +1,29 @@
+.date__content {
+    display: flex;
+    flex-direction: column;
+
+    .date__selects {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+
+        &-day {
+            width: 27%;
+        }
+        &-month {
+            width: 35%;
+        }
+        &-year {
+            width: 27%;
+        }
+    }
+}
+select {
+    background-color: transparent;
+    border: none;
+    width: 100%;
+    color: $gray-inputsText;
+    // height: 100%;
+    // max-height: 250px;
+    // overflow: auto;
+}

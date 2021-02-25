@@ -1,0 +1,14 @@
+.form_inputsContainer {
+    display: flex;
+    flex-direction: column;
+    height: 90%;
+    width: 90%;
+
+    .form__inputs {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+}

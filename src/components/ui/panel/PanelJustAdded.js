@@ -1,5 +1,5 @@
 import React from 'react'
-import { Input } from '../Input'
+import { Input } from '../inputs/Input'
 import { PanelItem } from './PanelItem'
 
 export const PanelJustAdded = () => {
@@ -9,6 +9,7 @@ export const PanelJustAdded = () => {
 
                 <Input
                     icon='fas fa-search'
+                    classNameInput="panel__input"
                 />
                 <PanelItem />
             </div>

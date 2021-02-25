@@ -7,17 +7,17 @@ export const FeedScreen = () => {
         {
             name: 'Alumnos',
             icon: 'fas fa-user-graduate',
-            path: "/students",
+            path: "/estudiantes",
         },
         {
             name: 'Docentes',
             icon: 'fas fa-user-tie',
-            path: "/students",
+            path: "/docentes",
         },
         {
             name: 'Personal',
             icon: 'fas fa-user-friends',
-            path: "/students",
+            path: "/personal",
         },
         {
             name: 'Grupos',

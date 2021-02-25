@@ -1,14 +1,13 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { logout } from '../../actions/auth'
+import { authStartLogout } from '../../actions/auth'
 import { imagesPath } from '../../helpers/resources'
 
 export const Navbar = () => {
     const dispatch = useDispatch()
     const handleLogOut = () => {
-        localStorage.removeItem('user')
-        dispatch(logout())
+        dispatch(authStartLogout())
     }
     return (
         <div>

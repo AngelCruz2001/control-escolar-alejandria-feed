@@ -8,37 +8,108 @@
 
         &-inf {
             position: relative;
-            width: 75%;
+            width: 80%;
             height: 100%;
-            &-texture {
-                position: absolute;
-                display: grid;
-                grid-template-columns: repeat(3, 1fr);
-                grid-template-rows: repeat(2, 1fr);
-                width: 100%;
-                height: 100%;
-                z-index: -3;
-                &-1 {
-                    grid-column: 1/3;
-                    grid-row: 1/2;
-                    background-color: $main-circles;
-                }
-                &-2 {
-                    grid-column: 3/4;
-                    grid-row: 1/2;
-                    background-color: $blue-aqua;
-                }
-                &-3 {
-                    grid-column: 1/2;
-                    grid-row: 2/3;
-                    background-color: $blue-sky;
-                }
-                &-4 {
-                    grid-column: 2/4;
-                    grid-row: 2/3;
-                    background-color: $blue-solid;
-                }
-            }
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
+    }
+}
+
+.stu_containerSection {
+    height: 90%;
+    width: 90%;
+
+    & form {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        font-family: "Segoe UI" !important;
+        & p {
+            color: $white;
+            font-size: calc(0.18rem + 1vw);
+            font-weight: 400;
+            font-family: "Segoe UI";
+            margin-bottom: 0.5%;
+        }
+    }
+}
+
+.stu__personalContainer {
+    width: 100%;
+    height: 100%;
+}
+
+.stu__personal {
+    height: 60%;
+    margin-bottom: 5%;
+}
+
+.stu__scholar {
+    height: 20%;
+}
+
+.stu__inputs {
+    &-name {
+        width: 23%;
+    }
+    &-father {
+        width: 18%;
+    }
+    &-mother {
+        width: 18%;
+    }
+    &-dates {
+        width: 29%;
+    }
+
+    // DEBEN SOBRAR 12%
+
+    &-age {
+        width: 10%;
+    }
+    &-CURP {
+        width: 21%;
+    }
+    &-street {
+        width: 21%;
+    }
+    &-colony {
+        width: 21%;
+        color: $white;
+    }
+    &-code {
+        width: 15%;
+        color: $white;
+    }
+
+    // DEBEN SOBRAR 12%
+
+    &-birthplace {
+        width: 25%;
+    }
+    &-num1 {
+        width: 20%;
+    }
+    &-num2 {
+        width: 20%;
+    }
+    &-email {
+        width: 23%;
+    }
+
+    &-birthplace {
+        width: 25%;
+    }
+    &-num1 {
+        width: 20%;
+    }
+    &-num2 {
+        width: 20%;
+    }
+    &-email {
+        width: 23%;
     }
 }

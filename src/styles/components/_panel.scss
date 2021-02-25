@@ -1,7 +1,7 @@
 .panel__container {
     background-color: white;
     height: 100%;
-    width: 20%;
+    width: 15%;
     border: 1px solid $gray-panelBorder;
     display: flex;
     align-items: center;
@@ -31,6 +31,10 @@
                 justify-content: space-between;
                 color: $gray-inputsText;
             }
+        }
+        .input__container {
+            border-radius: 20px;
+            box-shadow: none;
         }
     }
 }
