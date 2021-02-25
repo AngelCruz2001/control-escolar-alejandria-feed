@@ -26,7 +26,7 @@ export const Teachers = () => {
                                         <div className="form__inputs">
                                             <Input contentClassName="tea__inputs-CURP" label="CURP" />
                                             <Input contentClassName="tea__inputs-num" label="Dirección" placeholder="Calle y número" />
-                                            <Input contentClassName="tea__inputs-street" label="Dirección" placeholder="Calle y número" />
+                                            <Input contentClassName="tea__inputs-email" label="Dirección" placeholder="Calle y número" />
                                         </div>
 
                                     </div>
