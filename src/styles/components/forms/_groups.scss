@@ -1,0 +1,123 @@
+.gro__students {
+    height: 100%;
+    width: 70%;
+}
+.gro__schedule {
+    height: 100%;
+    width: 20%;
+}
+.gro__inputsContainer {
+    height: 10% !important;
+}
+
+.gro__tableContainer {
+    height: 85% !important;
+    flex-direction: column;
+}
+
+.gro__inputs {
+    height: 10%;
+
+    &-group {
+        width: 30%;
+    }
+    &-major {
+        width: 65%;
+    }
+}
+
+.input__special label {
+    margin-right: 0.7rem !important;
+}
+.gro__tableContainer {
+    height: 80%;
+    width: 100%;
+    overflow-y: scroll;
+
+    .gro__table {
+        height: 100%;
+        overflow-y: auto;
+        border-collapse: separate;
+        width: 100%;
+        font-size: calc(0.4rem + 0.4vw);
+        text-align: center;
+        position: relative;
+        border-spacing: 0px 5px;
+
+        thead {
+            background-color: red;
+        }
+        .gro__table-title {
+            th {
+                background-color: $white;
+                top: 0;
+                position: sticky;
+                font-weight: normal;
+                padding-bottom: 0;
+                letter-spacing: 0px;
+            }
+        }
+
+        &-name {
+            width: 40%;
+            text-align: initial !important;
+        }
+        &-id {
+            width: 15%;
+            background-color: $white;
+            text-align: center;
+        }
+        &-grade {
+            width: 15%;
+            text-align: center;
+        }
+        &-buttonEdit {
+            width: 7.5%;
+            text-align: center;
+            background-color: $white;
+            i:hover {
+                color: $mustard;
+            }
+        }
+        &-buttonDelete {
+            text-align: center;
+            width: 7.5%;
+            i:hover {
+                color: $red-trash;
+            }
+        }
+        i {
+            //Boton edit - delete
+            color: $gray-logout;
+            font-size: calc(0.5rem + 0.5vw);
+            transition: all 0.2s;
+        }
+    }
+
+    td:first-child {
+        border-bottom-left-radius: 10px;
+        border-top-left-radius: 10px;
+    }
+
+    td:last-child {
+        border-bottom-right-radius: 10px;
+        border-top-right-radius: 10px;
+    }
+    td,
+    th {
+        // border: 1px solid $blue-sky;
+        text-align: left;
+        padding: 8px;
+        font-family: "Segoe UI", sans-serif;
+    }
+
+    .gro__table-item {
+        background-color: rgba($blue-sky, 0.51);
+        box-shadow: 0px 3px 6px #00000029;
+        border-radius: 10px;
+    }
+}
+
+button {
+    background-color: transparent;
+}

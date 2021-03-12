@@ -1,13 +1,8 @@
-.tea__personal {
-    height: 40%;
-    margin-bottom: 5%;
+.per__personal {
+    height: 100%;
 }
 
-.tea__scholar {
-    height: 30%;
-}
-
-.tea__inputs {
+.per__inputs {
     &-name {
         width: 24%;
     }
@@ -34,12 +29,11 @@
         width: 35%;
     }
 
-    
-    &-campus {
-        width: 30%;
+    &-dep {
+        width: 34%;
         margin-right: 4%;
     }
-    &-subImp {
-        width: 50%;
+    &-pay {
+        width: 54%;
     }
 }

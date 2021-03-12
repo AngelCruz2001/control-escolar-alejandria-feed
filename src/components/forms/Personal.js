@@ -3,6 +3,7 @@ import { BackTexture } from '../ui/BackTexture'
 import { Input } from '../ui/inputs/Input'
 import { Select } from '../ui/inputs/Select'
 import { PanelJustAdded } from '../ui/panel/PanelJustAdded'
+import { Schedule } from '../ui/schedule/Schedule'
 import { Date } from './Date'
 
 export const Personal = () => {
@@ -13,7 +14,7 @@ export const Personal = () => {
                     <BackTexture />
                     <div className=" form_containerSection">
                         <form className="form__form" action="">
-                            <div className="per__personal">
+                            <div className="per__personal form_section">
                                 <p>Información personal</p>
                                 <div className="overTexture ">
                                     <div className="form_inputsContainer">
@@ -21,25 +22,24 @@ export const Personal = () => {
                                             <Input contentClassName="per__inputs-name" label="Nombre(s)" />
                                             <Input contentClassName="per__inputs-father" label="Apellido paterno" />
                                             <Input contentClassName="per__inputs-mother" label="Apellido materno" />
-                                            <Date contentClassName="per__inputs-dates" />
+                                            <Input contentClassName="per__inputs-RFC" label="RFC" />
                                         </div>
-                                        <div className="form__inputs">
-                                            <Input contentClassName="per__inputs-age" label="Edad" />
+                                        <div className="form__inputs form__special">
                                             <Input contentClassName="per__inputs-CURP" label="CURP" />
-                                            <Input contentClassName="per__inputs-street" label="Dirección" placeholder="Calle y número" />
-                                            <Input contentClassName="per__inputs-colony" label="-" placeholder="Colonia" />
-                                            <Input contentClassName="per__inputs-code" label="-" placeholder="Codigo postal" />
+                                            <Input contentClassName="per__inputs-num1 " label="Numero de teléfono" />
+                                            <Input contentClassName="per__inputs-email" label="Correo Electrónico" placeholder="ejemplo@ejemplo.com" />
                                         </div>
-                                        <div className="form__inputs">
-                                            <Input contentClassName="per__inputs-birthplace" label="Lugar de nacimiento" placeholder="País/Ciudad/Municipio" />
-                                            <Input contentClassName="per__inputs-num1" label="Numero de teléfono" />
-                                            <Input contentClassName="per__inputs-num2" label="Numero de teléfono" />
-                                            <Input contentClassName="per__inputs-email" label="Correo electrónico" placeholder="ejemplo@ejemplo.com" />
+                                        <div className="form__inputs form__special">
+                                            <Select contentClassName="per__inputs-dep" label="Departamento" />
+                                            <Input contentClassName="per__inputs-pay" label="Pago" placeholder="$0000.00 (Cantidad en letra)" />
                                         </div>
+                                        <div className="form__inputs form__special">
+                                            <Schedule />
+                                        </div>
+
                                     </div>
                                 </div>
                             </div>
-
                         </form>
                     </div>
                 </div>

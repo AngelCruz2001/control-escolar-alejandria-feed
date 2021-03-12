@@ -22,7 +22,7 @@ export const FeedScreen = () => {
         {
             name: 'Grupos',
             icon: 'fas fa-id-badge',
-            path: "/students",
+            path: "/grupos",
         },
         {
             name: 'Campus',

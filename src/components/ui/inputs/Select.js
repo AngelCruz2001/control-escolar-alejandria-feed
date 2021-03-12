@@ -7,10 +7,11 @@ export const Select = ({
     handleInputChange,
     nameSelect = '',
     placeholder = '',
-    label = ''
+    label = '',
+    nexTo = false,
 }) => {
     return (
-        <div className={`${contentClassName}`}>
+        <div className={`${contentClassName} ${(nexTo) && 'input__special '}`}>
             <label className="input__label">{label}</label>
             <div className={`input__container `}>
                 <select name={nameSelect} value={valueSelect} onChange={() => handleInputChange} >

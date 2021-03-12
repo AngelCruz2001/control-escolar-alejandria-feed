@@ -13,7 +13,7 @@ export const Teachers = () => {
                     <BackTexture />
                     <div className="form_containerSection">
                         <form className="form__form" action="">
-                            <div className="tea__personal">
+                            <div className="tea__personal form_section">
                                 <p>Información personal</p>
                                 <div className="overTexture ">
                                     <div className="form_inputsContainer">
@@ -23,22 +23,22 @@ export const Teachers = () => {
                                             <Input contentClassName="tea__inputs-mother" label="Apellido materno" />
                                             <Input contentClassName="tea__inputs-RFC" label="RFC" />
                                         </div>
-                                        <div className="form__inputs">
+                                        <div className="form__inputs form__special">
                                             <Input contentClassName="tea__inputs-CURP" label="CURP" />
-                                            <Input contentClassName="tea__inputs-num" label="Dirección" placeholder="Calle y número" />
-                                            <Input contentClassName="tea__inputs-email" label="Dirección" placeholder="Calle y número" />
+                                            <Input contentClassName="tea__inputs-num1" label="Numero de télefono" />
+                                            <Input contentClassName="tea__inputs-email" label="Correo electrónico" placeholder="ejemplo@ejemplo.com" />
                                         </div>
 
                                     </div>
                                 </div>
                             </div>
-                            <div className="tea__scholar">
+                            <div className="tea__scholar form_section">
                                 <p>Información escolar</p>
                                 <div className="overTexture ">
                                     <div className="form_inputsContainer">
-                                        <div className="form__inputs">
-                                            <Select contentClassName="tea__inputs-birthplace" label="Campus" />
-                                            <Select contentClassName="tea__inputs-num1" label="Estatus" />
+                                        <div className="form__inputs form__special">
+                                            <Select contentClassName="tea__inputs-campus" label="Campus" />
+                                            <Select contentClassName="tea__inputs-subImp" label="Materias que puede impartir" />
                                         </div>
                                     </div>
                                 </div>

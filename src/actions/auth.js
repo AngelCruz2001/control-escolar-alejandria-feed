@@ -9,6 +9,7 @@ export const authStartChecking = (username, password) => {
 
         dispatch(authCheckingStart());
         setTimeout(() => {
+
             dispatch(authCheckingFinish())
             dispatch(authLogin(username, password))
         }, 1000);

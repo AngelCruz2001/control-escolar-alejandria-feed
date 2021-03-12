@@ -4,7 +4,6 @@
 /*Components*/
 @import "./components/feed";
 @import "./components/auth";
-@import "./components/students";
 @import "./components/panel";
 @import "./components/navbar";
 @import "./components/buttons";
@@ -15,6 +14,12 @@
 
 /*Forms*/
 
+@import "./components/forms/students";
+@import "./components/forms/groups";
+@import "./components/forms/personal";
 @import "./components/forms/teachers";
 @import "./components/forms/date";
 @import "./components/forms/forms";
+
+/*UI*/
+@import "./components/ui/schedule";

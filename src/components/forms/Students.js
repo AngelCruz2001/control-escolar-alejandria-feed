@@ -26,7 +26,7 @@ export const Students = () => {
                     <BackTexture />
                     <div className="form_containerSection">
                         <form className="form__form" action="">
-                            <div className="stu__personal">
+                            <div className="stu__personal form_section">
                                 <p>Información personal</p>
                                 <div className="overTexture">
                                     <div className="form_inputsContainer">
@@ -52,7 +52,7 @@ export const Students = () => {
                                     </div>
                                 </div>
                             </div>
-                            <div className="stu__scholar">
+                            <div className="stu__scholar form_section">
                                 <p>Información escolar</p>
                                 <div className="overTexture">
                                     <div className="form_inputsContainer">
