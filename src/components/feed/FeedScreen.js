@@ -27,22 +27,22 @@ export const FeedScreen = () => {
         {
             name: 'Campus',
             icon: 'fas fa-university',
-            path: "/students",
+            path: "/campus",
         },
         {
             name: 'Materias',
             icon: 'fas fa-book-open',
-            path: "/students",
+            path: "/materia",
         },
         {
             name: 'Carreras',
             icon: 'fas fa-graduation-cap',
-            path: "/students",
+            path: "/carrera",
         },
         {
             name: 'Becas',
             icon: 'fas fa-money-check-alt',
-            path: "/students",
+            path: "/beca",
         },
     ]
     return (

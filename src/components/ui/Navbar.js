@@ -17,7 +17,7 @@ export const Navbar = () => {
                     <div to='/' className="navbar__container-imagotipo-imagen">
                         <img src={imagesPath.logoAleNoText} alt="Imagotipo Alejandria" />
                     </div>
-                    <h1 className="navbar__container-imagotipo-text"> Instituto De Educacion <br /> y cultura Alejandria</h1>
+                    <h1 className="navbar__container-imagotipo-text"> Instituto De Educación <br /> y Cultura Alejandría</h1>
                 </Link>
                 <div className="navbar__container-logout">
                     <i

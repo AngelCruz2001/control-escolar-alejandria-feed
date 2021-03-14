@@ -1,0 +1,41 @@
+.scholar__container-content-inf {
+    height: 102%;
+    margin-bottom: 1%;
+    width: 60%;
+    margin-left: 12%;
+}
+.scholar__personal {
+    height: 100%;   
+    width: 80%;
+    margin-left: 10%;
+   
+}
+
+.scholar__special{
+    justify-content: center!important;
+}
+.scholar__inputs {
+
+    &-id {
+        width: 50%;
+        margin-right: 35%;
+    }
+    &-student {
+        width: 85%;
+    }
+    &-scholarname {
+        width: 85%;
+    }
+    &-about {
+        width: 85%;
+    }
+    &-percentaje {
+        width: 50%;
+        margin-right: 35%;
+    }
+    &-observation {
+        width: 85%;
+    }
+}
+
+

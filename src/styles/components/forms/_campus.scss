@@ -1,0 +1,38 @@
+.cam__container-content-inf {
+    height: 90%;
+}
+.cam__personal {
+    height: 62%;   
+}
+
+.cam__special{
+    justify-content: center!important;
+}
+.cam__inputs {
+
+
+    &-campus {
+        width: 54%;
+    }
+    &-street {
+        width: 29%;
+        margin-right: 2%
+    }
+    &-address {
+        width: 25%;
+        color: white;
+        margin-right: 2%
+    }
+    &-zip {
+        width: 23%;
+        color: white;
+
+    }
+    // DEBEN SOBRAR 12%
+
+    &-state {
+        width: 25%;
+        margin-right: 4%;
+    }
+
+}
