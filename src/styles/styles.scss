@@ -4,13 +4,7 @@
 /*Components*/
 @import "./components/feed";
 @import "./components/auth";
-@import "./components/panel";
 @import "./components/navbar";
-@import "./components/buttons";
-@import "./components/inputs";
-@import "./components/inla";
-@import "./components/texture";
-@import "./components/ui";
 
 /*Forms*/
 
@@ -27,3 +21,9 @@
 
 /*UI*/
 @import "./components/ui/schedule";
+@import "./components/ui/panel";
+@import "./components/ui/buttons";
+@import "./components/ui/inputs";
+@import "./components/ui/inla";
+@import "./components/ui/texture";
+@import "./components/ui/ui";
