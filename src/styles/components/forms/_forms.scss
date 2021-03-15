@@ -19,6 +19,9 @@
     .form__special {
         justify-content: initial;
     }
+    .form__column {
+        flex-direction: column;
+    }
 }
 .form__container {
     &-content {

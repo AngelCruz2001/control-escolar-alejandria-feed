@@ -1,41 +1,50 @@
 .scholar__container-content-inf {
-    height: 102%;
-    margin-bottom: 1%;
+    height: 100%;
     width: 60%;
-    margin-left: 12%;
+}
+.scholar__texture {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .scholar__personal {
-    height: 100%;   
-    width: 80%;
-    margin-left: 10%;
-   
+    height: 100%;
+    // width: 80%;
+    // margin-left: 10%;
 }
-
-.scholar__special{
-    justify-content: center!important;
+.scholar__special {
+    align-items: initial !important;
 }
+// .scholar__special {
+//     justify-content: center !important;
+// }
 .scholar__inputs {
-
     &-id {
+        height: 15%;
         width: 50%;
-        margin-right: 35%;
+        // margin-right: 35%;
     }
     &-student {
-        width: 85%;
+        height: 15%;
     }
     &-scholarname {
-        width: 85%;
+        height: 15%;
     }
     &-about {
-        width: 85%;
+        height: 15%;
     }
     &-percentaje {
+        height: 15%;
         width: 50%;
-        margin-right: 35%;
+        // margin-right: 35%;
     }
     &-observation {
-        width: 85%;
+        height: 30%;
+    }
+    &-observationIn {
+        height: 100% !important;
     }
 }
-
-
