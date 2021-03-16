@@ -29,8 +29,9 @@ input {
 }
 .containerSection {
     width: 100vw;
-    height: 86vh;
+    height: 84vh;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     margin: 0;

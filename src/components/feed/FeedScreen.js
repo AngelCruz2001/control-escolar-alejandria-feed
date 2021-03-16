@@ -2,7 +2,7 @@ import React from 'react'
 import { iconsPath, imagesPath } from '../../helpers/resources';
 import { CircleOptionFeed } from './CircleOptionFeed';
 
-export const FeedScreen = () => {
+export const FeedScreen = ({ dataScreens }) => {
     const circlesData = [
         {
             name: 'Alumnos',
@@ -59,4 +59,4 @@ export const FeedScreen = () => {
             </div>
         </div>
     )
-} 
+}

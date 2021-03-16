@@ -4,24 +4,25 @@
     background-color: $gray-navbar;
     width: 100vw;
     height: 14vh;
-    position: -webkit-sticky; 
+    position: -webkit-sticky;
     position: sticky;
     top: 0;
-
+    &:hover + .navbar__dropmenu {
+    }
     &-imagotipo {
         display: flex;
         align-items: center;
         margin: 0;
-        
+
         &-imagen {
             & img {
-                width: 6.5vw;
-                height: 6.5vw;
+                width: 6vw;
+                height: 6vw;
             }
         }
 
         &-text {
-            font-size: calc(0.5rem + 0.9vw);
+            font-size: calc(0.4rem + 0.9vw);
             text-align: center;
         }
     }
@@ -36,4 +37,42 @@
             color: $gray-logout;
         }
     }
+}
+.navbar__dropmenu {
+    position: absolute;
+    width: 18vw;
+    height: 86vh;
+    background-color: #f8f7f2;
+    z-index: 8;
+    display: flex;
+    flex-direction: column;
+    transform: translateX(-18vw);
+    opacity: 0;
+    transition: all 0.4s;
+    .navbar__item {
+        height: 65px;
+        display: flex;
+        align-items: center;
+        transition: all 0.2s;
+        i {
+            font-size: 30px;
+            text-align: center;
+            width: 40%;
+            color: $blue-solid;
+        }
+        label {
+            font: normal normal normal 18px/24px Segoe UI;
+        }
+
+        &:hover {
+            background-color: $blue-sky;
+            transition: all 0.2s;
+        }
+    }
+}
+
+.navbar__dropmenuChange {
+    transform: translateX(0px);
+    opacity: 1;
+    transition: all 0.4s;
 }

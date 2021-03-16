@@ -24,9 +24,10 @@
     }
 }
 .form__container {
+    // justify-content: space-between;
     &-content {
         width: 90%;
-        height: 90%;
+        height: 80%;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -69,4 +70,11 @@
 .form_containerSection {
     height: 90%;
     width: 90%;
+}
+
+.form__inputExtra {
+    display: flex;
+    height: 10%;
+    width: 90%;
+    position: relative;
 }

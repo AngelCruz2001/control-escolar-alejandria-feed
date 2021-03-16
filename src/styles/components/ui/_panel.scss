@@ -1,3 +1,12 @@
+.panel__title {
+    display: flex;
+    font-size: 14px;
+    color: $gray-inputsText;
+    position: absolute;
+    top: -25px;
+    left: 1px;
+    font: normal normal normal 14px/19px Segoe UI;
+}
 .panel__container {
     background-color: white;
     height: 100%;
@@ -7,7 +16,7 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-
+    position: relative;
     &-content {
         margin-top: 3%;
         height: 98%;

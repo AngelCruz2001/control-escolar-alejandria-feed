@@ -4,10 +4,15 @@ import { Input } from '../ui/inputs/Input';
 import { PanelJustAdded } from '../ui/panel/PanelJustAdded';
 import { Date } from './Date';
 import { Select } from '../ui/inputs/Select';
+import { Buttons, OpenDropMenuButton } from '../ui/Buttons'
 
 export const Teachers = () => {
     return (
         <div className="containerSection form__container">
+            <div className="form__inputExtra">
+                <OpenDropMenuButton />
+            </div>
+
             <div className="form__container-content">
                 <div className="form__container-content-inf">
                     <BackTexture />
@@ -48,6 +53,8 @@ export const Teachers = () => {
                 </div>
                 <PanelJustAdded />
             </div>
+            <Buttons />
+
         </div>
     )
 }

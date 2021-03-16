@@ -8,7 +8,7 @@ export const Scholarship = () => {
         <div className="containerSection form__container">
             <div className="form__container-content">
                 <div className="form__container-content-inf scholar__container-content-inf">
-                    <div className="scholar__texture"><BackTexture /></div>
+                    <BackTexture />
                     <div className="form_containerSection">
                         <form className="form__form" action="">
                             <div className="scholar__personal form_section">

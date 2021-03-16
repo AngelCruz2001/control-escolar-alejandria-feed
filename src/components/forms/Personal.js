@@ -5,7 +5,7 @@ import { Select } from '../ui/inputs/Select'
 import { PanelJustAdded } from '../ui/panel/PanelJustAdded'
 import { Schedule } from '../ui/schedule/Schedule'
 import { Date } from './Date'
-
+import { Buttons } from '../ui/Buttons';
 export const Personal = () => {
     return (
         <div className="containerSection form__container">
@@ -45,6 +45,7 @@ export const Personal = () => {
                 </div>
                 <PanelJustAdded />
             </div>
+            <Buttons />
         </div>
     )
 }

@@ -1,3 +1,9 @@
+.stu__generalContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+
 .stu__personal {
     height: 70%;
     margin-bottom: 5%;
@@ -68,4 +74,9 @@
     &-email {
         width: 23%;
     }
+}
+
+
+.stu__inputs-mat {
+    width: 15%;
 }

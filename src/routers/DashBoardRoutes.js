@@ -15,7 +15,7 @@ export const DashBoardRoutes = ({ history }) => {
 
     return (
         <>
-            <Navbar />
+            <Navbar history={history} />
             <Switch>
                 <Route exact path="/estudiantes" component={Students} />
                 <Route exact path="/docentes" component={Teachers} />
