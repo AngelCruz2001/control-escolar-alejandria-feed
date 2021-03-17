@@ -2,59 +2,51 @@ import React from "react";
 import { Select } from "../inputs/Select";
 
 export const Schedule = ({ special = false }) => {
+
+  const handleClick = () => {
+    alert('Para más información, acuda a recepción.');
+  }
+
   return (
     <div className="sch__container">
       <label className="sch__schedule">
-        Horario: <span className="sch__schedule-span">(Seleccione día(s) y hora)</span>
+        Horario:{" "}
+        <span className="sch__schedule-span">(Seleccione día(s) y hora)</span>
       </label>
-      <table className="sch__table">
-        <thead className="sch__table-days">
-          <tr className="sch__table-days-items">
-            {[
-              "Lunes",
-              "Martes",
-              "Miercoles",
-              "Jueves",
-              "Viernes",
-              "Sabado",
-              "Domingo"
-            ].map((day, i) => (
-              <th key={i}>{day}</th>
-            ))}
-          </tr>
-        </thead>
-        <tbody>
-          <tr className="sch__time">
-            {[1, 2, 3, 4, 5, 6, 7].map(i => (
-              <td className="sch__selectors">
-                <Select
-                  contentClassName="sch__inputs-from"
-                  label="De:"
-                  nexTo={true}
-                />
-                <Select
-                  contentClassName="sch__inputs-to"
-                  label="A:"
-                  nexTo={true}
-                />
-              </td>
-            ))}
-          </tr>
-        </tbody>
-      </table>
+      <div className="sch__table">
+        {[
+          "Lunes",
+          "Martes",
+          "Miercoles",
+          "Jueves",
+          "Viernes",
+          "Sabado",
+          "Domingo"
+        ].map((day, i) => (
+          <div className="sch__table-item">
+            <div onClick={handleClick} className="sch__table-item-day" key={i}>
+              {day}
+            </div>
+          </div>
+        ))}
+        {[1, 2, 3, 4, 5, 6, 7].map(i => (
+          <div className="sch__selectors">
+            <div className="sch__selectors-container">
+              <Select
+                className=""
+                contentClassName="sch__inputs-from sch__selectors-container-item"
+                label="De:"
+                nexTo={true}
+              />
+              <Select
+                contentClassName="sch__inputs-from sch__selectors-container-item"
+                label="&nbsp;&nbsp;A:"
+                nexTo={true}
+              />
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
-
-{
-  /* <div className="sch__time">
-  <div className="sch__selectors">
-    <Select
-      contentClassName="sch__inputs-from"
-      label="De:"
-      nexTo={true}
-    />
-    <Select contentClassName="sch__inputs-to" label="A:" nexTo={true} />
-  </div>
-</div> */
-}
