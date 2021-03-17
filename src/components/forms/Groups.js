@@ -3,6 +3,8 @@ import { BackTexture } from '../ui/BackTexture'
 import { Input } from '../ui/inputs/Input'
 import { Select } from '../ui/inputs/Select'
 import { PanelJustAdded } from '../ui/panel/PanelJustAdded'
+import { Schedule } from '../ui/schedule/Schedule'
+
 
 export const Groups = () => {
     return (
@@ -17,37 +19,10 @@ export const Groups = () => {
                                     <div className="form_inputsContainer form__inputs">
                                         <div className="form__inputs gro__inputsContainer">
                                             <Input contentClassName="gro__inputs-group input__special" label="Grupo" />
-                                        </div>
-                                        <div className="form__inputs gro__inputsContainer">
                                             <Select contentClassName="gro__inputs-major input__special" label="Carrera" />
+                                            <Schedule />
                                         </div>
 
-                                        <table>
-                                            <thead>
-                                                <th>HOLA2</th>
-                                                <th>HOLA2</th>
-                                                <th>HOLA2</th>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>HOLA</td>
-                                                    <td>HOLA</td>
-                                                    <td>HOLA</td>
-
-                                                </tr>
-                                                <tr>
-                                                    <td>HOLA</td>
-                                                    <td>HOLA</td>
-                                                    <td>HOLA</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>HOLA</td>
-                                                    <td>HOLA</td>
-                                                    <td>HOLA</td>
-                                                </tr>
-
-                                            </tbody>
-                                        </table>
                                     </div>
                                 </div>
                             </div>
