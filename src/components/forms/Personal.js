@@ -5,10 +5,13 @@ import { Select } from '../ui/inputs/Select'
 import { PanelJustAdded } from '../ui/panel/PanelJustAdded'
 import { Schedule } from '../ui/schedule/Schedule'
 import { Date } from './Date'
-import { Buttons } from '../ui/Buttons';
+import { Buttons, OpenDropMenuButton } from '../ui/Buttons';
 export const Personal = () => {
     return (
         <div className="containerSection form__container">
+            <div className="form__inputExtra">
+                <OpenDropMenuButton />
+            </div>
             <div className="form__container-content">
                 <div className="form__container-content-inf">
                     <BackTexture />
@@ -33,8 +36,8 @@ export const Personal = () => {
                                             <Select contentClassName="per__inputs-dep" label="Departamento" />
                                             <Input contentClassName="per__inputs-pay" label="Pago" placeholder="$0000.00 (Cantidad en letra)" />
                                         </div>
-                                        <div className="form__inputs form__special">
                                             <Schedule />
+                                        <div className="form__inputs form__special">
                                         </div>
 
                                     </div>

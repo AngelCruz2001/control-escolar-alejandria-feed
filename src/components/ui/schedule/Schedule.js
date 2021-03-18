@@ -1,12 +1,16 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import { Select } from "../inputs/Select";
 
 export const Schedule = ({ special = false }) => {
 
-  const handleClick = () => {
-    alert('Para más información, acuda a recepción.');
+  const refDayWeek = useRef(null)
+  const [dayClicked, setDayClicked] = useState(false)
+  const handleDayClick = ( {target} ) => {
+    console.log(target.className);
+    
+    setDayClicked(!dayClicked);
+    refDayWeek.current.className = dayClicked ? "sch__table-item-day" : "sch__table-item-day sch__inputchecked";
   }
-
   return (
     <div className="sch__container">
       <label className="sch__schedule">
@@ -24,8 +28,9 @@ export const Schedule = ({ special = false }) => {
           "Domingo"
         ].map((day, i) => (
           <div className="sch__table-item">
-            <div onClick={handleClick} className="sch__table-item-day" key={i}>
-              {day}
+            <div className="sch__table-item-day" key={i} id="check" ref={refDayWeek} onClick={handleDayClick}>
+              <input type="checkbox" id="day" value={day}/>
+              <label for="day" className="sch__label">{day}</label>
             </div>
           </div>
         ))}
@@ -42,6 +47,7 @@ export const Schedule = ({ special = false }) => {
                 contentClassName="sch__inputs-from sch__selectors-container-item"
                 label="&nbsp;&nbsp;A:"
                 nexTo={true}
+                options={[1,2,3,4,5]}
               />
             </div>
           </div>

@@ -1,64 +1,23 @@
-// table,
-// td,
-// th {
-//     border: 1px solid $schedule-border;
-//     font-family: "Segoe Ui";
-// }
-// th,td {
-//     padding: 1% 2%;
-//   }
-// thead tr th{
-//     font-size: 20px;
-//     font-weight: 400;
-//     border-radius: 10px;
-
-// }
-
-// thead th:nth-child(1) {
-//     width: 14%;
-//   }
-
-//   thead th:nth-child(2) {
-//     width: 14%;
-//   }
-
-//   thead th:nth-child(3) {
-//     width: 14%;
-//   }
-
-//   thead th:nth-child(4) {
-//     width: 14%;
-//   }
-//   thead th:nth-child(5) {
-//     width: 14%;
-//   }
-//   thead th:nth-child(6) {
-//     width: 14%;
-//   }
-//   thead th:nth-child(7) {
-//     width: 14%;
-//   }
-//   //98% taken = 2% left
-
-//   tbody td {
-//     text-align: center;
-//   }
-//   tr>label{
-//       border: 1px solid black;
-//   }
 .sch__container {
   display: flex;
   flex-direction: column;
   width: 100%;
   height: 40%;
   margin-top: 5%;
+  justify-content: center;
+  align-items: center;
 }
+
 .sch__schedule {
   font-family: "Segoe Ui";
   font-size: 20px;
   font-weight: 400;
   color: #000000;
   margin-bottom: 1%;
+  display: flex;
+  justify-content: initial;
+  width: 85%;
+
   &-span {
     font-family: "Segoe Ui";
     font-size: 19px;
@@ -67,27 +26,22 @@
 }
 
 .sch__table {
-  width: 100%;
+  width: 85%;
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  grid-template-rows: repeat(2, 1fr);
-  //padding: 1% 2%;
-  border-top: 1px solid $schedule-border;
-  border-right: 1px solid $schedule-border;
-  //border-left: 1px solid $schedule-border;
+  grid-template-rows: repeat(3, 1fr);
+  border: 1px solid $schedule-border;
   justify-content: center;
-  //grid-gap: 3%;
 
   &-item {
     border-bottom: 1px solid $schedule-border;
     border-right: 1px solid $schedule-border;
     width: 100%;
     height: 80%;
-    padding-top: 7%;
-   
-  }
-  &-item:nth-child(1){
-    border-left: 1px solid $schedule-border;
+    padding-top: 10%;
+    display: flex;
+    justify-content: center;
+    
   }
 
   &-item-day {
@@ -102,44 +56,66 @@
     justify-content: center;
     font-size: calc(0.2rem + 0.6vw);
     padding: 2% 5%;
-    margin-left: 20%;
-    margin-bottom: 5%;
+    margin-bottom: 6%;
     text-align: center;
     transition: all 0.5s;
     cursor: pointer;
+    position: relative;
+    z-index: 3;
+    
 
     &:hover {
       background-color: darken($color: $white, $amount: 10);
     }
   }
+}
 
+.sch__label{
+  font-family: "Segoe Ui";
+  position: absolute;
+  z-index: 2;
+}
+
+#day
+{
+  position: absolute;
+  appearance: none;
+  width: 100%;
+  height: 100%;
   
+
+}
+.sch__inputchecked {    
+  background-color: #B2D6FB;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  z-index: 2;
 }
 
 .sch__selectors {
   width: 100%;
-  height: 140%;
+  height: 100%;
   border-right: 1px solid $schedule-border;
   border-bottom: 1px solid $schedule-border;
+  grid-row-start: 2;
+  grid-row-end: 4;
 
-
-
-&-container:nth-child(1){
-  border-left: 1px solid  $schedule-border;
-}
- 
-  &-container{
+  &-container {
     width: 100%;
     height: 100%;
-    
-    &-item{
+
+    &-item {
       height: 50%;
       width: 80%;
       margin-left: 7%;
     }
-    
   }
 }
+
+
+
+
 
 // .sch__table-days{
 //     padding: 5%;
@@ -202,12 +178,13 @@
 //         justify-content: space-around;
 //         align-items: center;
 
-//         .sch__inputs-from {
-//             width: 40%;
-//         }
-//         .sch__inputs-to {
-//             width: 40%;
-//         }
+.sch__inputs-from {
+  width: 85%;
+
+}
+// .sch__inputs-to {
+//     width: 10%;
+// }
 //     }
 //         .sch__labelDay {
 //             position: absolute;
