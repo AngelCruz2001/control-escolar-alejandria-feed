@@ -12,8 +12,8 @@ import { PrivateRoute } from './PrivateRoute';
 import { PublicRoute } from './PublicRoute';
 
 export const AppRouter = ({ history }) => {
-    // const { logged } = useSelector(state => state.auth)
-    const logged = true
+    const { logged } = useSelector(state => state.auth)
+    // const logged = true
     return (
         <Router>
             <main>
