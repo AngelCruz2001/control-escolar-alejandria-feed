@@ -41,55 +41,49 @@
     padding-top: 10%;
     display: flex;
     justify-content: center;
-    
+    position: relative;
   }
 
   &-item-day {
-    font-family: "Segoe Ui";
     height: 3vh;
     width: 4.5vw;
     border-radius: 10px;
-    border: 1px solid $schedule-border;
+    // border: 1px solid $schedule-border;
     background-color: $white;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: calc(0.2rem + 0.6vw);
-    padding: 2% 5%;
+    // padding: 2% 5%;
     margin-bottom: 6%;
     text-align: center;
-    transition: all 0.5s;
+    transition: all 0.3s;
     cursor: pointer;
-    position: relative;
-    z-index: 3;
-    
-
     &:hover {
-      background-color: darken($color: $white, $amount: 10);
+      background-color: $blue-sky2;
     }
+  }
+  &-item-dayCheck {
+    background-color: $blue-sky2;
   }
 }
 
-.sch__label{
+.sch__label {
   font-family: "Segoe Ui";
   position: absolute;
   z-index: 2;
 }
 
-#day
-{
-  position: absolute;
-  appearance: none;
-  width: 100%;
+.sch__inputDay {
+  // display: none;
+  z-index: 3;
   height: 100%;
-  
-
-}
-.sch__inputchecked { 
-  appearance: none;  
-  background-color: #B2D6FB;
+  width: 100%;
+  background-color: transparent;
+  appearance: inherit;
+  padding: 0;
   border-radius: 10px;
-
+  border: 1px solid $schedule-border;
 }
 
 .sch__selectors {
@@ -112,86 +106,6 @@
   }
 }
 
-
-
-
-
-// .sch__table-days{
-//     padding: 5%;
-// }
-
-// .sch__time{
-//     margin-bottom: 12px;
-
-// }
-
-//.sch__daysItems {
-//         display: flex;
-//         width: 70%;
-//         justify-content: space-evenly;
-//         align-items: center;
-//         flex-direction: column;
-
-//         .sch__card {
-//             height: 3vh;
-//             width: 3vw;
-//             border-radius: 10px;
-//             display: flex;
-//             align-items: center;
-//             justify-content: center;
-//             font-size: calc(0.2rem + 0.6vw);
-//             background-color: $white;
-//             padding: 1%;
-//             transition: all 0.5s;
-//             cursor: pointer;
-
-//             &:hover {
-//                 background-color: darken($color: $white, $amount: 10);
-//             }
-//             label {
-//                 font-family: "Segoe Ui";
-//                 font-size: 11px;
-//                 font-weight: 400;
-//                 user-select: none;
-//                 cursor: pointer;
-
-//             }
-//         }
-
-//         .sch__titleDays {
-//             font-family: "Segoe Ui";
-//             font-size: calc(0.3rem + 0.65vw);
-//             font-weight: 400;
-//             user-select: none;
-//         }
-//     }
-// .sch__time {
-//     width: 25%;
-//     display: flex;
-//     flex-direction: column;
-//     align-items: center;
-//     position: relative;
-//     .sch__selectors {
-//         width: 100%;
-//         display: flex;
-//         justify-content: space-around;
-//         align-items: center;
-
 .sch__inputs-from {
   width: 85%;
-
 }
-// .sch__inputs-to {
-//     width: 10%;
-// }
-//     }
-//         .sch__labelDay {
-//             position: absolute;
-//             top: 120%;
-//             font-family: "Segoe Ui";
-//             font-size: 12px;
-//             font-weight: 400;
-//             user-select: none;
-//         }
-//     }
-// }
