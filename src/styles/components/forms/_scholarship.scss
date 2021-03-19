@@ -1,31 +1,36 @@
+.scholar__container-content {
+    justify-content: space-evenly;
+}
+
 .scholar__container-content-inf {
-    height: 100%;
-    width: 60%;
+    height: 105%;
+    width: 54%;
+    align-self: flex-end;
+    align-content: center;
+    display: flex;
+    justify-content: center;
+}
+.scholar__containerSection {
+    width: 66% !important;
 }
 .scholar__texture {
     height: 100%;
     width: 100%;
-    position: absolute;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 .scholar__personal {
     height: 100%;
-    // width: 80%;
-    // margin-left: 10%;
 }
 .scholar__special {
     align-items: initial !important;
 }
-// .scholar__special {
-//     justify-content: center !important;
-// }
+
 .scholar__inputs {
     &-id {
         height: 15%;
         width: 50%;
-        // margin-right: 35%;
     }
     &-student {
         height: 15%;
@@ -36,15 +41,39 @@
     &-about {
         height: 15%;
     }
-    &-percentaje {
-        height: 15%;
-        width: 50%;
-        // margin-right: 35%;
-    }
+    // &-percentaje {
+    //     height: 15%;
+    //     width: 50%;
+    //     // margin-right: 35%;
+    // }
     &-observation {
-        height: 30%;
+        height: 20%;
     }
     &-observationIn {
         height: 100% !important;
     }
+}
+
+.slider {
+    width: 50%;
+    & > label {
+        font-family: "Segoe Ui";
+        font-size: 11px;
+        font-weight: 400;
+    }
+    & > .slider__bar {
+        font-family: "Segoe Ui";
+        color: $schedule-border;
+    }
+}
+span {
+
+    & .MuiSlider-markLabel {
+        color: #757574;
+        font-family: "Segoe Ui";
+        font-size: 11px;
+        font-weight: 400;
+        margin-left: 5%;
+    }
+    
 }

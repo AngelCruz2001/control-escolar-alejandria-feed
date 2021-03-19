@@ -9,10 +9,6 @@ export const Schedule = ({ special = false }) => {
     const dayButton = document.querySelector(`.${target.textContent}`);
     console.log(dayButton)
     !state ? dayButton.classList.add('check') : dayButton.classList.remove('check');
-
-
-
-
   }
 
   return (

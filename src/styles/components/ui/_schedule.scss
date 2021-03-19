@@ -1,51 +1,4 @@
-// table,
-// td,
-// th {
-//     border: 1px solid $schedule-border;
-//     font-family: "Segoe Ui";
-// }
-// th,td {
-//     padding: 1% 2%;
-//   }
-// thead tr th{
-//     font-size: 20px;
-//     font-weight: 400;
-//     border-radius: 10px;
 
-// }
-
-// thead th:nth-child(1) {
-//     width: 14%;
-//   }
-
-//   thead th:nth-child(2) {
-//     width: 14%;
-//   }
-
-//   thead th:nth-child(3) {
-//     width: 14%;
-//   }
-
-//   thead th:nth-child(4) {
-//     width: 14%;
-//   }
-//   thead th:nth-child(5) {
-//     width: 14%;
-//   }
-//   thead th:nth-child(6) {
-//     width: 14%;
-//   }
-//   thead th:nth-child(7) {
-//     width: 14%;
-//   }
-//   //98% taken = 2% left
-
-//   tbody td {
-//     text-align: center;
-//   }
-//   tr>label{
-//       border: 1px solid black;
-//   }
 .sch__container {
   display: flex;
   flex-direction: column;
@@ -71,12 +24,10 @@
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   grid-template-rows: repeat(2, 1fr);
-  //padding: 1% 2%;
   border-top: 1px solid $schedule-border;
   border-right: 1px solid $schedule-border;
-  //border-left: 1px solid $schedule-border;
   justify-content: center;
-  //grid-gap: 3%;
+
 
   &-item {
     border-bottom: 1px solid $schedule-border;

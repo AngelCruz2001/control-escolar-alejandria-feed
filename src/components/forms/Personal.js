@@ -33,8 +33,8 @@ export const Personal = () => {
                                             <Select contentClassName="per__inputs-dep" label="Departamento" />
                                             <Input contentClassName="per__inputs-pay" label="Pago" placeholder="$0000.00 (Cantidad en letra)" />
                                         </div>
-                                        <div className="form__inputs form__special">
                                             <Schedule />
+                                        <div className="form__inputs form__special">
                                         </div>
 
                                     </div>
