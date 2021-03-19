@@ -1,5 +1,6 @@
 import React from 'react'
 import { BackTexture } from '../ui/BackTexture'
+import { OpenDropMenuButton } from '../ui/Buttons'
 import { Input } from '../ui/inputs/Input'
 import { Select } from '../ui/inputs/Select'
 import { PanelJustAdded } from '../ui/panel/PanelJustAdded'
@@ -9,6 +10,9 @@ import { Schedule } from '../ui/schedule/Schedule'
 export const Groups = () => {
     return (
         <div className="containerSection form__container">
+         <div className="form__inputExtra">
+                <OpenDropMenuButton />
+            </div>
             <div className="form__container-content">
                 <div className="form__container-content-inf">
                     <BackTexture />

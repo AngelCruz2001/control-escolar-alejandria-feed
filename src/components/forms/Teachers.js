@@ -2,7 +2,6 @@ import React from 'react'
 import { BackTexture } from '../ui/BackTexture';
 import { Input } from '../ui/inputs/Input';
 import { PanelJustAdded } from '../ui/panel/PanelJustAdded';
-import { Date } from './Date';
 import { Select } from '../ui/inputs/Select';
 import { Buttons, OpenDropMenuButton } from '../ui/Buttons'
 
@@ -12,7 +11,6 @@ export const Teachers = () => {
             <div className="form__inputExtra">
                 <OpenDropMenuButton />
             </div>
-
             <div className="form__container-content">
                 <div className="form__container-content-inf">
                     <BackTexture />
