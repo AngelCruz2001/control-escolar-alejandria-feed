@@ -8,7 +8,8 @@ export const Input = ({
     placeholder = '',
     label = '',
     nameInput = '',
-    valueInput = ''
+    valueInput = '',
+    handleInputChange
 }) => {
     return (
         <div className={`input__content ${contentClassName}`}>
@@ -20,9 +21,9 @@ export const Input = ({
                         className={`input__input`}
                         type={type}
                         placeholder={placeholder}
-                        name={nameInput}
+                        name={`${nameInput}`}
                         value={valueInput}
-                        onChange=''
+                        onChange={handleInputChange}
                     />
                 </div>
             </div>
