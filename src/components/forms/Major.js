@@ -1,10 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { BackTexture } from '../ui/BackTexture'
 import { Input } from '../ui/inputs/Input'
 import { PanelJustAdded } from '../ui/panel/PanelJustAdded'
 import { Buttons, OpenDropMenuButton } from '../ui/Buttons'
 
 export const Major = () => {
+
+
     return (
         <div className="containerSection form__container">
             <div className="form__inputExtra">
@@ -21,6 +23,7 @@ export const Major = () => {
                                         <div className="form__inputs major__special">
                                             <Input contentClassName="major__inputs-major"
                                                 label="Nombre de la carrera"
+                                                
                                             />
                                         </div>
                                     </div>

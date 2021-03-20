@@ -15,7 +15,12 @@ export const Students = () => {
         Surname: '',
         day: '',
         month: '',
-
+        year: '',
+        age: '',
+        curp: '',
+        street: '',
+        address: '',
+        zip: '',  
     });
 
 
