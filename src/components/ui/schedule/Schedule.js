@@ -3,12 +3,15 @@ import { Select } from "../inputs/Select";
 
 export const Schedule = ({ special = false }) => {
   const [state, setState] = useState(false);
+
   const handleClick = ({ target }) => {
     setState(!state);
 
     const dayButton = document.querySelector(`.${target.textContent}`);
     console.log(dayButton)
     !state ? dayButton.classList.add('check') : dayButton.classList.remove('check');
+  }
+
   const [value, setValue] = useState({
     Lunes: false,
     Martes: false,
@@ -17,7 +20,7 @@ export const Schedule = ({ special = false }) => {
     Viernes: false,
     Sabado: false,
     Domingo: false
-  });
+  })
 
   const reset = () => {
     setValue({});
@@ -92,4 +95,4 @@ export const Schedule = ({ special = false }) => {
     </div>
   );
 };
-}
+

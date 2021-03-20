@@ -3,8 +3,27 @@ import { BackTexture } from "../ui/BackTexture";
 import { Input } from "../ui/inputs/Input";
 import { PanelJustAdded } from "../ui/panel/PanelJustAdded";
 import { Slider } from "@material-ui/core";
+import { useForm } from "../../hooks/useForm";
 
 export const Scholarship = () => {
+  const [formValues, handleInputChange, reset] = useForm({
+    id: "",
+    owner: "",
+    scholarName: "",
+    aboutScholar: "",
+    percentaje: "",
+    observation: ""
+  });
+
+  const {
+    id,
+    owner,
+    scholarName,
+    aboutScholar,
+    percentaje,
+    observation
+  } = formValues;
+
   const [val, setVal] = useState(0);
   const updateRange = ({ e, data }) => {
     setVal(val);
@@ -36,21 +55,33 @@ export const Scholarship = () => {
                       <Input
                         contentClassName="scholar__inputs-id"
                         label="Maricula"
+                        nameInput="id"
+                        valueInput={id}
+                        handleInputChange={handleInputChange}
                       />
                       <Input
                         contentClassName="scholar__inputs-student"
                         label="Becario"
+                        nameInput="owner"
+                        valueInput={owner}
+                        handleInputChange={handleInputChange}
                       />
                       <Input
                         contentClassName="scholar__inputs-scholarname"
                         label="Nombre de la beca"
+                        nameInput="scholarName"
+                        valueInput={scholarName}
+                        handleInputChange={handleInputChange}
                       />
                       <Input
                         contentClassName="scholar__inputs-about"
                         label="Razón de beca"
+                        nameInput="aboutScholar"
+                        valueInput={aboutScholar}
+                        handleInputChange={handleInputChange}
                       />
 
-                      <div className="slider" >
+                      <div className="slider">
                         <label>Porcentaje de beca</label>
                         <Slider
                           className="slider__bar"
@@ -65,6 +96,9 @@ export const Scholarship = () => {
                         contentClassName="scholar__inputs-observation"
                         inputClassName="scholar__inputs-observationIn"
                         label="Observaciones"
+                        nameInput="observation"
+                        valueInput={observation}
+                        handleInputChange={handleInputChange}
                       />
                     </div>
                   </div>
