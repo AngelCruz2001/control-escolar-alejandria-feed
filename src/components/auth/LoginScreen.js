@@ -1,20 +1,19 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { authStartChecking } from '../../actions/auth';
+import { authStartChecking, authStartLogin } from '../../actions/auth';
 import { imagesPath } from '../../helpers/resources';
 import { useForm } from '../../hooks/useForm';
 export const LoginScreen = () => {
     const { checking } = useSelector(state => state.auth)
     const dispatch = useDispatch()
     const [formValues, handleInputChange,] = useForm({
-        username: "angel123",
-        password: "123456"
+        username: "admin",
+        password: "sud0_c34_r00t"
     })
     const { username, password } = formValues;
     const handleClickLogin = (e) => {
         e.preventDefault();
-        dispatch(authStartChecking(username, password))
-
+        dispatch(authStartLogin(username, password))
     }
     return (
         <div className="container auth__container">

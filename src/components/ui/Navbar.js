@@ -57,8 +57,7 @@ export const Navbar = () => {
     const dispatch = useDispatch()
     const { openDropMenu } = useSelector(state => state.ui)
     const handleLogOut = () => {
-        // dispatch(authStartLogout())
-        dispatch(uiOpenDropMenu())
+        dispatch(authStartLogout())
     }
     const dropMenuRef = useRef(null);
     const handleClickDropMenu = (e) => {

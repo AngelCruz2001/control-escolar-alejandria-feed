@@ -19,4 +19,7 @@ export const types = {
     authStartTokenRenew: '[auth] Start token renew',
     authLogout: '[auth] Logout',
 
+
+    formsGetCampus: '[forms] Get Campus',
+    formsGetMajors: '[forms] Get Majors',
 }

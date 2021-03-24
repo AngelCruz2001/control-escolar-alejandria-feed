@@ -22,6 +22,4 @@ export const iconsPath = {
     groupsSectionIcon,
     cleanIcon,
     signOutIcon,
-    
-
 }

@@ -7,8 +7,6 @@ const initialState = JSON.parse(localStorage.getItem('user')) || {
     user: {},
     logged: false,
     checking: false,
-
-
 };
 
 export const authReducer = (state = initialState, action) => {

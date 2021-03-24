@@ -7,6 +7,7 @@ import { Select } from '../ui/inputs/Select';
 import { useForm } from '../../hooks/useForm';
 import { Buttons, OpenDropMenuButton } from '../ui/Buttons';
 import moment from 'moment';
+import { formsStartCreateStudent } from '../../actions/forms';
 
 export const Students = () => {
 
@@ -22,7 +23,7 @@ export const Students = () => {
         CURP: '',
         street: '',
         colony: '',
-        zipCode: '',
+        zip: '',
         placeBirth: '',
         numCel: '',
         numCel2: '',
@@ -41,15 +42,13 @@ export const Students = () => {
         CURP,
         street,
         colony,
-        zipCode,
+        zip,
         placeBirth,
         numCel,
         numCel2,
         email, } = formValues;
-    // console.log(moment().month());
-    const handleSubmit = () => {
-        console.log("Subir datos:", formValues)
-    }
+
+    console.log(formValues)
     return (
         <div className="stu__generalContainer">
             <div className="containerSection form__container">
@@ -61,7 +60,7 @@ export const Students = () => {
                     <div className="form__container-content-inf">
                         <BackTexture />
                         <div className="form_containerSection">
-                            <form className="form__form" action="">
+                            <form className="form__form">
                                 <div className="stu__personal form_section">
                                     <p>Información personal</p>
                                     <div className="overTexture">
@@ -70,14 +69,20 @@ export const Students = () => {
                                                 <Input contentClassName="stu__inputs-name" nameInput="names" valueInput={names} handleInputChange={handleInputChange} label="Nombre(s)" />
                                                 <Input contentClassName="stu__inputs-father" nameInput="surnameF" valueInput={surnameF} handleInputChange={handleInputChange} label="Apellido paterno" />
                                                 <Input contentClassName="stu__inputs-mother" nameInput="surnameM" valueInput={surnameM} handleInputChange={handleInputChange} label="Apellido materno" />
-                                                <Date contentClassNaSme="stu__inputs-dates" />
+                                                <Date
+                                                    contentClassName="stu__inputs-dates"
+                                                    selectDay={day}
+                                                    selectMonth={month}
+                                                    selectYear={year}
+                                                    handleInputChange={handleInputChange}
+                                                />
                                             </div>
                                             <div className="form__inputs">
                                                 <Input contentClassName="stu__inputs-age" nameInput="age" valueInput={age} handleInputChange={handleInputChange} label="Edad" />
                                                 <Input contentClassName="stu__inputs-CURP" nameInput="CURP" valueInput={CURP} handleInputChange={handleInputChange} label="CURP" />
                                                 <Input contentClassName="stu__inputs-street" nameInput="street" valueInput={street} handleInputChange={handleInputChange} label="Dirección" placeholder="Calle y número" />
                                                 <Input contentClassName="stu__inputs-colony" nameInput="colony" valueInput={colony} handleInputChange={handleInputChange} label="-" placeholder="Colonia" />
-                                                <Input contentClassName="stu__inputs-code" nameInput="zipCode" valueInput={zipCode} handleInputChange={handleInputChange} label="-" placeholder="Codigo postal" />
+                                                <Input contentClassName="stu__inputs-code" nameInput="zip" valueInput={zip} handleInputChange={handleInputChange} label="-" placeholder="Codigo postal" />
                                             </div>
                                             <div className="form__inputs">
                                                 <Input contentClassName="stu__inputs-birthplace" nameInput="placeBirth" valueInput={placeBirth} handleInputChange={handleInputChange} label="Lugar de nacimiento" placeholder="País/Ciudad/Municipio" />
@@ -93,10 +98,10 @@ export const Students = () => {
                                     <div className="overTexture">
                                         <div className="form_inputsContainer">
                                             <div className="form__inputs">
-                                                <Select contentClassName="stu__inputs-birthplace" label="Campus" />
-                                                <Select contentClassName="stu__inputs-num1" label="Estatus" />
-                                                <Select contentClassName="stu__inputs-num2" label="Carrrera" />
-                                                <Select contentClassName="stu__inputs-email" label="Grupo" />
+                                                <Select handleInputChange={handleInputChange} contentClassName="stu__inputs-birthplace" label="Campus" />
+                                                <Select handleInputChange={handleInputChange} contentClassName="stu__inputs-num1" label="Estatus" />
+                                                <Select handleInputChange={handleInputChange} contentClassName="stu__inputs-num2" label="Carrrera" />
+                                                <Select handleInputChange={handleInputChange} contentClassName="stu__inputs-email" label="Grupo" />
                                             </div>
                                         </div>
                                     </div>
@@ -107,8 +112,9 @@ export const Students = () => {
                     <PanelJustAdded />
                 </div>
                 <Buttons
-                    handleClickClean={handleClean}
-                    handleClickSave={handleSubmit}
+                    reset={reset}
+                    formValues={formValues}
+                    action={formsStartCreateStudent}
                 />
             </div>
         </div>

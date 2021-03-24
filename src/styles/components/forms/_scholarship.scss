@@ -76,4 +76,18 @@ span {
         margin-left: 5%;
     }
     
+    & .PrivateValueLabel-offset-3 { 
+        top:0%;
+        font-family: "Segoe Ui";
+         transition: none;
+
+         & .PrivateValueLabel-circle-4{
+             border-radius: 50%!important;
+             background-color: darken($color: #757574, $amount: 1);
+
+             & .PrivateValueLabel-offset-3{
+             }
+         }
+     }
+    
 }

@@ -1,21 +1,22 @@
-
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { uiCloseDropMenu } from "../actions/ui";
 
 export const useOutsideAlerter = (ref) => {
+    const { openDropMenu } = useSelector(state => state.ui)
+    console.log(openDropMenu)
     const dispatch = useDispatch()
     useEffect(() => {
         const handleClickOutside = (event) => {
-            if (ref.current && !ref.current.contains(event.target)) {
-                dispatch(uiCloseDropMenu())
+            if (openDropMenu && ref.current && !ref.current.contains(event.target)) {
+                dispatch(uiCloseDropMenu());
             }
         }
         document.addEventListener("mousedown", handleClickOutside);
         return () => {
             document.removeEventListener("mousedown", handleClickOutside);
         };
-    }, [ref]);
+    }, [ref, openDropMenu]);
 }
 
 

@@ -1,8 +1,12 @@
 import React from 'react'
+import { useForm } from '../../../hooks/useForm'
 import { Input } from '../inputs/Input'
 import { PanelItem } from './PanelItem'
 
 export const PanelJustAdded = () => {
+    const [formValues, handleInputChange] = useForm();
+    const { valueInput } = formValues;
+
     return (
         <>
             <div className="panel__container">
@@ -11,6 +15,9 @@ export const PanelJustAdded = () => {
                     <Input
                         icon='fas fa-search'
                         classNameInput="panel__input"
+                        nameInput='searchInput'
+                        valueInput={valueInput}
+                        handleInputChange={handleInputChange}
                     />
                     <PanelItem />
                 </div>

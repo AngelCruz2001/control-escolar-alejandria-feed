@@ -1,11 +1,36 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { BackTexture } from '../ui/BackTexture';
 import { Input } from '../ui/inputs/Input';
 import { PanelJustAdded } from '../ui/panel/PanelJustAdded';
 import { Select } from '../ui/inputs/Select';
 import { Buttons, OpenDropMenuButton } from '../ui/Buttons'
+import { useForm } from '../../hooks/useForm';
+import { formsStartCreateTeacher, formsStartGetCampus } from '../../actions/forms';
+import { useDispatch, useSelector } from 'react-redux';
 
 export const Teachers = () => {
+    const dispatch = useDispatch()
+    const { campus } = useSelector(state => state.forms)
+    const [formValues, handleInputChange, reset] = useForm({
+        name: "1na11me",
+        surnameF: "s1u1r1name",
+        surnameM: "s1u1r1name",
+        rfc: "rf1c121",
+        mobile_number: "6611125",
+        email: "emmail1234@gmail.com",
+        id_campus: 1,
+    })
+
+    const { name,
+        surnameF,
+        surnameM,
+        rfc,
+        mobile_number,
+        email } = formValues;
+
+    useEffect(() => {
+        dispatch(formsStartGetCampus())
+    }, [dispatch])
     return (
         <div className="containerSection form__container">
             <div className="form__inputExtra">
@@ -21,15 +46,14 @@ export const Teachers = () => {
                                 <div className="overTexture ">
                                     <div className="form_inputsContainer">
                                         <div className="form__inputs">
-                                            <Input contentClassName="tea__inputs-name" label="Nombre(s)" />
-                                            <Input contentClassName="tea__inputs-father" label="Apellido paterno" />
-                                            <Input contentClassName="tea__inputs-mother" label="Apellido materno" />
-                                            <Input contentClassName="tea__inputs-RFC" label="RFC" />
+                                            <Input nameInput="name" valueInput={name} handleInputChange={handleInputChange} contentClassName="tea__inputs-name" label="Nombre(s)" />
+                                            <Input nameInput="surnameF" valueInput={surnameF} handleInputChange={handleInputChange} contentClassName="tea__inputs-father" label="Apellido paterno" />
+                                            <Input nameInput="surnameM" valueInput={surnameM} handleInputChange={handleInputChange} contentClassName="tea__inputs-mother" label="Apellido materno" />
+                                            <Input nameInput="rfc" valueInput={rfc} handleInputChange={handleInputChange} contentClassName="tea__inputs-RFC" label="RFC" />
                                         </div>
                                         <div className="form__inputs form__special">
-                                            <Input contentClassName="tea__inputs-CURP" label="CURP" />
-                                            <Input contentClassName="tea__inputs-num1" label="Numero de télefono" />
-                                            <Input contentClassName="tea__inputs-email" label="Correo electrónico" placeholder="ejemplo@ejemplo.com" />
+                                            <Input nameInput="mobile_number" valueInput={mobile_number} handleInputChange={handleInputChange} contentClassName="tea__inputs-num1" label="Numero de télefono" />
+                                            <Input nameInput="email" valueInput={email} handleInputChange={handleInputChange} contentClassName="tea__inputs-email" label="Correo electrónico" placeholder="ejemplo@ejemplo.com" />
                                         </div>
 
                                     </div>
@@ -40,8 +64,8 @@ export const Teachers = () => {
                                 <div className="overTexture ">
                                     <div className="form_inputsContainer">
                                         <div className="form__inputs form__special">
-                                            <Select contentClassName="tea__inputs-campus" label="Campus" />
-                                            <Select contentClassName="tea__inputs-subImp" label="Materias que puede impartir" />
+                                            <Select contentClassName="tea__inputs-campus" label="Campus" options={campus} />
+                                            {/* <Select contentClassName="tea__inputs-subImp" label="Materias que puede impartir" /> */}
                                         </div>
                                     </div>
                                 </div>
@@ -51,7 +75,11 @@ export const Teachers = () => {
                 </div>
                 <PanelJustAdded />
             </div>
-            <Buttons />
+            <Buttons
+                reset={reset}
+                formValues={formValues}
+                action={formsStartCreateTeacher}
+            />
 
         </div>
     )

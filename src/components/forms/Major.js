@@ -3,10 +3,13 @@ import { BackTexture } from '../ui/BackTexture'
 import { Input } from '../ui/inputs/Input'
 import { PanelJustAdded } from '../ui/panel/PanelJustAdded'
 import { Buttons, OpenDropMenuButton } from '../ui/Buttons'
+import { useForm } from '../../hooks/useForm'
+import { formsStartCreateMajor } from '../../actions/forms'
 
 export const Major = () => {
 
-
+    const [formValues, handleInputChange, reset] = useForm({ major_name: '' });
+    const { major_name } = formValues;
     return (
         <div className="containerSection form__container">
             <div className="form__inputExtra">
@@ -23,7 +26,9 @@ export const Major = () => {
                                         <div className="form__inputs major__special">
                                             <Input contentClassName="major__inputs-major"
                                                 label="Nombre de la carrera"
-                                                
+                                                nameInput="major_name"
+                                                valueInput={major_name}
+                                                handleInputChange={handleInputChange}
                                             />
                                         </div>
                                     </div>
@@ -34,7 +39,11 @@ export const Major = () => {
                 </div>
                 <PanelJustAdded />
             </div>
-            <Buttons />
+            <Buttons
+                formValues={formValues}
+                reset={reset}
+                action={formsStartCreateMajor}
+            />
 
         </div>
     )

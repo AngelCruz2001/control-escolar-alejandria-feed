@@ -1,7 +1,7 @@
 import React from 'react'
 
-export const OptionItem = ({ value }) => {
+export const OptionItem = ({ options, states = false }) => {
     return (
-        <option value={value} >{value}</option>
+        <option value={states ? options : options[0]}>{states ? options : options[1]}</option>
     )
 }

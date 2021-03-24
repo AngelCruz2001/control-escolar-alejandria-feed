@@ -9,20 +9,23 @@ export const Select = ({
     placeholder = '',
     label = '',
     nexTo = false,
+    states = false,
     disabledSelect = false
 }) => {
     return (
-        <div className={`${contentClassName} ${(nexTo) && 'input__special '}`}>
+        <div className={`input__content ${contentClassName} ${(nexTo) && 'input__special '}`}>
             <label className="input__label" style={{ opacity: disabledSelect && '0.6' }}>{label}</label>
             <div className={`input__container `} style={{ opacity: disabledSelect && '0.6' }}>
-                <select name={nameSelect} value={valueSelect} onChange={() => handleInputChange} disabled={disabledSelect} >
-                    <option value='' disabled>{placeholder} </option>
-                    {
-                        options.map((opt, i) => (
-                            <OptionItem key={i} value={opt} />
-                        ))
-                    }
-                </select>
+                <div className="input__container-content">
+                    <select name={nameSelect} value={valueSelect} onChange={handleInputChange} disabled={disabledSelect} >
+                        {/* <option value={valueSelect} disabled>{placeholder} </option> */}
+                        {
+                            options.map((opt, i) => (
+                                <OptionItem key={i} options={states ? opt : Object.values(opt)} states={states} />
+                            ))
+                        }
+                    </select>
+                </div>
             </div >
         </div>
     )

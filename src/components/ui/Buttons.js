@@ -2,15 +2,21 @@ import React from 'react'
 import { useDispatch } from 'react-redux'
 import { uiOpenDropMenu } from '../../actions/ui'
 
-export const Buttons = (handleClickClean, handleClickSave) => {
+export const Buttons = ({ formValues, reset, action }) => {
+    const dispatch = useDispatch()
+    const handleSubmit = () => {
+        // console.log(formValues)
+        dispatch(action(formValues, reset))
+    }
+
     return (
         <div className="btn__actions">
-            <button className="btn btn-formAction" onClick={handleClickClean}>
+            <button className="btn btn-formAction" onClick={reset}>
                 <span>Limpiar </span>
                 <i className="fas fa-brush"></i>
 
             </button>
-            <button className="btn btn-formAction" onClick={handleClickSave}>
+            <button className="btn btn-formAction" onClick={handleSubmit}>
                 <span>Guardar </span>
                 <i className="fas fa-save"></i>
             </button>
