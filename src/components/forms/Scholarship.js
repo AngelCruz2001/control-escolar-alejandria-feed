@@ -8,12 +8,7 @@ import { Slider } from "@material-ui/core";
 import { useForm } from '../../hooks/useForm';
 
 export const Scholarship = () => {
-  // guardar valor del slider en form values
 
-  // Hay que correr a Johan
-  //jajajajaja ¿quien puso esa nota? 
-//fuiste tu, verdadd??:?????
-//jAJAJAJA OKAY. 
 
   const [val, setVal] = useState(0);
   const updateRange = ({ e, data }) => {
@@ -38,14 +33,14 @@ export const Scholarship = () => {
     percentage: 'FLOAT',
     reason: 'STRING',
     observations: 'STRING',
-  }); 
+  });
 
-  const {id_student, scholarship_name, percentage, reason, observations} = formValues
+  const { id_student, scholarship_name, percentage, reason, observations } = formValues
   return (
     <div className="containerSection form__container">
       <div className="form__inputExtra">
-                <OpenDropMenuButton />
-            </div>
+        <OpenDropMenuButton />
+      </div>
       <div className="form__container-content scholar__container-content">
         <div className="form__container-content-inf scholar__container-content-inf">
           <BackTexture />
@@ -56,16 +51,16 @@ export const Scholarship = () => {
                   <div className="form_inputsContainer">
                     <div className="form__inputs form__column  scholar__special">
                       <Input
-                        nameInput = 'id_student'
+                        nameInput='id_student'
                         contentClassName="scholar__inputs-id"
                         label="Maricula"
                         valueInput={id_student}
                         nameInput="id_student"
                         handleInputChange={handleInputChange}
                       />
-                      
+
                       <Input
-                        nameInput = 'scholarship_name'
+                        nameInput='scholarship_name'
                         contentClassName="scholar__inputs-scholarname"
                         label="Nombre de la beca"
                         valueInput={scholarship_name}
@@ -73,7 +68,7 @@ export const Scholarship = () => {
                         handleInputChange={handleInputChange}
                       />
                       <Input
-                        nameInput = 'reason'
+                        nameInput='reason'
                         contentClassName="scholar__inputs-about"
                         label="Razón de beca"
                         valueInput={reason}
@@ -96,7 +91,7 @@ export const Scholarship = () => {
                         />
                       </div>
                       <Input
-                        nameInput = 'observations'
+                        nameInput='observations'
                         contentClassName="scholar__inputs-observation"
                         inputClassName="scholar__inputs-observationIn"
                         label="Observaciones"
@@ -114,10 +109,10 @@ export const Scholarship = () => {
         <PanelJustAdded />
       </div>
       <Buttons
-                formValues={formValues}
-                reset={reset}
-                action={formsStartCreateScholarship}
-            />
+        formValues={formValues}
+        reset={reset}
+        action={formsStartCreateScholarship}
+      />
     </div>
   );
 };
