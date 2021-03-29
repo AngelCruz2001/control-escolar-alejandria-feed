@@ -10,7 +10,6 @@ class Horizontal extends Component {
     }
   
     handleChangeStart = () => {
-      console.log('Change event started')
     };
   
     handleChange = value => {
@@ -20,7 +19,6 @@ class Horizontal extends Component {
     };
   
     handleChangeComplete = () => {
-      console.log('Change event completed')
     };
   
     render () {

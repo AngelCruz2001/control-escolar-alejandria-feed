@@ -1,29 +1,22 @@
 import React from 'react'
 import { BackTexture } from '../ui/BackTexture'
-import { OpenDropMenuButton } from '../ui/Buttons'
+import { Buttons, OpenDropMenuButton } from '../ui/Buttons'
 import { Input } from '../ui/inputs/Input'
 import { Select } from '../ui/inputs/Select'
 import { PanelJustAdded } from '../ui/panel/PanelJustAdded'
 import { Schedule } from '../ui/schedule/Schedule'
 import { useForm } from '../../hooks/useForm';
+import { useSelector } from 'react-redux'
+import { formsStartCreateGroups } from '../../actions/forms'
 
 
 export const Groups = () => {
-
-    // Falta horarios
+    const { majors } = useSelector(state => state.forms)
     const [formValues, handleInputChange, reset] = useForm({
-        id_group: 6,
-        id_major: 1,
-        name_group: "gro",
-        entry_year: "1000-01-01",
-        end_year: "2000-01-01",
-        major_name: "Licenciatura en derecho"
+        id_group: 6, id_major: 1, name_group: "El mejor grupo", major_name: "Licenciatura en derecho", time_tables: []
     })
-    const {
-        id_major,
-        name_group,
-        major_name
-    } = formValues
+    const { id_major, name_group, major_name, } = formValues;
+
     return (
         <div className="containerSection form__container">
             <div className="form__inputExtra">
@@ -48,8 +41,12 @@ export const Groups = () => {
                                                 valueInput={major_name}
                                                 nameInput="major_name"
                                                 handleInputChange={handleInputChange}
+                                                options={majors}
                                             />
-                                            <Schedule />
+                                            <Schedule
+                                                formValues={formValues}
+                                                handleInputChange={handleInputChange}
+                                            />
                                         </div>
 
                                     </div>
@@ -61,6 +58,11 @@ export const Groups = () => {
                 </div>
                 <PanelJustAdded />
             </div>
+            <Buttons
+                reset={reset}
+                formValues={formValues}
+                action={formsStartCreateGroups}
+            />
         </div >
     )
 }

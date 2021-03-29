@@ -3,7 +3,6 @@
     flex-direction: column;
 }
 
-
 .stu__personal {
     height: 70%;
     margin-bottom: 5%;
@@ -64,18 +63,34 @@
 
     &-birthplace {
         width: 25%;
+        margin-right: 4%;
     }
     &-num1 {
         width: 20%;
+        margin-right: 4%;
     }
     &-num2 {
         width: 20%;
+        margin-right: 4%;
     }
     &-email {
         width: 23%;
     }
-}
 
+    &-campus {
+        width: 23%;
+        margin-right: 4%;
+    }
+
+    &-career {
+        width: 25%;
+        margin-right: 4%;
+    }
+    &-group {
+        width: 20%;
+        margin-right: 4%;
+    }
+}
 
 .stu__inputs-mat {
     width: 15%;

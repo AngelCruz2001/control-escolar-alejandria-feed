@@ -8,18 +8,15 @@ export const authStartLogin = (id, password) => {
     return async (dispatch) => {
         dispatch(authCheckingStart());
         try {
-            console.log(id, password)
             const res = await fetchSinToken('auth/login', { id, password }, 'POST')
             const body = await res.json()
             dispatch(authCheckingFinish())
             if (body.ok) {
                 localStorage.setItem('token', body.token);
                 localStorage.setItem('token-init-date', new Date().getTime());
-                console.log(body)
                 dispatch(authLogin(body.id_role, body.user_type, body.id_user, body.email))
 
             } else {
-                console.log(body)
                 Swal.fire({
                     title: '¡Oops!',
                     text: body.msg,
@@ -29,7 +26,6 @@ export const authStartLogin = (id, password) => {
             }
         } catch (error) {
             dispatch(authCheckingFinish())
-            console.log(error)
             Swal.fire('Error', 'Hablar con el administrador', 'error')
         }
 
@@ -44,12 +40,10 @@ export const authStartChecking = () => {
         if (body.ok) {
             localStorage.setItem('token', body.token);
             localStorage.setItem('token-init-date', new Date().getTime());
-            console.log(body)
             dispatch(authLogin(body.id_role, body.user_type, body.id_user, body.email))
             dispatch(authCheckingFinish())
         } else {
             dispatch(authCheckingFinish())
-            console.log(body)
             Swal.fire({
                 title: '¡Oops!',
                 text: body.msg,

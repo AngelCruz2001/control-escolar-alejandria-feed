@@ -61,3 +61,12 @@
     width: 15%;
     z-index: 2;
 }
+
+
+.input__error {
+  opacity: 1;
+  border-radius: 10px;
+  box-shadow: 2px 2px 5px  #ff6464;
+  transition: box-shadow .4s ease;
+}
+

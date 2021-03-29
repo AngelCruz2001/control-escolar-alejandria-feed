@@ -22,4 +22,6 @@ export const types = {
 
     formsGetCampus: '[forms] Get Campus',
     formsGetMajors: '[forms] Get Majors',
+    formsGetGroups: '[forms] Get Groups',
+    formsGetDepartaments: '[forms] Get Departaments',
 }

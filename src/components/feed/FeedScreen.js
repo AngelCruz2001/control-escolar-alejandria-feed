@@ -1,8 +1,11 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useDispatch } from 'react-redux';
+import { formsStartGetCampus, formsStartGetDepartaments, formsStartGetGroups, formsStartGetMajors } from '../../actions/forms';
 import { iconsPath, imagesPath } from '../../helpers/resources';
 import { CircleOptionFeed } from './CircleOptionFeed';
 
 export const FeedScreen = ({ dataScreens }) => {
+    const dispatch = useDispatch()
     const circlesData = [
         {
             name: 'Alumnos',
@@ -45,6 +48,14 @@ export const FeedScreen = ({ dataScreens }) => {
             path: "/beca",
         },
     ]
+    useEffect(() => {
+        dispatch(formsStartGetCampus())
+        dispatch(formsStartGetMajors())
+        dispatch(formsStartGetGroups())
+        dispatch(formsStartGetDepartaments())
+    }, [dispatch])
+
+
     return (
         <div className="containerSection feed__container">
             <div className="feed__options">

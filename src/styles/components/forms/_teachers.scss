@@ -10,37 +10,31 @@
 
 .tea__inputs {
     &-name {
-        width: 24%;
+        width: 30%;
     }
     &-father {
-        width: 19%;
+        width: 28%;
     }
     &-mother {
-        width: 19%;
+        width: 28%;
     }
-    &-RFC {
-        width: 26%;
-    }
+   
     // DEBEN SOBRAR 12%
 
-    &-CURP {
-        width: 25%;
-        margin-right: 4%;
-    }
     &-num1 {
-        width: 19%;
+        width: 35%;
         margin-right: 4%;
     }
-    &-email {
+ 
+    &-RFC {
         width: 35%;
     }
-
     
     &-campus {
         width: 30%;
         margin-right: 4%;
     }
-    &-subImp {
-        width: 50%;
-    }
+    // &-subImp {
+    //     width: 50%;
+    // }
 }

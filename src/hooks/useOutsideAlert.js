@@ -4,7 +4,6 @@ import { uiCloseDropMenu } from "../actions/ui";
 
 export const useOutsideAlerter = (ref) => {
     const { openDropMenu } = useSelector(state => state.ui)
-    console.log(openDropMenu)
     const dispatch = useDispatch()
     useEffect(() => {
         const handleClickOutside = (event) => {

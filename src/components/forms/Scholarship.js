@@ -8,12 +8,8 @@ import { Slider } from "@material-ui/core";
 import { useForm } from '../../hooks/useForm';
 
 export const Scholarship = () => {
-
-
-  const [val, setVal] = useState(0);
-  const updateRange = ({ e, data }) => {
-    setVal(val);
-    console.log(val);
+  const updateRange = (e, newValue) => {
+    handleInputChange({ target: { name: "percentage", value: newValue } });
   };
 
   const marks = [
@@ -28,14 +24,18 @@ export const Scholarship = () => {
   ];
 
   const [formValues, handleInputChange, reset] = useForm({
-    id_student: 'STRING',
-    scholarship_name: 'STRING',
-    percentage: 'FLOAT',
-    reason: 'STRING',
-    observations: 'STRING',
+    matricula: '',
+    scholarship_name: '',
+    percentage: 0,
+    reason: '',
+    observations: '',
   });
 
-  const { id_student, scholarship_name, percentage, reason, observations } = formValues
+  const { matricula,
+    scholarship_name,
+    percentage,
+    reason,
+    observations } = formValues
   return (
     <div className="containerSection form__container">
       <div className="form__inputExtra">
@@ -49,16 +49,14 @@ export const Scholarship = () => {
               <div className="scholar__personal form_section">
                 <div className="overTexture scholar__texture">
                   <div className="form_inputsContainer">
-                    <div className="form__inputs form__column  scholar__special">
+                    <div className="form__inputs form__column scholar__special">
                       <Input
-                        nameInput='id_student'
                         contentClassName="scholar__inputs-id"
-                        label="Maricula"
-                        valueInput={id_student}
-                        nameInput="id_student"
+                        label="Matricula"
+                        valueInput={matricula}
+                        nameInput="matricula"
                         handleInputChange={handleInputChange}
                       />
-
                       <Input
                         nameInput='scholarship_name'
                         contentClassName="scholar__inputs-scholarname"
@@ -81,13 +79,10 @@ export const Scholarship = () => {
                         <Slider
                           className="slider__bar"
                           onChange={updateRange}
-                          defaultValue={60}
                           step={1}
                           valueLabelDisplay="auto"
                           marks={marks}
-                          valueInput={percentage}
-                          nameInput="percentage"
-                          handleInputChange={handleInputChange}
+                          value={percentage}
                         />
                       </div>
                       <Input

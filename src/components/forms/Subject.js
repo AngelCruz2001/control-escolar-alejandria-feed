@@ -8,19 +8,12 @@ import { useDispatch, useSelector } from 'react-redux'
 import { formsStartGetMajors, formsStartCreateSubject } from '../../actions/forms'
 import { useForm } from '../../hooks/useForm'
 export const Subject = () => {
-    const dispatch = useDispatch()
     const { majors } = useSelector(state => state.forms)
-    useEffect(() => {
-        dispatch(formsStartGetMajors())
-    }, [dispatch])
-
-
     const [formValues, handleInputChange, reset] = useForm({
-        id_major: '',
-        course_name: '',
-        major_name: ''
+        id_major: majors[0].id_major,
+        course_name: majors[0].course_name,
     });
-    const { id_major, course_name, major_name } = formValues;
+    const { id_major, course_name } = formValues;
     return (
         <div className="containerSection form__container">
             <div className="form__inputExtra">

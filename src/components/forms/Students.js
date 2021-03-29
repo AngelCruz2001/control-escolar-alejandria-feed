@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { BackTexture } from '../ui/BackTexture';
 import { Input } from '../ui/inputs/Input';
 import { PanelJustAdded } from '../ui/panel/PanelJustAdded';
@@ -6,55 +6,23 @@ import { Date } from './Date';
 import { Select } from '../ui/inputs/Select';
 import { useForm } from '../../hooks/useForm';
 import { Buttons, OpenDropMenuButton } from '../ui/Buttons';
-import moment from 'moment';
-import { formsStartCreateStudent } from '../../actions/forms';
+import { formsStartCreateStudent, formsStartGetCampus, formsStartGetGroups, formsStartGetMajors } from '../../actions/forms';
+import { useDispatch, useSelector } from 'react-redux';
 
 export const Students = () => {
+    const dispatch = useDispatch();
+    const { campus, groups, majors } = useSelector(state => state.forms)
 
     const [formValues, handleInputChange, reset] = useForm({
-        idStudent: '',
-        names: '',
-        surnameF: '',
-        surnameM: '',
-        day: '',
-        month: '',
-        year: '',
-        age: '',
-        CURP: '',
-        street: '',
-        colony: '',
-        zip: '',
-        placeBirth: '',
-        numCel: '',
-        numCel2: '',
-        email: '',
-
+        matricula: '', name: '', surname_f: '', surname_m: '', day: '', month: '', year: '', curp: '', street: ' #213', colony: ' Durango II', zip: '', placeBirth: '', mobile_number: '', mobile_back_number: '', id_campus: campus[0].id_campus, id_group: groups[0].id_group, group_chief: 0
     });
-
-    const { idStudent,
-        names,
-        surnameF,
-        surnameM,
-        day,
-        month,
-        year,
-        age,
-        CURP,
-        street,
-        colony,
-        zip,
-        placeBirth,
-        numCel,
-        numCel2,
-        email, } = formValues;
-
-    console.log(formValues)
+    const { matricula, name, surname_f, surname_m, day, month, year, curp, street, colony, zip, placeBirth, mobile_number, mobile_back_number, id_campus, id_group, group_chief } = formValues;
     return (
         <div className="stu__generalContainer">
             <div className="containerSection form__container">
                 <div className="form__inputExtra">
                     <OpenDropMenuButton />
-                    <Input contentClassName="input__extra " nameInput="idStudent" valueInput={idStudent} handleInputChange={handleInputChange} label="Matricula" />
+                    <Input contentClassName="input__extra " nameInput="matricula" valueInput={matricula} handleInputChange={handleInputChange} label="Matricula"  />
                 </div>
                 <div className="form__container-content">
                     <div className="form__container-content-inf">
@@ -66,9 +34,9 @@ export const Students = () => {
                                     <div className="overTexture">
                                         <div className="form_inputsContainer">
                                             <div className="form__inputs">
-                                                <Input contentClassName="stu__inputs-name" nameInput="names" valueInput={names} handleInputChange={handleInputChange} label="Nombre(s)" />
-                                                <Input contentClassName="stu__inputs-father" nameInput="surnameF" valueInput={surnameF} handleInputChange={handleInputChange} label="Apellido paterno" />
-                                                <Input contentClassName="stu__inputs-mother" nameInput="surnameM" valueInput={surnameM} handleInputChange={handleInputChange} label="Apellido materno" />
+                                                <Input contentClassName="stu__inputs-name" nameInput="name" valueInput={name} handleInputChange={handleInputChange} label="Nombre(s)" />
+                                                <Input contentClassName="stu__inputs-father" nameInput="surname_f" valueInput={surname_f} handleInputChange={handleInputChange} label="Apellido paterno" />
+                                                <Input contentClassName="stu__inputs-mother" nameInput="surname_m" valueInput={surname_m} handleInputChange={handleInputChange} label="Apellido materno" />
                                                 <Date
                                                     contentClassName="stu__inputs-dates"
                                                     selectDay={day}
@@ -77,18 +45,16 @@ export const Students = () => {
                                                     handleInputChange={handleInputChange}
                                                 />
                                             </div>
-                                            <div className="form__inputs">
-                                                <Input contentClassName="stu__inputs-age" nameInput="age" valueInput={age} handleInputChange={handleInputChange} label="Edad" />
-                                                <Input contentClassName="stu__inputs-CURP" nameInput="CURP" valueInput={CURP} handleInputChange={handleInputChange} label="CURP" />
+                                            <div className="form__inputs ">
+                                                <Input contentClassName="stu__inputs-curp" nameInput="curp" valueInput={curp} handleInputChange={handleInputChange} label="CURP" />
                                                 <Input contentClassName="stu__inputs-street" nameInput="street" valueInput={street} handleInputChange={handleInputChange} label="Dirección" placeholder="Calle y número" />
                                                 <Input contentClassName="stu__inputs-colony" nameInput="colony" valueInput={colony} handleInputChange={handleInputChange} label="-" placeholder="Colonia" />
                                                 <Input contentClassName="stu__inputs-code" nameInput="zip" valueInput={zip} handleInputChange={handleInputChange} label="-" placeholder="Codigo postal" />
                                             </div>
-                                            <div className="form__inputs">
+                                            <div className="form__inputs form__special">
                                                 <Input contentClassName="stu__inputs-birthplace" nameInput="placeBirth" valueInput={placeBirth} handleInputChange={handleInputChange} label="Lugar de nacimiento" placeholder="País/Ciudad/Municipio" />
-                                                <Input contentClassName="stu__inputs-num1" nameInput="numCel" valueInput={numCel} handleInputChange={handleInputChange} label="Numero de teléfono" />
-                                                <Input contentClassName="stu__inputs-num2" nameInput="numCel2" valueInput={numCel2} handleInputChange={handleInputChange} label="Numero de teléfono" />
-                                                <Input contentClassName="stu__inputs-email" nameInput="email" valueInput={email} handleInputChange={handleInputChange} label="Correo electrónico" placeholder="ejemplo@ejemplo.com" />
+                                                <Input contentClassName="stu__inputs-num1" nameInput="mobile_number" valueInput={mobile_number} handleInputChange={handleInputChange} label="Numero de teléfono" />
+                                                <Input contentClassName="stu__inputs-num2" nameInput="mobile_back_number" valueInput={mobile_back_number} handleInputChange={handleInputChange} label="Numero de teléfono" />
                                             </div>
                                         </div>
                                     </div>
@@ -97,11 +63,40 @@ export const Students = () => {
                                     <p>Información escolar</p>
                                     <div className="overTexture">
                                         <div className="form_inputsContainer">
-                                            <div className="form__inputs">
-                                                <Select handleInputChange={handleInputChange} contentClassName="stu__inputs-birthplace" label="Campus" />
-                                                <Select handleInputChange={handleInputChange} contentClassName="stu__inputs-num1" label="Estatus" />
-                                                <Select handleInputChange={handleInputChange} contentClassName="stu__inputs-num2" label="Carrrera" />
-                                                <Select handleInputChange={handleInputChange} contentClassName="stu__inputs-email" label="Grupo" />
+                                            <div className="form__inputs form__special">
+                                                <Select
+                                                    handleInputChange={handleInputChange}
+                                                    contentClassName="stu__inputs-campus"
+                                                    nameSelect="id_campus"
+                                                    valueSelect={id_campus}
+                                                    label="Campus"
+                                                    options={campus.map(data => ({
+                                                        id_campus: data.id_campus,
+                                                        campus_name: data.campus_name
+                                                    }))}
+                                                />
+
+                                                <Select
+                                                    handleInputChange={handleInputChange}
+                                                    contentClassName="stu__inputs-group"
+                                                    nameSelect="id_group"
+                                                    valueSelect={id_group}
+                                                    label="Grupo"
+                                                    options={groups.map(data => ({
+                                                        id_group: data.id_group,
+                                                        group_name: data.name_group
+                                                    }))}
+                                                />
+                                                {/* <Select
+                                                    handleInputChange={handleInputChange}
+                                                    contentClassName="stu__inputs-career"
+                                                    nameSelect=""
+                                                    valueSelect={ }
+                                                    label="Carrrera"
+                                                    options={majors}
+                                                /> */}
+                                                {/* <input type="checkbox" value={group_chief} name="group_chief" onChange={handleInputChange} id="" />
+                                                <p>Jefe de grupo</p> */}
                                             </div>
                                         </div>
                                     </div>

@@ -2,17 +2,82 @@ import Swal from "sweetalert2"
 import { fetchConToken } from "../helpers/fetch"
 import { types } from "../types/types"
 
-export const formsStartCreateStudent = () => {
-    console.log("Hola a todos, si llegaste aquí, andamos bien. ")
+export const formsStartCreateStudent = (formValues, reset) => {
+    return async (dispatch) => {
+        try {
+            const res = await fetchConToken('students', { ...formValues, birthdate: `${formValues.year}-${formValues.month}-${formValues.day}` }, 'POST')
+            const body = await res.json();
+            if (body.ok) {
+                Swal.fire({
+                    title: 'Estudiantes',
+                    text: body.msg + '.',
+                    icon: 'success',
+                })
+                reset();
+            } else {
+                Swal.fire({
+                    title: '¡Oops!',
+                    text: body.msg,
+                    icon: 'question',
+                })
+            }
+        } catch (error) {
+            Swal.fire('Error', 'Hablar con el administrador', 'error')
+        }
+    }
 }
 
-export const formsStartCreateTeacher = () => {
-    console.log("Hola a todos, si llegaste aquí, andamos bien. ")
+export const formsStartCreateTeacher = (formValues, reset) => {
+    return async (dispatch) => {
+        try {
+            const res = await fetchConToken('teachers', formValues, 'POST')
+            const body = await res.json();
+            if (body.ok) {
+                Swal.fire({
+                    title: 'Maestro',
+                    text: body.msg + '.',
+                    icon: 'success',
+                })
+                reset();
+            } else {
+                Swal.fire({
+                    title: '¡Oops!',
+                    text: body.msg,
+                    icon: 'question',
+                })
+            }
+        } catch (error) {
+            Swal.fire('Error', 'Hablar con el administrador', 'error')
+        }
+    }
+}
+export const formsStartCreateGroups = (formValues, reset) => {
+    return async (dispatch) => {
+        try {
+            const res = await fetchConToken('groups', formValues, 'POST')
+            const body = await res.json();
+            if (body.ok) {
+                Swal.fire({
+                    title: 'Grupos',
+                    text: body.msg + '.',
+                    icon: 'success',
+                })
+                reset();
+            } else {
+                Swal.fire({
+                    title: '¡Oops!',
+                    text: body.msg,
+                    icon: 'question',
+                })
+            }
+        } catch (error) {
+            Swal.fire('Error', 'Hablar con el administrador', 'error')
+        }
+    }
 }
 export const formsStartCreateCampus = (formValues, reset) => {
     return async (dispatch) => {
         try {
-            console.log(formValues)
             const res = await fetchConToken('campus', formValues, 'POST')
             const body = await res.json();
             if (body.ok) {
@@ -24,7 +89,6 @@ export const formsStartCreateCampus = (formValues, reset) => {
                 })
                 reset();
             } else {
-                console.log(body)
                 Swal.fire({
                     title: '¡Oops!',
                     text: body.msg,
@@ -32,7 +96,6 @@ export const formsStartCreateCampus = (formValues, reset) => {
                 })
             }
         } catch (error) {
-            console.log(error)
             Swal.fire('Error', 'Hablar con el administrador', 'error')
         }
     }
@@ -40,18 +103,16 @@ export const formsStartCreateCampus = (formValues, reset) => {
 export const formsStartCreateMajor = (formValues, reset) => {
     return async (dispatch) => {
         try {
-            console.log("Llego al fetch")
             const res = await fetchConToken('majors', formValues, 'POST')
             const body = await res.json();
             if (body.ok) {
                 Swal.fire({
-                    title: 'Major',
+                    title: 'Hecho.',
                     text: body.msg + '.',
                     icon: 'success',
                 })
                 reset();
             } else {
-                console.log(body)
                 Swal.fire({
                     title: '¡Oops!',
                     text: body.msg,
@@ -59,7 +120,6 @@ export const formsStartCreateMajor = (formValues, reset) => {
                 })
             }
         } catch (error) {
-            console.log(error)
             Swal.fire('Error', 'Hablar con el administrador', 'error')
         }
     }
@@ -67,18 +127,16 @@ export const formsStartCreateMajor = (formValues, reset) => {
 export const formsStartCreateScholarship = (formValues, reset) => {
     return async (dispatch) => {
         try {
-            console.log("Llego al fetch")
-            const res = await fetchConToken('scholarship', formValues, 'POST')
+            const res = await fetchConToken('scholarships', formValues, 'POST')
             const body = await res.json();
             if (body.ok) {
                 Swal.fire({
-                    title: 'Scholarship',
+                    title: 'Becas',
                     text: body.msg + '.',
                     icon: 'success',
                 })
                 reset();
             } else {
-                console.log(body)
                 Swal.fire({
                     title: '¡Oops!',
                     text: body.msg,
@@ -86,16 +144,16 @@ export const formsStartCreateScholarship = (formValues, reset) => {
                 })
             }
         } catch (error) {
-            console.log(error)
             Swal.fire('Error', 'Hablar con el administrador', 'error')
         }
     }
 }
-export const formsStartCreatePersonal = (formValues, reset) => {
+
+export const formsStartCreatePersonal = (formValues = {}, reset) => {
     return async (dispatch) => {
         try {
-            console.log("Llego al fetch")
-            const res = await fetchConToken('personal', formValues, 'POST')
+            // formValues.email = 'asdfg@example.com';
+            const res = await fetchConToken('employees', formValues, 'POST')
             const body = await res.json();
             if (body.ok) {
                 Swal.fire({
@@ -105,7 +163,6 @@ export const formsStartCreatePersonal = (formValues, reset) => {
                 })
                 reset();
             } else {
-                console.log(body)
                 Swal.fire({
                     title: '¡Oops!',
                     text: body.msg,
@@ -113,26 +170,24 @@ export const formsStartCreatePersonal = (formValues, reset) => {
                 })
             }
         } catch (error) {
-            console.log(error)
             Swal.fire('Error', 'Hablar con el administrador', 'error')
         }
     }
 }
+
 export const formsStartCreateSubject = (formValues, reset) => {
     return async (dispatch) => {
         try {
-            console.log("Llego al fetch")
-            const res = await fetchConToken('subject', formValues, 'POST')
+            const res = await fetchConToken('courses', formValues, 'POST')
             const body = await res.json();
             if (body.ok) {
                 Swal.fire({
-                    title: 'Subject',
+                    title: 'Materia',
                     text: body.msg + '.',
                     icon: 'success',
                 })
                 reset();
             } else {
-                console.log(body)
                 Swal.fire({
                     title: '¡Oops!',
                     text: body.msg,
@@ -140,7 +195,6 @@ export const formsStartCreateSubject = (formValues, reset) => {
                 })
             }
         } catch (error) {
-            console.log(error)
             Swal.fire('Error', 'Hablar con el administrador', 'error')
         }
     }
@@ -155,9 +209,8 @@ export const formsStartGetCampus = () => {
             const res = await fetchConToken('campus')
             const body = await res.json()
             if (body.ok) {
-                dispatch(formsGetCampus(['asdf', 'asdfasdf']))
+                dispatch(formsGetCampus(body.campus))
             } else {
-                console.log(body)
                 Swal.fire({
                     title: '¡Oops!',
                     text: body.msg,
@@ -165,7 +218,6 @@ export const formsStartGetCampus = () => {
                 })
             }
         } catch (error) {
-            console.log(error)
             Swal.fire('Error', 'Hablar con el administrador', 'error')
         }
     }
@@ -177,9 +229,8 @@ export const formsStartGetMajors = () => {
             const res = await fetchConToken('majors')
             const body = await res.json()
             if (body.ok) {
-                dispatch(formsGetMajors([{ id_major: '', major_name: '' }, { id_major: 5, major_name: 'asdfadsf' }]))
+                dispatch(formsGetMajors(body.majors))
             } else {
-                console.log(body);
                 Swal.fire({
                     title: '¡Oops!',
                     text: body.msg,
@@ -187,7 +238,45 @@ export const formsStartGetMajors = () => {
                 })
             }
         } catch (error) {
-            console.log(error)
+            Swal.fire('Error', 'Hablar con el administrador', 'error')
+        }
+    }
+}
+
+export const formsStartGetGroups = () => {
+    return async (dispatch) => {
+        try {
+            const res = await fetchConToken('groups')
+            const body = await res.json()
+            if (body.ok) {
+                dispatch(formsGetGroups(body.groups))
+            } else {
+                Swal.fire({
+                    title: '¡Oops!',
+                    text: body.msg,
+                    icon: 'question',
+                })
+            }
+        } catch (error) {
+            Swal.fire('Error', 'Hablar con el administrador', 'error')
+        }
+    }
+}
+export const formsStartGetDepartaments = () => {
+    return async (dispatch) => {
+        try {
+            const res = await fetchConToken('departments')
+            const body = await res.json()
+            if (body.ok) {
+                dispatch(formsGetDepartaments(body.departments))
+            } else {
+                Swal.fire({
+                    title: '¡Oops!',
+                    text: body.msg,
+                    icon: 'question',
+                })
+            }
+        } catch (error) {
             Swal.fire('Error', 'Hablar con el administrador', 'error')
         }
     }
@@ -195,6 +284,10 @@ export const formsStartGetMajors = () => {
 
 
 
+const formsGetDepartaments = (departments) => ({
+    type: types.formsGetDepartaments,
+    payload: departments
+});
 const formsGetCampus = (campus) => ({
     type: types.formsGetCampus,
     payload: campus
@@ -203,4 +296,8 @@ const formsGetCampus = (campus) => ({
 const formsGetMajors = (majors) => ({
     type: types.formsGetMajors,
     payload: majors
+});
+const formsGetGroups = (groups) => ({
+    type: types.formsGetGroups,
+    payload: groups
 });

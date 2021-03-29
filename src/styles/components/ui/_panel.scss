@@ -8,6 +8,7 @@
     font: normal normal normal 14px/19px Segoe UI;
 }
 .panel__container {
+    filter: blur(2px);
     background-color: white;
     height: 100%;
     width: 15%;

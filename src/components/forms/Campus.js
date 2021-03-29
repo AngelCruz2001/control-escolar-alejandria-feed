@@ -12,7 +12,7 @@ export const Campus = () => {
 
     const [formValues, handleInputChange, reset] = useForm({
         campus_name: '',
-        address: '',
+        street: '',
         colony: '',
         zip: '',
         state: 'Durango',
@@ -20,7 +20,7 @@ export const Campus = () => {
     });
 
     const { campus_name,
-        address,
+        street,
         colony,
         zip,
         state,
@@ -51,11 +51,11 @@ export const Campus = () => {
                                         <div className="form__inputs cam__special">
                                             <Input contentClassName="cam__inputs-street" label="Dirección"
                                                 placeholder="Calle y Número"
-                                                valueInput={address}
-                                                nameInput="address"
+                                                valueInput={street}
+                                                nameInput="street"
                                                 handleInputChange={handleInputChange}
                                             />
-                                            <Input contentClassName="cam__inputs-address"
+                                            <Input contentClassName="cam__inputs-street"
                                                 placeholder="Colonia"
                                                 label="-"
                                                 valueInput={colony}

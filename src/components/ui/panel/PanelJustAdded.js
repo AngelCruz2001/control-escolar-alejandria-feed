@@ -3,7 +3,7 @@ import { useForm } from '../../../hooks/useForm'
 import { Input } from '../inputs/Input'
 import { PanelItem } from './PanelItem'
 
-export const PanelJustAdded = () => {
+export const PanelJustAdded = ({ data }) => {
     const [formValues, handleInputChange] = useForm();
     const { valueInput } = formValues;
 
@@ -18,8 +18,10 @@ export const PanelJustAdded = () => {
                         nameInput='searchInput'
                         valueInput={valueInput}
                         handleInputChange={handleInputChange}
+                        disabledInput={true}
                     />
-                    <PanelItem />
+                    {/* { } */}
+                    {/* <PanelItem /> */}
                 </div>
             </div>
         </>

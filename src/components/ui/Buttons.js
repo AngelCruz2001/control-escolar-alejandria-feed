@@ -5,7 +5,6 @@ import { uiOpenDropMenu } from '../../actions/ui'
 export const Buttons = ({ formValues, reset, action }) => {
     const dispatch = useDispatch()
     const handleSubmit = () => {
-        // console.log(formValues)
         dispatch(action(formValues, reset))
     }
 
