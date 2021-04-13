@@ -19,9 +19,22 @@ export const types = {
     authStartTokenRenew: '[auth] Start token renew',
     authLogout: '[auth] Logout',
 
-
+    formsGetStudents: '[forms] Get Students',
     formsGetCampus: '[forms] Get Campus',
     formsGetMajors: '[forms] Get Majors',
     formsGetGroups: '[forms] Get Groups',
     formsGetDepartaments: '[forms] Get Departaments',
+    formsGetPersonal: '[forms] Get Personal',
+    formsGetScholarships: '[forms] Get Scholarships',
+    formsGetCourses: '[forms] Get Courses',
+    formsGetTeachers: '[forms] Get Teachers',
+
+    formsNewError: '[forms] New Errors',
+    formsCleanErrors: '[forms] Clean Errors',
+    formsSetActive: '[forms] Set Active',
+    formsClearActive: '[forms] Clear Active',
+
+
+    formsAddDataStudents: '[forms] Add Data Students',
+    formsDeleteStudents: '[forms] Delete Data Students',
 }

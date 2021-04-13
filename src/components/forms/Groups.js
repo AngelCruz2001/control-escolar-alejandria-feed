@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { BackTexture } from '../ui/BackTexture'
 import { Buttons, OpenDropMenuButton } from '../ui/Buttons'
 import { Input } from '../ui/inputs/Input'
@@ -11,11 +11,18 @@ import { formsStartCreateGroups } from '../../actions/forms'
 
 
 export const Groups = () => {
-    const { majors } = useSelector(state => state.forms)
+    const { groups, errors, majors } = useSelector(state => state.forms)
+
+    useEffect(() => {
+        console.log(document.getElementsByClassName("input__error"));
+        [...document.getElementsByClassName("input__error")].map(element => (element.classList.remove("input__error")));
+        errors.map((errorBackend, i) => (document.getElementsByName(errorBackend)[0].className += (" input__error")))
+    }, [errors])
+
     const [formValues, handleInputChange, reset] = useForm({
-        id_group: 6, id_major: 1, name_group: "El mejor grupo", major_name: "Licenciatura en derecho", time_tables: []
+        id_major: majors[0].id_major, name_group: "", time_tables: []
     })
-    const { id_major, name_group, major_name, } = formValues;
+    const { id_major, name_group } = formValues;
 
     return (
         <div className="containerSection form__container">
@@ -38,8 +45,8 @@ export const Groups = () => {
                                             />
                                             <Select contentClassName="gro__inputs-major input__special" label="Carrera"
                                                 nameSelect="state"
-                                                valueInput={major_name}
-                                                nameInput="major_name"
+                                                valueInput={id_major}
+                                                nameInput="id_major"
                                                 handleInputChange={handleInputChange}
                                                 options={majors}
                                             />
@@ -56,7 +63,11 @@ export const Groups = () => {
                         </form>
                     </div>
                 </div>
-                <PanelJustAdded />
+                <PanelJustAdded
+                    data={groups}
+                    name="campus_name"
+                    id="id_cam"
+                />
             </div>
             <Buttons
                 reset={reset}

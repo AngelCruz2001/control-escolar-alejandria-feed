@@ -6,23 +6,33 @@ import { Date } from './Date';
 import { Select } from '../ui/inputs/Select';
 import { useForm } from '../../hooks/useForm';
 import { Buttons, OpenDropMenuButton } from '../ui/Buttons';
-import { formsStartCreateStudent, formsStartGetCampus, formsStartGetGroups, formsStartGetMajors } from '../../actions/forms';
+import { formsCleanErrors, formsStartCreate, formsStartGetCampus, formsStartGetGroups, formsStartGetMajors, formsStartGetStudents, formStartUpdate } from '../../actions/forms';
 import { useDispatch, useSelector } from 'react-redux';
+import { types } from '../../types/types';
+import { useError } from '../../hooks/useError';
 
 export const Students = () => {
     const dispatch = useDispatch();
-    const { campus, groups, majors } = useSelector(state => state.forms)
+    const { campus, groups, majors, errors, students, active } = useSelector(state => state.forms)
+    dispatch()
 
-    const [formValues, handleInputChange, reset] = useForm({
-        matricula: '', name: '', surname_f: '', surname_m: '', day: '', month: '', year: '', curp: '', street: ' #213', colony: ' Durango II', zip: '', placeBirth: '', mobile_number: '', mobile_back_number: '', id_campus: campus[0].id_campus, id_group: groups[0].id_group, group_chief: 0
-    });
+    const [formValues, handleInputChange, reset, setValue] = useForm({ matricula: 'qwerryu1', name: 'Rafudo fudo', surname_f: 'Fudo', surname_m: 'Fudo', day: '1', month: '01', year: '2000', curp: 'asdfadsf1', street: ' #213', colony: ' Durango II', zip: '', placeBirth: '', mobile_number: '1234567891', mobile_back_number: '1234567891', id_campus: campus[0].id_campus, id_group: groups[0].id_group, group_chief: 0 });
+
+    useError()
+    useEffect(() => {
+        if (active) {
+            let date = active.birthdate.split('-')
+            setValue({ ...active, year: date[0], month: date[1], day: date[2] })
+            console.log(active)
+        }
+    }, [active])
     const { matricula, name, surname_f, surname_m, day, month, year, curp, street, colony, zip, placeBirth, mobile_number, mobile_back_number, id_campus, id_group, group_chief } = formValues;
     return (
         <div className="stu__generalContainer">
             <div className="containerSection form__container">
                 <div className="form__inputExtra">
                     <OpenDropMenuButton />
-                    <Input contentClassName="input__extra " nameInput="matricula" valueInput={matricula} handleInputChange={handleInputChange} label="Matricula"  />
+                    <Input contentClassName="input__extra " nameInput="matricula" valueInput={matricula} handleInputChange={handleInputChange} label="Matricula" />
                 </div>
                 <div className="form__container-content">
                     <div className="form__container-content-inf">
@@ -104,12 +114,21 @@ export const Students = () => {
                             </form>
                         </div>
                     </div>
-                    <PanelJustAdded />
+                    <PanelJustAdded
+                        data={students}
+                        name="name"
+                        id="id_student"
+                    />
                 </div>
                 <Buttons
                     reset={reset}
-                    formValues={formValues}
-                    action={formsStartCreateStudent}
+                    formValues={{ ...formValues, birthdate: `${formValues.year}-${formValues.month}-${formValues.day?.length == 1 ? '0'.concat(formValues.day) : formValues.day}` }}
+                    action={active ? formStartUpdate : formsStartCreate}
+                    typeDelete={types.formsDeleteStudents}
+                    type={types.formsAddDataStudents}
+                    text="Estudiante"
+                    endpoint="students"
+                    id="id_student"
                 />
             </div>
         </div>

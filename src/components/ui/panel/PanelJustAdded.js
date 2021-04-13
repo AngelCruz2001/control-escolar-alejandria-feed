@@ -1,11 +1,14 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
 import { useForm } from '../../../hooks/useForm'
 import { Input } from '../inputs/Input'
 import { PanelItem } from './PanelItem'
 
-export const PanelJustAdded = ({ data }) => {
+export const PanelJustAdded = ({ data = [], name = "", id = "" }) => {
+
     const [formValues, handleInputChange] = useForm();
     const { valueInput } = formValues;
+
 
     return (
         <>
@@ -18,10 +21,13 @@ export const PanelJustAdded = ({ data }) => {
                         nameInput='searchInput'
                         valueInput={valueInput}
                         handleInputChange={handleInputChange}
-                        disabledInput={true}
+
                     />
-                    {/* { } */}
-                    {/* <PanelItem /> */}
+                    {
+                        (data[0][`${id}`]) && data.map((item, i) => (
+                            <PanelItem key={item[`${id}`]} item={item} name={name} />
+                        ))
+                    }
                 </div>
             </div>
         </>

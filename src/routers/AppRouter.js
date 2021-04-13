@@ -5,6 +5,7 @@ import {
     Switch, Redirect
 } from 'react-router-dom';
 import { authStartChecking, login } from '../actions/auth';
+import { formsCleanErrors } from '../actions/forms';
 import { LoginScreen } from '../components/auth/LoginScreen';
 import { AuthRouter } from './AuthRouter';
 import { DashBoardRoutes } from './DashBoardRoutes';
@@ -18,8 +19,7 @@ export const AppRouter = ({ history }) => {
 
     useEffect(() => {
         dispatch(authStartChecking())
-    }, [dispatch])
-    
+    }, [])
     return (
         <Router>
             <main>

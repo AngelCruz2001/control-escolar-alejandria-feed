@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { BackTexture } from '../ui/BackTexture'
 import { Input } from '../ui/inputs/Input'
 import { Select } from '../ui/inputs/Select'
@@ -11,7 +11,14 @@ import { useForm } from '../../hooks/useForm';
 import { useSelector } from 'react-redux'
 
 export const Personal = () => {
-    const { campus, departments } = useSelector(state => state.forms)
+    const { personal, departments, campus, errors } = useSelector(state => state.forms)
+
+    useEffect(() => {
+        console.log(document.getElementsByClassName("input__error"));
+        [...document.getElementsByClassName("input__error")].map(element => (element.classList.remove("input__error")));
+        errors.map((errorBackend, i) => (document.getElementsByName(errorBackend)[0].className += (" input__error")))
+    }, [errors])
+
     // Falta horarios
     const [formValues, handleInputChange, reset] = useForm({
         name: "", surname_f: "", surname_m: "", rfc: "", curp: "", mobile_number: "", id_department: departments[0].id_department, id_campus: campus[0].id_campus, salary: '', time_tables: []
@@ -102,7 +109,11 @@ export const Personal = () => {
                         </form>
                     </div>
                 </div>
-                <PanelJustAdded />
+                <PanelJustAdded
+                    data={personal}
+                    name="personal_name"
+                    id="id_personal"
+                />
             </div>
             <Buttons
                 formValues={formValues}

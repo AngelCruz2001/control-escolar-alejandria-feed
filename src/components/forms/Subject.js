@@ -7,8 +7,15 @@ import { Buttons, OpenDropMenuButton } from '../ui/Buttons';
 import { useDispatch, useSelector } from 'react-redux'
 import { formsStartGetMajors, formsStartCreateSubject } from '../../actions/forms'
 import { useForm } from '../../hooks/useForm'
+
 export const Subject = () => {
-    const { majors } = useSelector(state => state.forms)
+    const { majors, errors,courses } = useSelector(state => state.forms)
+
+    useEffect(() => {
+        [...document.getElementsByClassName("input__error")].map(element => (element.classList.remove("input__error")));
+        errors.map((errorBackend, i) => (document.getElementsByName(errorBackend)[0].className += (" input__error")))
+    }, [errors])
+
     const [formValues, handleInputChange, reset] = useForm({
         id_major: majors[0].id_major,
         course_name: majors[0].course_name,
@@ -52,7 +59,11 @@ export const Subject = () => {
                         </form>
                     </div>
                 </div>
-                <PanelJustAdded />
+                <PanelJustAdded 
+                    data={courses}
+                    name="courses_name"
+                    id="id_courses"
+                />
             </div>
             <Buttons
                 formValues={formValues}

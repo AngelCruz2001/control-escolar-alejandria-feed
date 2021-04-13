@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
+import { useSelector } from 'react-redux'
 import { BackTexture } from "../ui/BackTexture";
 import { Input } from "../ui/inputs/Input";
 import { PanelJustAdded } from "../ui/panel/PanelJustAdded";
@@ -8,6 +9,14 @@ import { Slider } from "@material-ui/core";
 import { useForm } from '../../hooks/useForm';
 
 export const Scholarship = () => {
+
+  const { scholarship, errors } = useSelector(state => state.forms)
+
+    useEffect(() => {
+        [...document.getElementsByClassName("input__error")].map(element => (element.classList.remove("input__error")));
+        errors.map((errorBackend, i) => (document.getElementsByName(errorBackend)[0].className += (" input__error")))
+    }, [errors])
+
   const updateRange = (e, newValue) => {
     handleInputChange({ target: { name: "percentage", value: newValue } });
   };
@@ -101,7 +110,11 @@ export const Scholarship = () => {
             </form>
           </div>
         </div>
-        <PanelJustAdded />
+        <PanelJustAdded
+          data={scholarship}
+          name="scholarship_name"
+          id="id_scholarship"
+        />
       </div>
       <Buttons
         formValues={formValues}

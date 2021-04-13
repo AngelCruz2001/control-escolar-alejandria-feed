@@ -8,7 +8,7 @@
     font: normal normal normal 14px/19px Segoe UI;
 }
 .panel__container {
-    filter: blur(2px);
+    //filter: blur(2px);
     background-color: white;
     height: 100%;
     width: 15%;
@@ -34,6 +34,12 @@
             height: 28px;
             border-radius: 20px;
             background-color: $gray-inputs;
+            cursor: pointer;
+            transition: background-color .3s ease;
+
+        &-item:hover{
+            background-color: darken($color: $gray-inputs, $amount: 10);
+        }
             &-container {
                 display: flex;
                 width: 90%;

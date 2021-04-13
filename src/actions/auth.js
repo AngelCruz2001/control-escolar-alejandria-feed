@@ -7,15 +7,16 @@ import { types } from "../types/types";
 export const authStartLogin = (id, password) => {
     return async (dispatch) => {
         dispatch(authCheckingStart());
+        console.log("Estamos intentando")
         try {
             const res = await fetchSinToken('auth/login', { id, password }, 'POST')
             const body = await res.json()
+            console.log(res)
             dispatch(authCheckingFinish())
             if (body.ok) {
                 localStorage.setItem('token', body.token);
                 localStorage.setItem('token-init-date', new Date().getTime());
                 dispatch(authLogin(body.id_role, body.user_type, body.id_user, body.email))
-
             } else {
                 Swal.fire({
                     title: '¡Oops!',
@@ -25,6 +26,7 @@ export const authStartLogin = (id, password) => {
                 })
             }
         } catch (error) {
+            console.log(error)
             dispatch(authCheckingFinish())
             Swal.fire('Error', 'Hablar con el administrador', 'error')
         }

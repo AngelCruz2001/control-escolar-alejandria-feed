@@ -18,7 +18,7 @@ export const Input = ({
 
             <div className={`input__content ${contentClassName} `}>
                 <label className="input__label">{label}</label>
-                <div className={`input__container ${inputClassName} ${errorInput ? 'input__error' : ''}`} >
+                <div name={nameInput} className={`input__container ${inputClassName} ${errorInput ? 'input__error' : ''}`} >
                     <div className="input__container-content">
                         {(icon) && <i className={`${icon}`}></i>}
                         <input

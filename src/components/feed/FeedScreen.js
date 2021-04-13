@@ -1,10 +1,10 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useLayoutEffect } from 'react'
 import { useDispatch } from 'react-redux';
-import { formsStartGetCampus, formsStartGetDepartaments, formsStartGetGroups, formsStartGetMajors } from '../../actions/forms';
+import { formsStartGetCampus, formsStartGetDepartaments, formsStartGetGroups, formsStartGetMajors, formsStartGetStudents, formsStartGetPersonal, formsStartGetScholarships, formsStartGetCourses, formsStartGetTeachers, formsClearActive, formsCleanErrors } from '../../actions/forms';
 import { iconsPath, imagesPath } from '../../helpers/resources';
 import { CircleOptionFeed } from './CircleOptionFeed';
-
-export const FeedScreen = ({ dataScreens }) => {
+let bandera = true;
+export const FeedScreen = () => {
     const dispatch = useDispatch()
     const circlesData = [
         {
@@ -49,11 +49,22 @@ export const FeedScreen = ({ dataScreens }) => {
         },
     ]
     useEffect(() => {
-        dispatch(formsStartGetCampus())
-        dispatch(formsStartGetMajors())
-        dispatch(formsStartGetGroups())
-        dispatch(formsStartGetDepartaments())
-    }, [dispatch])
+        if (bandera) {
+            console.log("Oh no")
+            bandera = false;
+            dispatch(formsStartGetStudents())
+            dispatch(formsStartGetCampus())
+            dispatch(formsStartGetMajors())
+            dispatch(formsStartGetGroups())
+            dispatch(formsStartGetDepartaments())
+            dispatch(formsStartGetPersonal())
+            dispatch(formsStartGetScholarships())
+            dispatch(formsStartGetCourses())
+            dispatch(formsStartGetTeachers())
+            dispatch(formsClearActive())
+            dispatch(formsCleanErrors())
+        }
+    }, [])
 
 
     return (

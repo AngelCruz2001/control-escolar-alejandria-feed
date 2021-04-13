@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import { useSelector } from 'react-redux'
 import { BackTexture } from '../ui/BackTexture'
 import { Input } from '../ui/inputs/Input'
 import { PanelJustAdded } from '../ui/panel/PanelJustAdded'
@@ -7,6 +8,13 @@ import { useForm } from '../../hooks/useForm'
 import { formsStartCreateMajor } from '../../actions/forms'
 
 export const Major = () => {
+    const { majors, errors } = useSelector(state => state.forms)
+
+    useEffect(() => {
+        console.log(document.getElementsByClassName("input__error"));
+        [...document.getElementsByClassName("input__error")].map(element => (element.classList.remove("input__error")));
+        errors.map((errorBackend, i) => (document.getElementsByName(errorBackend)[0].className += (" input__error")))
+    }, [errors])
 
     const [formValues, handleInputChange, reset] = useForm({ major_name: '' });
     const { major_name } = formValues;
@@ -37,7 +45,11 @@ export const Major = () => {
                         </form>
                     </div>
                 </div>
-                <PanelJustAdded />
+                <PanelJustAdded 
+                    data={majors}
+                    name="major_name"
+                    id="id_major"
+                />
             </div>
             <Buttons
                 formValues={formValues}

@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useSelector } from 'react-redux'
 import { formsStartCreateCampus } from '../../actions/forms'
 import { useForm } from '../../hooks/useForm'
 import { statesAndMunicipalities } from '../../resources/states/statesAndMunicipalities'
@@ -9,6 +10,12 @@ import { Select } from '../ui/inputs/Select'
 import { PanelJustAdded } from '../ui/panel/PanelJustAdded'
 
 export const Campus = () => {
+    const { campus, errors } = useSelector(state => state.forms)
+
+    useEffect(() => {
+        [...document.getElementsByClassName("input__error")].map(element => (element.classList.remove("input__error")));
+        errors.map((errorBackend, i) => (document.getElementsByName(errorBackend)[0].className += (" input__error")))
+    }, [errors])
 
     const [formValues, handleInputChange, reset] = useForm({
         campus_name: '',
@@ -93,7 +100,11 @@ export const Campus = () => {
                         </form>
                     </div>
                 </div>
-                <PanelJustAdded />
+                <PanelJustAdded
+                    data={campus}
+                    name="campus_name"
+                    id="id_campus"
+                />
             </div>
             <Buttons
                 formValues={formValues}

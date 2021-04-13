@@ -24,7 +24,7 @@ export const Date = ({
                     contentClassName="date__selects-day"
                     options={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]}
                     size="10"
-                    nameSelect="selectDay"
+                    nameSelect="day"
                     valueSelect={selectDay}
                     handleInputChange={handleInputChange}
                     states={true}
@@ -47,7 +47,7 @@ export const Date = ({
                         { value: '11', month: 'Noviembre' },
                         { value: '12', month: 'Diciembre' },
                     ]}
-                    nameSelect="selectMonth"
+                    nameSelect="month"
                     valueSelect={selectMonth}
                     handleInputChange={handleInputChange}
                 />
@@ -56,7 +56,7 @@ export const Date = ({
                     placeholder="Año"
                     contentClassName="date__selects-year"
                     options={years}
-                    nameSelect="selectYear"
+                    nameSelect="year"
                     valueSelect={selectYear}
                     handleInputChange={handleInputChange}
                     states={true}
