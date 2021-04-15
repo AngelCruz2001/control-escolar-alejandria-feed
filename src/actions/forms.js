@@ -1,15 +1,17 @@
 import Swal from "sweetalert2"
 import { fetchConToken } from "../helpers/fetch"
 import { types } from "../types/types"
+import { panelAddData, panelDeleteData, panelUpdateData } from "./panel"
 
 
 //Gets
-export const formsStartGetStudents = () => {
+export const formsStartGetData = (endpoint, type) => {
     return async (dispatch) => {
-        const res = await fetchConToken('students');
+        const res = await fetchConToken(endpoint);
         const body = await res.json();
         if (body.ok) {
-            dispatch(formsGetStudents(body.students))
+            console.log(type, body[endpoint])
+            dispatch(formsGetData(type, body[endpoint]))
         } else {
             console.log(body)
             Swal.fire({
@@ -24,11 +26,12 @@ export const formsStartGetStudents = () => {
 
 
 //Update
-export const formStartUpdate = (formValues, reset, type, endpoint, text, id) => {
-    return async (dispatch) => {
-        console.log(endpoint)
+export const formStartUpdate = (formValues, reset, type, endpoint, text) => {
+    return async (dispatch, getState) => {
+        console.log(formValues)
+
         try {
-            const res = await fetchConToken(`${endpoint}/${formValues[id]}`, formValues, 'PUT')
+            const res = await fetchConToken(`${endpoint}/${formValues[getState().panel.id]}`, formValues, 'PUT') //No sabemos, tu siguele la corriente. 
             const body = await res.json();
             if (body.ok) {
                 Swal.fire({
@@ -36,7 +39,7 @@ export const formStartUpdate = (formValues, reset, type, endpoint, text, id) => 
                     text: body.msg + '.',
                     icon: 'success',
                 })
-                dispatch(formsUpdate({ data: formValues, id }, type));
+                dispatch(panelUpdateData(formValues));
                 dispatch(formsCleanErrors());
                 dispatch(formsClearActive());
                 reset();
@@ -71,7 +74,7 @@ export const formsStartDelete = (text, endpoint, id, reset, typeDelete) => {
                     text: body.msg + '.',
                     icon: 'success',
                 })
-                dispatch(formsDeleteData(id, typeDelete));
+                dispatch(panelDeleteData(id));
                 dispatch(formsCleanErrors());
                 dispatch(formsClearActive());
                 reset();
@@ -93,7 +96,7 @@ export const formsStartDelete = (text, endpoint, id, reset, typeDelete) => {
 
 //Create
 export const formsStartCreate = (formValues, reset, type, endpoint, text,) => {
-    return async (dispatch) => {
+    return async (dispatch, getState) => {
         console.log(type)
 
         try {
@@ -105,8 +108,8 @@ export const formsStartCreate = (formValues, reset, type, endpoint, text,) => {
                     text: body.msg + '.',
                     icon: 'success',
                 })
-                console.log(body)
-                dispatch(formsAddData(formValues, type));
+                formValues[getState().panel.id] = body[getState().panel.id] //Se asigna el ID al estudiante en nuestro panel, ya que estamos creando.
+                dispatch(panelAddData(formValues));
                 dispatch(formsCleanErrors());
                 reset();
             } else {
@@ -126,192 +129,7 @@ export const formsStartCreate = (formValues, reset, type, endpoint, text,) => {
     }
 }
 
-export const formsStartCreateTeacher = (formValues, reset) => {
-    return async (dispatch) => {
-        try {
-            const res = await fetchConToken('teachers', formValues, 'POST')
-            const body = await res.json();
-            if (body.ok) {
-                Swal.fire({
-                    title: 'Maestro',
-                    text: body.msg + '.',
-                    icon: 'success',
-                })
-                reset();
-            } else {
-                console.log(body)
-                Swal.fire({
-                    title: '¡Oops!',
-                    text: body.msg,
-                    icon: 'question',
-                })
-            }
-        } catch (error) {
-            console.log(error)
-            Swal.fire('Error', 'Hablar con el administrador', 'error')
-        }
-    }
-}
-export const formsStartCreateGroups = (formValues, reset) => {
-    return async (dispatch) => {
-        try {
-            const res = await fetchConToken('groups', formValues, 'POST')
-            const body = await res.json();
-            if (body.ok) {
-                Swal.fire({
-                    title: 'Grupos',
-                    text: body.msg + '.',
-                    icon: 'success',
-                })
-                reset();
-            } else {
-                console.log(body)
-                Swal.fire({
-                    title: '¡Oops!',
-                    text: body.msg,
-                    icon: 'question',
-                })
-            }
-        } catch (error) {
-            console.log(error)
-            Swal.fire('Error', 'Hablar con el administrador', 'error')
-        }
-    }
-}
-export const formsStartCreateCampus = (formValues, reset) => {
-    return async (dispatch) => {
-        try {
-            const res = await fetchConToken('campus', formValues, 'POST')
-            const body = await res.json();
-            if (body.ok) {
-                Swal.fire({
-                    title: 'Campus',
-                    text: body.msg + '.',
-                    icon: 'success',
-                })
-                reset();
-            } else {
-                console.log(body)
-                body.errors && dispatch(formsNewErrors(body.errors))
-                Swal.fire({
-                    title: '¡Oops!',
-                    text: body.msg,
-                    icon: 'question',
-                })
-            }
-        } catch (error) {
-            console.log(error)
-            Swal.fire('Error', 'Hablar con el administrador', 'error')
-        }
-    }
-}
-export const formsStartCreateMajor = (formValues, reset) => {
-    return async (dispatch) => {
-        try {
-            const res = await fetchConToken('majors', formValues, 'POST')
-            const body = await res.json();
-            if (body.ok) {
-                Swal.fire({
-                    title: 'Hecho.',
-                    text: body.msg + '.',
-                    icon: 'success',
-                })
-                reset();
-            } else {
-                console.log(body)
-                Swal.fire({
-                    title: '¡Oops!',
-                    text: body.msg,
-                    icon: 'question',
-                })
-            }
-        } catch (error) {
-            console.log(error)
-            Swal.fire('Error', 'Hablar con el administrador', 'error')
-        }
-    }
-}
-export const formsStartCreateScholarship = (formValues, reset) => {
-    return async (dispatch) => {
-        try {
-            const res = await fetchConToken('scholarships', formValues, 'POST')
-            const body = await res.json();
-            if (body.ok) {
-                Swal.fire({
-                    title: 'Becas',
-                    text: body.msg + '.',
-                    icon: 'success',
-                })
-                reset();
-            } else {
-                console.log(body)
-                Swal.fire({
-                    title: '¡Oops!',
-                    text: body.msg,
-                    icon: 'question',
-                })
-            }
-        } catch (error) {
-            console.log(error)
-            Swal.fire('Error', 'Hablar con el administrador', 'error')
-        }
-    }
-}
 
-export const formsStartCreatePersonal = (formValues, reset) => {
-    return async (dispatch) => {
-        try {
-            // formValues.email = 'asdfg@example.com';
-            const res = await fetchConToken('employees', formValues, 'POST')
-            const body = await res.json();
-            if (body.ok) {
-                Swal.fire({
-                    title: 'Personal',
-                    text: body.msg + '.',
-                    icon: 'success',
-                })
-                reset();
-            } else {
-                console.log(body)
-                Swal.fire({
-                    title: '¡Oops!',
-                    text: body.msg,
-                    icon: 'question',
-                })
-            }
-        } catch (error) {
-            console.log(error)
-            Swal.fire('Error', 'Hablar con el administrador', 'error')
-        }
-    }
-}
-
-export const formsStartCreateSubject = (formValues, reset) => {
-    return async (dispatch) => {
-        try {
-            const res = await fetchConToken('courses', formValues, 'POST')
-            const body = await res.json();
-            if (body.ok) {
-                Swal.fire({
-                    title: 'Materia',
-                    text: body.msg + '.',
-                    icon: 'success',
-                })
-                reset();
-            } else {
-                console.log(body)
-                Swal.fire({
-                    title: '¡Oops!',
-                    text: body.msg,
-                    icon: 'question',
-                })
-            }
-        } catch (error) {
-            console.log(error)
-            Swal.fire('Error', 'Hablar con el administrador', 'error')
-        }
-    }
-}
 
 export const formsStartGetCampus = () => {
 
@@ -336,7 +154,6 @@ export const formsStartGetCampus = () => {
     }
 }
 export const formsStartGetMajors = () => {
-
     return async (dispatch) => {
         try {
             const res = await fetchConToken('majors')
@@ -489,10 +306,6 @@ export const formsStartGetTeachers = () => {
     }
 }
 
-const formsAddData = (data, type) => ({
-    type,
-    payload: data
-});
 
 const formsUpdate = (data, type) => ({
     type,
@@ -503,42 +316,40 @@ const formsDeleteData = (id, type) => ({
     payload: id
 });
 
-const formsGetDepartaments = (departments) => ({
+export const formsGetData = (type, data) => ({ type, payload: data });
+
+export const formsGetDepartaments = (departments) => ({
     type: types.formsGetDepartaments,
     payload: departments
 });
-const formsGetCampus = (campus) => ({
+export const formsGetCampus = (campus) => ({
     type: types.formsGetCampus,
     payload: campus
 });
 
-const formsGetPersonal = (employees) => ({
+export const formsGetPersonal = (employees) => ({
     type: types.formsGetPersonal,
     payload: employees
 });
 
-const formsGetStudents = (students) => ({
-    type: types.formsGetStudents,
-    payload: students
-})
 
-const formsGetMajors = (majors) => ({
+export const formsGetMajors = (majors) => ({
     type: types.formsGetMajors,
     payload: majors
 });
-const formsGetGroups = (groups) => ({
+export const formsGetGroups = (groups) => ({
     type: types.formsGetGroups,
     payload: groups
 });
-const formsGetScholarships = (scholarships) => ({
+export const formsGetScholarships = (scholarships) => ({
     type: types.formsGetScholarships,
     payload: scholarships
 });
-const formsGetCourses = (courses) => ({
+export const formsGetCourses = (courses) => ({
     type: types.formsGetCourses,
     payload: courses
 });
-const formsGetTeachers = (teachers) => ({
+export const formsGetTeachers = (teachers) => ({
     type: types.formsGetTeachers,
     payload: teachers
 });
@@ -561,3 +372,197 @@ export const formsClearActive = (active) => ({
 
 export const formsCleanErrors = () => ({ type: types.formsCleanErrors });
 
+
+
+
+
+
+
+
+
+
+//Borrar en el futuro
+export const formsStartCreateTeacher = (formValues, reset) => {
+    return async (dispatch) => {
+        try {
+            const res = await fetchConToken('teachers', formValues, 'POST')
+            const body = await res.json();
+            if (body.ok) {
+                Swal.fire({
+                    title: 'Maestro',
+                    text: body.msg + '.',
+                    icon: 'success',
+                })
+                reset();
+            } else {
+                console.log(body)
+                Swal.fire({
+                    title: '¡Oops!',
+                    text: body.msg,
+                    icon: 'question',
+                })
+            }
+        } catch (error) {
+            console.log(error)
+            Swal.fire('Error', 'Hablar con el administrador', 'error')
+        }
+    }
+}
+export const formsStartCreateGroups = (formValues, reset) => {
+    return async (dispatch) => {
+        try {
+            const res = await fetchConToken('groups', formValues, 'POST')
+            const body = await res.json();
+            if (body.ok) {
+                Swal.fire({
+                    title: 'Grupos',
+                    text: body.msg + '.',
+                    icon: 'success',
+                })
+                reset();
+            } else {
+                console.log(body)
+                Swal.fire({
+                    title: '¡Oops!',
+                    text: body.msg,
+                    icon: 'question',
+                })
+            }
+        } catch (error) {
+            console.log(error)
+            Swal.fire('Error', 'Hablar con el administrador', 'error')
+        }
+    }
+}
+export const formsStartCreateCampus = (formValues, reset) => {
+    return async (dispatch) => {
+        try {
+            const res = await fetchConToken('campus', formValues, 'POST')
+            const body = await res.json();
+            if (body.ok) {
+                Swal.fire({
+                    title: 'Campus',
+                    text: body.msg + '.',
+                    icon: 'success',
+                })
+                reset();
+            } else {
+                console.log(body)
+                body.errors && dispatch(formsNewErrors(body.errors))
+                Swal.fire({
+                    title: '¡Oops!',
+                    text: body.msg,
+                    icon: 'question',
+                })
+            }
+        } catch (error) {
+            console.log(error)
+            Swal.fire('Error', 'Hablar con el administrador', 'error')
+        }
+    }
+}
+export const formsStartCreateMajor = (formValues, reset) => {
+    return async (dispatch) => {
+        try {
+            const res = await fetchConToken('majors', formValues, 'POST')
+            const body = await res.json();
+            if (body.ok) {
+                Swal.fire({
+                    title: 'Hecho.',
+                    text: body.msg + '.',
+                    icon: 'success',
+                })
+                reset();
+            } else {
+                console.log(body)
+                Swal.fire({
+                    title: '¡Oops!',
+                    text: body.msg,
+                    icon: 'question',
+                })
+            }
+        } catch (error) {
+            console.log(error)
+            Swal.fire('Error', 'Hablar con el administrador', 'error')
+        }
+    }
+}
+export const formsStartCreateScholarship = (formValues, reset) => {
+    return async (dispatch) => {
+        try {
+            const res = await fetchConToken('scholarships', formValues, 'POST')
+            const body = await res.json();
+            if (body.ok) {
+                Swal.fire({
+                    title: 'Becas',
+                    text: body.msg + '.',
+                    icon: 'success',
+                })
+                reset();
+            } else {
+                console.log(body)
+                Swal.fire({
+                    title: '¡Oops!',
+                    text: body.msg,
+                    icon: 'question',
+                })
+            }
+        } catch (error) {
+            console.log(error)
+            Swal.fire('Error', 'Hablar con el administrador', 'error')
+        }
+    }
+}
+export const formsStartCreatePersonal = (formValues, reset) => {
+    return async (dispatch) => {
+        try {
+            // formValues.email = 'asdfg@example.com';
+            const res = await fetchConToken('employees', formValues, 'POST')
+            const body = await res.json();
+            if (body.ok) {
+                Swal.fire({
+                    title: 'Personal',
+                    text: body.msg + '.',
+                    icon: 'success',
+                })
+                reset();
+            } else {
+                console.log(body)
+                Swal.fire({
+                    title: '¡Oops!',
+                    text: body.msg,
+                    icon: 'question',
+                })
+            }
+        } catch (error) {
+            console.log(error)
+            Swal.fire('Error', 'Hablar con el administrador', 'error')
+        }
+    }
+}
+export const formsStartCreateSubject = (formValues, reset) => {
+    return async (dispatch) => {
+        try {
+            const res = await fetchConToken('courses', formValues, 'POST')
+            const body = await res.json();
+            if (body.ok) {
+                Swal.fire({
+                    title: 'Materia',
+                    text: body.msg + '.',
+                    icon: 'success',
+                })
+                reset();
+            } else {
+                console.log(body)
+                Swal.fire({
+                    title: '¡Oops!',
+                    text: body.msg,
+                    icon: 'question',
+                })
+            }
+        } catch (error) {
+            console.log(error)
+            Swal.fire('Error', 'Hablar con el administrador', 'error')
+        }
+    }
+}

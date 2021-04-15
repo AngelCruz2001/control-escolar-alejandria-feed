@@ -10,22 +10,23 @@ import { formsCleanErrors, formsStartCreate, formsStartGetCampus, formsStartGetG
 import { useDispatch, useSelector } from 'react-redux';
 import { types } from '../../types/types';
 import { useError } from '../../hooks/useError';
+import { panelSetData } from '../../actions/panel';
+import { usePanel } from '../../hooks/usePanel';
 
 export const Students = () => {
-    const dispatch = useDispatch();
-    const { campus, groups, majors, errors, students, active } = useSelector(state => state.forms)
-    dispatch()
-
-    const [formValues, handleInputChange, reset, setValue] = useForm({ matricula: 'qwerryu1', name: 'Rafudo fudo', surname_f: 'Fudo', surname_m: 'Fudo', day: '1', month: '01', year: '2000', curp: 'asdfadsf1', street: ' #213', colony: ' Durango II', zip: '', placeBirth: '', mobile_number: '1234567891', mobile_back_number: '1234567891', id_campus: campus[0].id_campus, id_group: groups[0].id_group, group_chief: 0 });
-
+    const { campus, groups, students, active } = useSelector(state => state.forms)
+    usePanel(students, "name", "id_student", types.formsGetStudents)
     useError()
+
+    const [formValues, handleInputChange, reset, setValue] = useForm({ matricula: 'qwerryu1', name: 'Rafudo fudo', surname_f: 'Fudo', surname_m: 'Fudo', day: '1', month: '01', year: '2000', curp: 'asdfadsf1', street: ' #213', colony: ' Durango II', zip: '1234', placeBirth: '', mobile_number: '1234567891', mobile_back_number: '1234567891', id_campus: '', id_group: '', group_chief: 0 });
+
     useEffect(() => {
         if (active) {
             let date = active.birthdate.split('-')
             setValue({ ...active, year: date[0], month: date[1], day: date[2] })
-            console.log(active)
         }
     }, [active])
+    
     const { matricula, name, surname_f, surname_m, day, month, year, curp, street, colony, zip, placeBirth, mobile_number, mobile_back_number, id_campus, id_group, group_chief } = formValues;
     return (
         <div className="stu__generalContainer">
@@ -97,16 +98,6 @@ export const Students = () => {
                                                         group_name: data.name_group
                                                     }))}
                                                 />
-                                                {/* <Select
-                                                    handleInputChange={handleInputChange}
-                                                    contentClassName="stu__inputs-career"
-                                                    nameSelect=""
-                                                    valueSelect={ }
-                                                    label="Carrrera"
-                                                    options={majors}
-                                                /> */}
-                                                {/* <input type="checkbox" value={group_chief} name="group_chief" onChange={handleInputChange} id="" />
-                                                <p>Jefe de grupo</p> */}
                                             </div>
                                         </div>
                                     </div>
@@ -114,11 +105,7 @@ export const Students = () => {
                             </form>
                         </div>
                     </div>
-                    <PanelJustAdded
-                        data={students}
-                        name="name"
-                        id="id_student"
-                    />
+                    <PanelJustAdded />
                 </div>
                 <Buttons
                     reset={reset}
@@ -128,7 +115,6 @@ export const Students = () => {
                     type={types.formsAddDataStudents}
                     text="Estudiante"
                     endpoint="students"
-                    id="id_student"
                 />
             </div>
         </div>

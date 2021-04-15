@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector } from 'react-redux'
 import { BackTexture } from "../ui/BackTexture";
 import { Input } from "../ui/inputs/Input";
@@ -7,15 +7,13 @@ import { Buttons, OpenDropMenuButton } from '../ui/Buttons'
 import { formsStartCreateScholarship } from '../../actions/forms'
 import { Slider } from "@material-ui/core";
 import { useForm } from '../../hooks/useForm';
+import { useError } from "../../hooks/useError";
 
 export const Scholarship = () => {
 
   const { scholarship, errors } = useSelector(state => state.forms)
 
-    useEffect(() => {
-        [...document.getElementsByClassName("input__error")].map(element => (element.classList.remove("input__error")));
-        errors.map((errorBackend, i) => (document.getElementsByName(errorBackend)[0].className += (" input__error")))
-    }, [errors])
+  useError()
 
   const updateRange = (e, newValue) => {
     handleInputChange({ target: { name: "percentage", value: newValue } });

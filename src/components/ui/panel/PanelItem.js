@@ -19,7 +19,7 @@ export const PanelItem = ({ text = "", item, name }) => {
         >
             <div className="panel__container-content-item-container">
 
-                <p className="panel__container-content-item-container-text"> {item[`${name}`]}</p>
+                <p className="panel__container-content-item-container-text"> {item[name]}</p>
                 <i className="fas fa-edit"></i>
             </div>
         </div>

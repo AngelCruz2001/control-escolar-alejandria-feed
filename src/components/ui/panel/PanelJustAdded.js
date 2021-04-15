@@ -1,15 +1,21 @@
-import React from 'react'
-import { useSelector } from 'react-redux'
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { formsGetData } from '../../../actions/forms'
 import { useForm } from '../../../hooks/useForm'
+import { types } from '../../../types/types'
 import { Input } from '../inputs/Input'
 import { PanelItem } from './PanelItem'
 
-export const PanelJustAdded = ({ data = [], name = "", id = "" }) => {
+export const PanelJustAdded = () => {
 
+    const { activePanel, id, name, type } = useSelector(state => state.panel)
     const [formValues, handleInputChange] = useForm();
     const { valueInput } = formValues;
+    const dispatch = useDispatch();
 
-
+    useEffect(() => {
+        dispatch(formsGetData(type, activePanel))
+    }, [activePanel])
     return (
         <>
             <div className="panel__container">
@@ -21,12 +27,15 @@ export const PanelJustAdded = ({ data = [], name = "", id = "" }) => {
                         nameInput='searchInput'
                         valueInput={valueInput}
                         handleInputChange={handleInputChange}
-
                     />
                     {
-                        (data[0][`${id}`]) && data.map((item, i) => (
-                            <PanelItem key={item[`${id}`]} item={item} name={name} />
-                        ))
+                        (activePanel.length)
+                            ?
+                            activePanel.map((item, i) => (
+                                <PanelItem key={item[id]} item={item} name={name} />
+                            ))
+                            :
+                            <p>No hay información por el momento</p>
                     }
                 </div>
             </div>

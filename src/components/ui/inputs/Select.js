@@ -25,11 +25,13 @@ export const Select = ({
                         onChange={handleInputChange}
                         disabled={disabledSelect}
                     >
+                        <option disabled={true} value=""></option>
                         {
                             options.map((opt, i) => (
                                 <OptionItem key={i} options={states ? opt : Object.values(opt)} states={states} />
                             ))
                         }
+
                     </select>
                 </div>
             </div >

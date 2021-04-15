@@ -2,6 +2,7 @@ import React from 'react'
 import { useDispatch } from 'react-redux'
 import { Redirect, Route, Switch } from 'react-router-dom'
 import { formsCleanErrors } from '../actions/forms'
+import { panelClearData, panelDeleteData } from '../actions/panel'
 import { FeedScreen } from '../components/feed/FeedScreen'
 import { Campus } from '../components/forms/Campus'
 import { Groups } from '../components/forms/Groups'
@@ -14,6 +15,9 @@ import { Teachers } from '../components/forms/Teachers'
 import { Navbar } from '../components/ui/Navbar'
 
 export const DashBoardRoutes = ({ history }) => {
+    console.log("Hello World!")
+    const dispatch = useDispatch()
+    dispatch(panelClearData())
     return (
         <>
             <Navbar history={history} />

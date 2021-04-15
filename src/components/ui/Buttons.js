@@ -9,7 +9,7 @@ export const Buttons = ({ formValues, reset, action, type = "", text = "", endpo
     const { active } = useSelector(state => state.forms)
 
     const handleSubmit = () => {
-        dispatch(action(formValues, reset, type, endpoint, text, id))
+        dispatch(action(formValues, reset, type, endpoint, text))
     }
     const handleDelete = () => { //Handle Cancel es para cancelar. 
         console.log(formValues) //Este console.log imprime un valor en consola.  

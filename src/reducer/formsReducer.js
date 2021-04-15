@@ -1,15 +1,15 @@
 import { types } from "../types/types";
 
 const initialState = {
-    students: [{ id_student: null, student_name: null }],
-    campus: [{ id_campus: null, campus_name: null }],
-    groups: [{ id_group: null, group_name: null }],
-    majors: [{ id_major: null, major_name: null }],
-    departments: [{ id_department: null, department_name: null }],
-    personal: [{ id_personal: null, personal_name: null }],
-    scholarships: [{ id_scholarships: null, scholarships_name: null }],
-    courses: [{ id_courses: null, courses_name: null }],
-    teachers: [{ id_teachers: null, teachers_name: null }],
+    students: [],
+    campus: /*[{ id_campus: null, campus_name: null }]*/[],
+    groups: /*[{ id_group: null, group_name: null }]*/[],
+    majors: /*[{ id_major: null, major_name: null }]*/[],
+    departments: /*[{ id_department: null, department_name: null }]*/[],
+    personal: /*[{ id_personal: null, personal_name: null }]*/[],
+    scholarships: /*[{ id_scholarships: null, scholarships_name: null }]*/[],
+    courses: /*[{ id_courses: null, courses_name: null }]*/[],
+    teachers: /*[{ id_teachers: null, teachers_name: null }]*/[],
     errors: [],
     active: null,
     activePanel: []
@@ -87,21 +87,28 @@ export const formsReducer = (state = initialState, action) => {
             }
 
 
-        case types.formsAddDataStudents:
-            console.log(action)
-            console.log(state.students[0].id_student)
 
+        case types.formsAddData:
             return {
                 ...state,
-                students: state.students[0].id_student ? [action.payload, ...state.students] : [action.payload]
+                activePanel: [action.payload, ...state.activePanel]
             }
+        // case types.formsAddDataStudents:
+        //     console.log(action)
+        //     console.log(state.students[0].id_student)
 
-        case types.formsDeleteStudents:
-            console.log(action)
-            return {
-                ...state,
-                students: state.students.length ? state.students.filter(student => student.id_student != action.payload) : [{ id_student: null, student_name: null }]
-            }
+        //     return {
+        //         ...state,
+        //         students: state.students[0].id_student ? [action.payload, ...state.students] : [action.payload]
+        //     }
+
+        // case types.formsDeleteStudents:
+        //     console.log(action)
+        //     return {
+        //         ...state,
+        //         students: state.students.length ? state.students.filter(student => student.id_student != action.payload) : [{ id_student: null, student_name: null }]
+        //     }
+
         default:
             return state;
     }

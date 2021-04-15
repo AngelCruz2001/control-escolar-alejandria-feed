@@ -35,6 +35,12 @@ export const types = {
     formsClearActive: '[forms] Clear Active',
 
 
-    formsAddDataStudents: '[forms] Add Data Students',
+    formsAddData: '[forms] Add Data',
     formsDeleteStudents: '[forms] Delete Data Students',
+
+    panelSetData: '[panel] Set Data',
+    panelAddData: '[panel] Add Data',
+    panelUpdateData: '[panel] Update Data',
+    panelDeleteData: '[panel] Delete Data',
+    panelClearData: '[panel] Clear Data',
 }

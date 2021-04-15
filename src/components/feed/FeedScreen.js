@@ -1,7 +1,8 @@
 import React, { useEffect, useLayoutEffect } from 'react'
 import { useDispatch } from 'react-redux';
-import { formsStartGetCampus, formsStartGetDepartaments, formsStartGetGroups, formsStartGetMajors, formsStartGetStudents, formsStartGetPersonal, formsStartGetScholarships, formsStartGetCourses, formsStartGetTeachers, formsClearActive, formsCleanErrors } from '../../actions/forms';
+import { formsStartGetCampus, formsStartGetDepartaments, formsStartGetGroups, formsStartGetMajors, formsStartGetPersonal, formsStartGetScholarships, formsStartGetCourses, formsStartGetTeachers, formsClearActive, formsCleanErrors, formsGetData, formsStartGetData } from '../../actions/forms';
 import { iconsPath, imagesPath } from '../../helpers/resources';
+import { types } from '../../types/types';
 import { CircleOptionFeed } from './CircleOptionFeed';
 let bandera = true;
 export const FeedScreen = () => {
@@ -52,7 +53,7 @@ export const FeedScreen = () => {
         if (bandera) {
             console.log("Oh no")
             bandera = false;
-            dispatch(formsStartGetStudents())
+            dispatch(formsStartGetData('students', types.formsGetStudents))
             dispatch(formsStartGetCampus())
             dispatch(formsStartGetMajors())
             dispatch(formsStartGetGroups())

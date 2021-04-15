@@ -8,16 +8,21 @@ import { Buttons, OpenDropMenuButton } from '../ui/Buttons'
 import { useForm } from '../../hooks/useForm';
 import { formsStartCreateTeacher, formsStartGetCampus } from '../../actions/forms';
 import { useDispatch, useSelector } from 'react-redux';
+import { useError } from '../../hooks/useError';
+import { usePanel } from '../../hooks/usePanel';
+import { types } from '../../types/types';
 
 
 export const Teachers = () => {
     const dispatch = useDispatch()
-    const { campus } = useSelector(state => state.forms)
-    const [formValues, handleInputChange, reset] = useForm({
-        name: "", surname_f: "", surname_m: "", rfc: "", mobile_number: "", id_campus: campus[0].id_campus,
-    })
-
+    const { campus, teachers, active } = useSelector(state => state.forms)
+    useError()
+    usePanel(teachers, "name", "id_teacher", types.formsGetTeachers)
+    const [formValues, handleInputChange, reset, setValue] = useForm({ name: "", surname_f: "", surname_m: "", rfc: "", mobile_number: "", id_campus: campus[0].id_campus, })
+    console.log(active ? true : false)
     const { name, surname_f, surname_m, rfc, mobile_number, id_campus } = formValues;
+
+    useEffect(() => { active && setValue({ ...active }) }, [active])
 
     useEffect(() => {
         dispatch(formsStartGetCampus())
@@ -63,11 +68,8 @@ export const Teachers = () => {
                                                 nameSelect="id_campus"
                                                 valueSelect={id_campus}
                                                 handleInputChange={handleInputChange}
-                                            // multiple="multiple"
                                             />
-                                            {/* <MultiSelect
-                                                contentClassName="tea__inputs-campus" label="Campus"
-                                            /> */}
+
 
                                         </div>
                                     </div>
