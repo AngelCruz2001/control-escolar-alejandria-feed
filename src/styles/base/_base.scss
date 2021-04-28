@@ -26,7 +26,7 @@ input {
 }
 .containerSection {
     width: 100vw;
-    height: 600PX;
+    height: 600px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -46,6 +46,26 @@ a {
     flex-direction: column;
     width: 100%;
     height: 100%;
+    background-color: white;
+    border-radius: 10px;
+}
+
+.containerPayments {
+    display: flex;
+    position: relative;
+    height: calc(100vh - 100px);
+    width: 100vw;
+    align-items: center;
+    justify-content: center;
+}
+
+.overTexturePayments {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 63vw;
+    height: 69vh;
     background-color: white;
     border-radius: 10px;
 }

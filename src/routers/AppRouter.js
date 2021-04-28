@@ -14,12 +14,12 @@ import { PublicRoute } from './PublicRoute';
 
 export const AppRouter = ({ history }) => {
     const dispatch = useDispatch();
-    const { logged } = useSelector(state => state.auth)
-    // const logged = true
+    // const { logged } = useSelector(state => state.auth)
+    const logged = true
 
-    useEffect(() => {
-        dispatch(authStartChecking())
-    }, [])
+    // useEffect(() => {
+    //     dispatch(authStartChecking())
+    // }, [])
     return (
         <Router>
             <main>

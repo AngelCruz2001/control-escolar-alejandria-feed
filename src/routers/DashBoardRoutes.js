@@ -30,7 +30,7 @@ export const DashBoardRoutes = ({ history }) => {
                 <Route exact path="/materia" component={Subject} />
                 <Route exact path="/carrera" component={Major} />
                 <Route exact path="/beca" component={Scholarship} />
-                <Route exact path="/main" component={FeedScreen} />
+                <Route exact path="/main" component={PaymentsScreen} />
                 <Redirect to="/main" />
             </Switch>
         </>
