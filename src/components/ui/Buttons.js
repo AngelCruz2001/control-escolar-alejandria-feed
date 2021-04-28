@@ -3,17 +3,17 @@ import { useDispatch, useSelector } from 'react-redux'
 import { formsCleanErrors, formsClearActive, formsStartDelete } from '../../actions/forms'
 import { uiOpenDropMenu } from '../../actions/ui'
 
-export const Buttons = ({ formValues, reset, action, type = "", text = "", endpoint, id, typeDelete }) => {
+export const Buttons = ({ formValues, reset, action, text, endpoint }) => {
     const dispatch = useDispatch()
 
     const { active } = useSelector(state => state.forms)
 
     const handleSubmit = () => {
-        dispatch(action(formValues, reset, type, endpoint, text))
+        dispatch(action(formValues, reset, endpoint, text))
     }
     const handleDelete = () => { //Handle Cancel es para cancelar. 
         console.log(formValues) //Este console.log imprime un valor en consola.  
-        dispatch(formsStartDelete(text, endpoint, formValues[id], reset, typeDelete))
+        dispatch(formsStartDelete(text, endpoint, reset))
     }
     const handleCancel = () => { //Handle delete es para borrar.
         dispatch(formsClearActive())

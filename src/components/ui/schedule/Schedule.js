@@ -16,8 +16,9 @@ export const Schedule = ({ special = false, formValues, handleInputChange }) => 
     { day: null, start_hour: '9:00', finish_hour: '9:00' }]);
 
   useEffect(() => {
+    console.log(formValues)
     let valuesInitial = [...value];
-    formValues.time_tables.map((data, i) => {
+    formValues.time_table.map((data, i) => {
       valuesInitial[data.day] = { ...data };
     })
     setValue(valuesInitial)
@@ -36,7 +37,7 @@ export const Schedule = ({ special = false, formValues, handleInputChange }) => 
     let valueInputChange = valuesSelect.map((data, i) => ((data.day) ? { ...data, day: target.id == i ? Number.parseInt(target.id) : data.day } : data))
     handleInputChange({
       target: {
-        name: 'time_tables',
+        name: 'time_table',
         value: valueInputChange.filter((data, i) => ((data.day != null)))
       }
     })

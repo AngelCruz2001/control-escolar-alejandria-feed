@@ -1,23 +1,32 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from 'react-redux'
-import { BackTexture } from "../ui/BackTexture";
+import { BackTexture } from "../ui/BackTextureFeed";
 import { Input } from "../ui/inputs/Input";
 import { PanelJustAdded } from "../ui/panel/PanelJustAdded";
 import { Buttons, OpenDropMenuButton } from '../ui/Buttons'
-import { formsStartCreateScholarship } from '../../actions/forms'
+import {
+  formsStartCreateScholarship, formsStartCreate,
+  formStartUpdate
+} from '../../actions/forms'
 import { Slider } from "@material-ui/core";
 import { useForm } from '../../hooks/useForm';
 import { useError } from "../../hooks/useError";
+import { usePanel } from '../../hooks/usePanel';
+import { types } from '../../types/types';
 
 export const Scholarship = () => {
 
-  const { scholarship, errors } = useSelector(state => state.forms)
+  const { scholarships, errors, active } = useSelector(state => state.forms)
 
   useError()
+
+  usePanel(scholarships, "scholarship_name", "id_scholarship", types.formsGetScholarships);
 
   const updateRange = (e, newValue) => {
     handleInputChange({ target: { name: "percentage", value: newValue } });
   };
+
+  useEffect(() => { active && setValue({ ...active }) }, [active])
 
   const marks = [
     {
@@ -30,7 +39,7 @@ export const Scholarship = () => {
     }
   ];
 
-  const [formValues, handleInputChange, reset] = useForm({
+  const [formValues, handleInputChange, reset, setValue] = useForm({
     matricula: '',
     scholarship_name: '',
     percentage: 0,
@@ -108,16 +117,13 @@ export const Scholarship = () => {
             </form>
           </div>
         </div>
-        <PanelJustAdded
-          data={scholarship}
-          name="scholarship_name"
-          id="id_scholarship"
-        />
+        <PanelJustAdded />
       </div>
       <Buttons
         formValues={formValues}
         reset={reset}
-        action={formsStartCreateScholarship}
+        endpoint="scholarships"
+        action={active ? formStartUpdate : formsStartCreate}
       />
     </div>
   );

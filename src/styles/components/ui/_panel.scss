@@ -25,13 +25,18 @@
         display: flex;
         flex-direction: column;
 
+        p{
+            font: normal normal normal 14px/19px Segoe UI;
+            
+        }
+
         &-item {
             justify-content: space-around;
             margin-top: 3%;
             align-items: center;
             display: flex;
             width: 100%;
-            height: 28px;
+            min-height: 28px;
             border-radius: 20px;
             background-color: $gray-inputs;
             cursor: pointer;
@@ -46,7 +51,12 @@
                 align-items: center;
                 justify-content: space-between;
                 color: $gray-inputsText;
+            
+                &-text{
+                    font: normal normal normal 14px/19px Segoe UI;
+                }
             }
+
         }
         .input__container {
             border-radius: 20px;

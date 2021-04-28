@@ -26,12 +26,12 @@ export const formsStartGetData = (endpoint, type) => {
 
 
 //Update
-export const formStartUpdate = (formValues, reset, type, endpoint, text) => {
+export const formStartUpdate = (formValues, reset, endpoint, text) => {
     return async (dispatch, getState) => {
-        console.log(formValues)
-
         try {
-            const res = await fetchConToken(`${endpoint}/${formValues[getState().panel.id]}`, formValues, 'PUT') //No sabemos, tu siguele la corriente. 
+            console.log(getState())
+            console.log(formValues)
+            const res = await fetchConToken(`${endpoint}/${getState().forms.active[getState().panel.id]}`, formValues, 'PUT') //No sabemos, tu siguele la corriente. 
             const body = await res.json();
             if (body.ok) {
                 Swal.fire({
@@ -45,6 +45,8 @@ export const formStartUpdate = (formValues, reset, type, endpoint, text) => {
                 reset();
             } else {
                 console.log(body)
+                console.log(formValues)
+
                 body.errors && dispatch(formsNewErrors(body.errors))
                 Swal.fire({
                     title: '¡Oops!',
@@ -59,12 +61,10 @@ export const formStartUpdate = (formValues, reset, type, endpoint, text) => {
     }
 }
 //Delete
-export const formsStartDelete = (text, endpoint, id, reset, typeDelete) => {
-    return async (dispatch) => {
-        console.log(id)
-        console.log(endpoint)
+export const formsStartDelete = (text, endpoint, reset) => {
+    return async (dispatch, getState) => {
         try {
-            const res = await fetchConToken(`${endpoint}/${id}`, {}, 'DELETE')
+            const res = await fetchConToken(`${endpoint}/${getState().forms.active[getState().panel.id]}`, {}, 'DELETE')
             const body = await res.json();
             if (body.ok) {
                 console.log(res)
@@ -74,7 +74,7 @@ export const formsStartDelete = (text, endpoint, id, reset, typeDelete) => {
                     text: body.msg + '.',
                     icon: 'success',
                 })
-                dispatch(panelDeleteData(id));
+                dispatch(panelDeleteData(getState().forms.active[getState().panel.id]));
                 dispatch(formsCleanErrors());
                 dispatch(formsClearActive());
                 reset();
@@ -95,9 +95,8 @@ export const formsStartDelete = (text, endpoint, id, reset, typeDelete) => {
 }
 
 //Create
-export const formsStartCreate = (formValues, reset, type, endpoint, text,) => {
+export const formsStartCreate = (formValues, reset, endpoint, text,) => {
     return async (dispatch, getState) => {
-        console.log(type)
 
         try {
             const res = await fetchConToken(endpoint, formValues, 'POST')

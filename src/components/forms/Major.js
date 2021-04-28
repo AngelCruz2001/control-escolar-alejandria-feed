@@ -1,14 +1,21 @@
 import React, { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
-import { BackTexture } from '../ui/BackTexture'
+import { BackTexture } from '../ui/BackTextureFeed'
 import { Input } from '../ui/inputs/Input'
 import { PanelJustAdded } from '../ui/panel/PanelJustAdded'
 import { Buttons, OpenDropMenuButton } from '../ui/Buttons'
 import { useForm } from '../../hooks/useForm'
 import { formsStartCreateMajor } from '../../actions/forms'
+import { useError } from '../../hooks/useError'
+import { usePanel } from '../../hooks/usePanel';
+import { types } from '../../types/types';
 
 export const Major = () => {
-    const { majors, errors } = useSelector(state => state.forms)
+    const { majors, errors, active } = useSelector(state => state.forms)
+
+    useError();
+
+    usePanel(majors, "major_name", "id_major", types.formsGetMajors)
 
     useEffect(() => {
         console.log(document.getElementsByClassName("input__error"));
@@ -16,8 +23,11 @@ export const Major = () => {
         errors.map((errorBackend, i) => (document.getElementsByName(errorBackend)[0].className += (" input__error")))
     }, [errors])
 
-    const [formValues, handleInputChange, reset] = useForm({ major_name: '' });
+    const [formValues, handleInputChange, reset, setValue] = useForm({ major_name: '' });
     const { major_name } = formValues;
+
+    useEffect(() => { active && setValue({ ...active }) }, [active])
+
     return (
         <div className="containerSection form__container">
             <div className="form__inputExtra">

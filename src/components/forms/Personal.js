@@ -1,30 +1,29 @@
 import React, { useEffect } from 'react'
-import { BackTexture } from '../ui/BackTexture'
+import { BackTexture } from '../ui/BackTextureFeed'
 import { Input } from '../ui/inputs/Input'
 import { Select } from '../ui/inputs/Select'
 import { PanelJustAdded } from '../ui/panel/PanelJustAdded'
 import { Schedule } from '../ui/schedule/Schedule'
 import { Date } from './Date'
 import { Buttons, OpenDropMenuButton } from '../ui/Buttons';
-import { formsStartCreatePersonal } from '../../actions/forms'
+import { formsStartCreate, formsStartCreatePersonal, formStartUpdate } from '../../actions/forms'
 import { useForm } from '../../hooks/useForm';
 import { useSelector } from 'react-redux'
+import { useError } from '../../hooks/useError'
+import { usePanel } from '../../hooks/usePanel'
+import { types } from '../../types/types'
 
 export const Personal = () => {
-    const { personal, departments, campus, errors } = useSelector(state => state.forms)
+    const { personal, departments, campus, active } = useSelector(state => state.forms)
 
-    useEffect(() => {
-        console.log(document.getElementsByClassName("input__error"));
-        [...document.getElementsByClassName("input__error")].map(element => (element.classList.remove("input__error")));
-        errors.map((errorBackend, i) => (document.getElementsByName(errorBackend)[0].className += (" input__error")))
-    }, [errors])
-
+    useError()
+    usePanel(personal, 'name', 'id_personal', types.formsGetPersonal)
     // Falta horarios
-    const [formValues, handleInputChange, reset] = useForm({
-        name: "", surname_f: "", surname_m: "", rfc: "", curp: "", mobile_number: "", id_department: departments[0].id_department, id_campus: campus[0].id_campus, salary: '', time_tables: []
+    const [formValues, handleInputChange, reset, setValue] = useForm({
+        name: "", surname_f: "", surname_m: "", rfc: "", curp: "", mobile_number: "", id_department: '', id_campus: '', salary: '', time_table: []
     });
+    useEffect(() => { active && setValue({ ...active }) }, [active])
     const { name, surname_f, surname_m, rfc, curp, mobile_number, id_department, id_campus, salary } = formValues;
-
     return (
         <div className="containerSection form__container">
             <div className="form__inputExtra">
@@ -77,7 +76,7 @@ export const Personal = () => {
                                         <div className="form__inputs form__special">
                                             <Select contentClassName="per__inputs-dep" label="Departamento"
                                                 nameSelect="id_department"
-                                                options={[{ id_department: 0, name_departament: 'Administrativo' }, { id_department: 1, name_departament: 'Contraloria' }, { id_department: 2, name_departament: 'Recepción' }, { id_department: 3, name_departament: 'Directivo' }, { id_department: 4, name_departament: 'Medios y difusión' }]}
+                                                options={departments}
                                                 handleInputChange={handleInputChange}
                                                 valueSelect={id_department}
                                             />
@@ -118,7 +117,9 @@ export const Personal = () => {
             <Buttons
                 formValues={formValues}
                 reset={reset}
-                action={formsStartCreatePersonal}
+                action={active ? formStartUpdate : formsStartCreate}
+                text="Grupo"
+                endpoint="groups"
             />
         </div>
     )

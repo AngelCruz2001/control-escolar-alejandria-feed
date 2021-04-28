@@ -1,4 +1,4 @@
-.texture__container {
+.texture__container_feed {
     // position: relative;
     // width: 75%;
     // height: 100%;
@@ -31,4 +31,15 @@
         grid-row: 2/3;
         background-color: $blue-solid;
     }
+}
+.texture__container__payments {
+    // position: relative;
+    // width: 75%;
+    // height: 100%;
+    position: absolute;
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    background-color:red;
+    z-index: -5;
 }

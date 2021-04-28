@@ -1,23 +1,23 @@
 import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { formsStartCreateCampus } from '../../actions/forms'
+import { useError } from '../../hooks/useError'
 import { useForm } from '../../hooks/useForm'
 import { statesAndMunicipalities } from '../../resources/states/statesAndMunicipalities'
-import { BackTexture } from '../ui/BackTexture'
+import { BackTexture } from '../ui/BackTextureFeed'
 import { Buttons, OpenDropMenuButton } from '../ui/Buttons'
 import { Input } from '../ui/inputs/Input'
 import { Select } from '../ui/inputs/Select'
+import { usePanel } from '../../hooks/usePanel';
+import { types } from '../../types/types';
 import { PanelJustAdded } from '../ui/panel/PanelJustAdded'
 
 export const Campus = () => {
-    const { campus, errors } = useSelector(state => state.forms)
+    const { campus, active, error } = useSelector(state => state.forms)
 
-    useEffect(() => {
-        [...document.getElementsByClassName("input__error")].map(element => (element.classList.remove("input__error")));
-        errors.map((errorBackend, i) => (document.getElementsByName(errorBackend)[0].className += (" input__error")))
-    }, [errors])
-
-    const [formValues, handleInputChange, reset] = useForm({
+    useError();
+    usePanel(campus, "campus_name", "id_campus", types.formsGetCampus)
+    const [formValues, handleInputChange, reset, setValue] = useForm({
         campus_name: '',
         street: '',
         colony: '',
@@ -32,6 +32,8 @@ export const Campus = () => {
         zip,
         state,
         municipality } = formValues;
+
+    useEffect(() => { active && setValue({ ...active }) }, [active])
 
 
     return (

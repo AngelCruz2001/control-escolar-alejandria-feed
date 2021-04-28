@@ -31,11 +31,9 @@ export const Select = ({
                                 <OptionItem key={i} options={states ? opt : Object.values(opt)} states={states} />
                             ))
                         }
-
                     </select>
                 </div>
             </div >
-            {/* <p className="input__error">Revisar Campo</p> */}
         </div>
     )
 }

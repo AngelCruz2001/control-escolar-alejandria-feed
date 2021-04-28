@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { BackTexture } from '../ui/BackTexture'
+import { BackTexture } from '../ui/BackTextureFeed'
 import { Input } from '../ui/inputs/Input'
 import { Select } from '../ui/inputs/Select'
 import { PanelJustAdded } from '../ui/panel/PanelJustAdded'

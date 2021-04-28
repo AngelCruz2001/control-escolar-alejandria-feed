@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { BackTexture } from '../ui/BackTexture';
+import { BackTexture } from '../ui/BackTextureFeed';
 import { Input } from '../ui/inputs/Input';
 import { PanelJustAdded } from '../ui/panel/PanelJustAdded';
 import { Date } from './Date';
@@ -26,7 +26,7 @@ export const Students = () => {
             setValue({ ...active, year: date[0], month: date[1], day: date[2] })
         }
     }, [active])
-    
+
     const { matricula, name, surname_f, surname_m, day, month, year, curp, street, colony, zip, placeBirth, mobile_number, mobile_back_number, id_campus, id_group, group_chief } = formValues;
     return (
         <div className="stu__generalContainer">
@@ -111,8 +111,6 @@ export const Students = () => {
                     reset={reset}
                     formValues={{ ...formValues, birthdate: `${formValues.year}-${formValues.month}-${formValues.day?.length == 1 ? '0'.concat(formValues.day) : formValues.day}` }}
                     action={active ? formStartUpdate : formsStartCreate}
-                    typeDelete={types.formsDeleteStudents}
-                    type={types.formsAddDataStudents}
                     text="Estudiante"
                     endpoint="students"
                 />

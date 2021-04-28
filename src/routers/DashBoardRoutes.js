@@ -12,10 +12,10 @@ import { Scholarship } from '../components/forms/Scholarship'
 import { Students } from '../components/forms/Students'
 import { Subject } from '../components/forms/Subject'
 import { Teachers } from '../components/forms/Teachers'
+import { PaymentsScreen } from '../components/payments/PaymentsScreen'
 import { Navbar } from '../components/ui/Navbar'
 
 export const DashBoardRoutes = ({ history }) => {
-    console.log("Hello World!")
     const dispatch = useDispatch()
     dispatch(panelClearData())
     return (

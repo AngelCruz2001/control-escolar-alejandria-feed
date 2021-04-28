@@ -1,12 +1,12 @@
 import React, { Component, useEffect, useState } from 'react'
-import { BackTexture } from '../ui/BackTexture';
+import { BackTexture } from '../ui/BackTextureFeed';
 import { Input } from '../ui/inputs/Input';
 import { PanelJustAdded } from '../ui/panel/PanelJustAdded';
 import { Select } from '../ui/inputs/Select';
 import { MultiSelect } from '../ui/inputs/MultiSelect'
 import { Buttons, OpenDropMenuButton } from '../ui/Buttons'
 import { useForm } from '../../hooks/useForm';
-import { formsStartCreateTeacher, formsStartGetCampus } from '../../actions/forms';
+import { formsStartCreate, formsStartCreateTeacher, formsStartGetCampus, formStartUpdate } from '../../actions/forms';
 import { useDispatch, useSelector } from 'react-redux';
 import { useError } from '../../hooks/useError';
 import { usePanel } from '../../hooks/usePanel';
@@ -18,8 +18,7 @@ export const Teachers = () => {
     const { campus, teachers, active } = useSelector(state => state.forms)
     useError()
     usePanel(teachers, "name", "id_teacher", types.formsGetTeachers)
-    const [formValues, handleInputChange, reset, setValue] = useForm({ name: "", surname_f: "", surname_m: "", rfc: "", mobile_number: "", id_campus: campus[0].id_campus, })
-    console.log(active ? true : false)
+    const [formValues, handleInputChange, reset, setValue] = useForm({ name: "", surname_f: "", surname_m: "", rfc: "", mobile_number: "", id_campus: "", })
     const { name, surname_f, surname_m, rfc, mobile_number, id_campus } = formValues;
 
     useEffect(() => { active && setValue({ ...active }) }, [active])
@@ -27,7 +26,6 @@ export const Teachers = () => {
     useEffect(() => {
         dispatch(formsStartGetCampus())
     }, [dispatch])
-
 
     return (
         <div className="containerSection form__container">
@@ -83,7 +81,9 @@ export const Teachers = () => {
             <Buttons
                 reset={reset}
                 formValues={formValues}
-                action={formsStartCreateTeacher}
+                action={active ? formStartUpdate : formsStartCreate}
+                text="Maestro"
+                endpoint="teachers"
             />
 
         </div>
