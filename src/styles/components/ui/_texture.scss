@@ -39,6 +39,21 @@
     height: 100%;
     align-items: center;
     justify-content: center;
-    background-color: $blue-solid;
-    z-index: -5;
+
+    &-darkblue {
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        background-color: $blue-solid;
+        z-index: -5;
+        clip-path: polygon(0 0, 27% 0, 64% 44%, 77% 100%, 0 100%, 0% 50%);
+    }
+    &-skyblue {
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        background-image: linear-gradient(160deg, #7ca5ce 100%, transparent);
+        z-index: -5;
+        clip-path: polygon(57% 36%, 100% 84%, 100% 100%, 70% 100%);
+    }
 }
