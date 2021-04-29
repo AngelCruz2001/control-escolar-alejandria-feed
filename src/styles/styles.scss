@@ -4,6 +4,7 @@
 /*Components*/
 @import "./components/feed";
 @import "./components/auth";
+@import "./components/payments";
 
 /*Forms*/
 
@@ -27,3 +28,6 @@
 @import "./components/ui/inla";
 @import "./components/ui/texture";
 @import "./components/ui/ui";
+
+/*Payments*/
+@import "./components/payments/pay";
