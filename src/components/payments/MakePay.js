@@ -3,16 +3,18 @@ import { Separator } from '../ui/Separator'
 
 export const MakePay = () => {
     return (
-        <>
-            <p href="">Fecha: </p>
+        <div className="pay__makePay">
             <div className="pay__date">
-                <p>15 - junio - 2021</p>
+                <p href="" className="pay__subtitleSection">Fecha</p>
+                <div className="pay__dateData">
+                    <p>15 - junio - 2021</p>
+                </div>
             </div>
 
             <div className="pay__forms pay__information">
                 <div className="pay__formSection">
-                    <p className="pay__titleSection">Matricula</p>
-                    <input type="text" placeholder="0000000000000" />
+                    <p className="pay__titleSection">MATRÍCULA</p>
+                    <input className="pay__inputData" type="text" placeholder="0000000000000" />
                     <Separator />
                     <p className="pay__subtitleSection">Información del alumno</p>
                     <div className="pay__studentInformation pay__box">
@@ -52,6 +54,6 @@ export const MakePay = () => {
                     <input type="text" name="quantityLess" id="quantityLess" />
                 </div>
             </div>
-        </>
+        </div>
     )
 }

@@ -2,7 +2,7 @@ import React from 'react'
 
 export const Separator = () => {
     const styles = {
-        "height": "1vh"
+        "height": "2vh"
     }
     return (
         <div style={styles}>
