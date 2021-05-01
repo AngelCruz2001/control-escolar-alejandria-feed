@@ -1,9 +1,49 @@
-
-.pay__sectionsChanged {
-
+.pay__makePay {
+    width: 90%;
+    height: 90%;
+    font-weight: 400;
+    font-family: "Segoe UI";
+    font-size: calc(0.5rem + 0.5vw);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-color: blue;
 }
 
 .pay__date {
+    display: flex;
+    width: 100%;
+    height: 30px;
+    align-items: center;
 
+    &Data {
+        width: 15%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 5px;
+        margin-left: 5px;
+        background-color: $blue-sky3;
+        border-radius: 10px;
+    }
+}
+.pay__forms {
+    width: 90%;
+    display: flex;
+    background-color: red;
+    margin-top: 30px;
+}
+.pay__inputData {
+    border: none;
+    background-color: transparent;
+}
+.pay__titleSection {
+    font-weight: bold;
+}
+.pay__subtitleSection {
+    font-weight: 600;
 }
 
+.pay__box {
+    font-weight: 600;
+}

@@ -38,17 +38,17 @@
         hr {
             border: none;
             margin-top: 6px;
-            border-top: 2.5px solid transparent;
+            border-top: 3px solid transparent;
             border-radius: 1px;
         }
     }
 
     .payment__activeText {
         h4 {
-            color: #000;
+            color: #000 !important;
         }
         hr {
-            border-top: 2.5px solid #000;
+            border-top: 3px solid #000 !important;
         }
     }
 }
