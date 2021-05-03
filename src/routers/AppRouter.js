@@ -15,7 +15,7 @@ import { PublicRoute } from './PublicRoute';
 export const AppRouter = ({ history }) => {
     const dispatch = useDispatch();
     // const { logged } = useSelector(state => state.auth)
-    const logged = true
+    const logged = true;
 
     // useEffect(() => {
     //     dispatch(authStartChecking())
@@ -33,8 +33,8 @@ export const AppRouter = ({ history }) => {
                     />
                     <PrivateRoute
                         path="/"
-                        component={DashBoardRoutes}
                         isAuthenticated={logged}
+                        component={DashBoardRoutes}
                     />
 
                 </Switch>

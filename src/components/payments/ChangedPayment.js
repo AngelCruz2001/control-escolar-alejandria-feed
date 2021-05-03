@@ -1,24 +1,26 @@
 import React from 'react'
-import { Link, NavLink } from 'react-router-dom'
+import { Link, NavLink, useHistory } from 'react-router-dom'
 
 export const ChangedPayment = () => {
+    const history = useHistory();
+    console.log(history.location.pathname)
     return (
         <>
-            <div className={`payment__sectionsChangedItem payment__activeText`}>
+            <div className={`payment__sectionsChangedItem `}>
                 <NavLink
                     exact
-                    to="/pago"
-                    activeClassName="active"
+                    to="/pagos/pago"
+                    activeClassName="payment__activeText"
                 >
-                 Realizar Pago
+                    Realizar Pago
                 </NavLink>
                 <hr />
             </div>
             <div className={`payment__sectionsChangedItem`}>
                 <NavLink
                     exact
-                    to="/consulta"
-                    activeClassName="active"
+                    to="/pagos/consulta"
+                    activeClassName="payment__activeText"
                 >
                     Consultar estado
                 </NavLink>
@@ -27,8 +29,8 @@ export const ChangedPayment = () => {
             <div className={`payment__sectionsChangedItem`}>
                 <NavLink
                     exact
-                    to="/abonos"
-                    activeClassName="active"
+                    to="/pagos/abonos"
+                    activeClassName="payment__activeText"
                 >
                     Abonos
                 </NavLink>

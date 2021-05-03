@@ -1,5 +1,5 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, Redirect, Route, Switch } from 'react-router-dom'
 import { BackTexturePayments } from '../ui/BackTexturePayments'
 import { ChangedPayment } from './ChangedPayment'
 import { CheckPayment } from './CheckPayment'
@@ -13,7 +13,13 @@ export const PaymentsScreen = () => {
                 <ChangedPayment />
             </div>
             <div className="overTexturePayments">
-                <MakePay />
+                <Switch>
+                    <Route exact path="/pagos/pago" component={MakePay} />
+                    <Route exact path="/pagos/consulta" component={CheckPayment} />
+                    <Route exact path="/pagos/abonos" component={Deposit} />
+                    <Redirect to="/pagos/pago" />
+                </Switch>
+                {/* <MakePay /> */}
                 {/* <CheckPayment/> */}
                 {/* <Deposit /> */}
             </div>

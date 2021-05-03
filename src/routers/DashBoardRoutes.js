@@ -1,44 +1,24 @@
 import React from 'react'
-import { useDispatch } from 'react-redux'
 import { Redirect, Route, Switch } from 'react-router-dom'
-import { formsCleanErrors } from '../actions/forms'
-import { panelClearData, panelDeleteData } from '../actions/panel'
-import { FeedScreen } from '../components/feed/FeedScreen'
-import { Campus } from '../components/forms/Campus'
-import { Groups } from '../components/forms/Groups'
-import { Major } from '../components/forms/Major'
-import { Personal } from '../components/forms/Personal'
-import { Scholarship } from '../components/forms/Scholarship'
-import { Students } from '../components/forms/Students'
-import { Subject } from '../components/forms/Subject'
-import { Teachers } from '../components/forms/Teachers'
-import { CheckPayment } from '../components/payments/CheckPayment'
-import { Deposit } from '../components/payments/Deposit'
-import { MakePay } from '../components/payments/MakePay'
 import { PaymentsScreen } from '../components/payments/PaymentsScreen'
+
 import { Navbar } from '../components/ui/Navbar'
+import { HelloWorld } from '../HelloWorld'
+import { DashBoardFeed } from './dashBoards/DashBoardFeed'
+import { DashBoardPayment } from './dashBoards/DashBoardPayment'
 
 export const DashBoardRoutes = ({ history }) => {
-    const dispatch = useDispatch()
-    dispatch(panelClearData())
+    console.log("Main")
     return (
         <>
             <Navbar history={history} />
             <Switch>
-                <Route exact path="/estudiantes" component={Students} />
-                <Route exact path="/docentes" component={Teachers} />
-                <Route exact path="/personal" component={Personal} />
-                <Route exact path="/grupos" component={Groups} />
-                <Route exact path="/campus" component={Campus} />
-                <Route exact path="/materia" component={Subject} />
-                <Route exact path="/carrera" component={Major} />
-                <Route exact path="/beca" component={Scholarship} />
-                <Route exact path="/pago" component={MakePay} />
-                <Route exact path="/consulta" component={CheckPayment} />
-                <Route exact path="/abonos" component={Deposit} />
-                <Route exact path="/main" component={PaymentsScreen} />
+                <Route path="/capturación" component={DashBoardFeed} />
+                <Route path="/pagos" component={DashBoardPayment} />
+                <Route exact path="/main" component={HelloWorld} />
 
                 <Redirect to="/main" />
+
             </Switch>
         </>
     )
