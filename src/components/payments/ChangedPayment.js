@@ -1,18 +1,37 @@
 import React from 'react'
+import { Link, NavLink } from 'react-router-dom'
 
 export const ChangedPayment = () => {
     return (
         <>
             <div className={`payment__sectionsChangedItem payment__activeText`}>
-                <h4>Realizar Pago</h4>
+                <NavLink
+                    exact
+                    to="/pago"
+                    activeClassName="active"
+                >
+                 Realizar Pago
+                </NavLink>
                 <hr />
             </div>
             <div className={`payment__sectionsChangedItem`}>
-                <h4>Consultar estado</h4>
+                <NavLink
+                    exact
+                    to="/consulta"
+                    activeClassName="active"
+                >
+                    Consultar estado
+                </NavLink>
                 <hr />
             </div>
             <div className={`payment__sectionsChangedItem`}>
-                <h4>Abonos</h4>
+                <NavLink
+                    exact
+                    to="/abonos"
+                    activeClassName="active"
+                >
+                    Abonos
+                </NavLink>
                 <hr />
             </div>
         </>

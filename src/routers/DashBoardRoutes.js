@@ -12,6 +12,9 @@ import { Scholarship } from '../components/forms/Scholarship'
 import { Students } from '../components/forms/Students'
 import { Subject } from '../components/forms/Subject'
 import { Teachers } from '../components/forms/Teachers'
+import { CheckPayment } from '../components/payments/CheckPayment'
+import { Deposit } from '../components/payments/Deposit'
+import { MakePay } from '../components/payments/MakePay'
 import { PaymentsScreen } from '../components/payments/PaymentsScreen'
 import { Navbar } from '../components/ui/Navbar'
 
@@ -30,7 +33,11 @@ export const DashBoardRoutes = ({ history }) => {
                 <Route exact path="/materia" component={Subject} />
                 <Route exact path="/carrera" component={Major} />
                 <Route exact path="/beca" component={Scholarship} />
+                <Route exact path="/pago" component={MakePay} />
+                <Route exact path="/consulta" component={CheckPayment} />
+                <Route exact path="/abonos" component={Deposit} />
                 <Route exact path="/main" component={PaymentsScreen} />
+
                 <Redirect to="/main" />
             </Switch>
         </>
