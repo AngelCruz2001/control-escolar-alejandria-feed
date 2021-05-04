@@ -65,11 +65,7 @@
         width: 70%;
         right: 3%;
         clip-path: polygon(55% 0, 100% 0, 100% 100%, 55% 100%, 55% 18%, 52% 6%, 55% 6%);
-        // -webkit-filter: blur(50px);
-        // -webkit-backdrop-filter: blur(50px);
-        // backdrop-filter: drop-shadow(4px 4px 10px blue);
-        //  filter: blur(43px);
-        opacity: .8;
+         opacity: .8;
 
         &-container{
             position: absolute;

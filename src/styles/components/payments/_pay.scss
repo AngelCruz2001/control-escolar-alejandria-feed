@@ -1,3 +1,4 @@
+/* ________Container_________ */
 .pay__makePay {
     width: 90%;
     height: 90%;
@@ -7,7 +8,6 @@
     display: flex;
     align-items: center;
     flex-direction: column;
-    background-color: blue;
 }
 
 .pay__date {
@@ -21,43 +21,148 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        padding: 5px;
+        padding: 5px 1px;
         margin-left: 5px;
         background-color: $blue-sky3;
-        border-radius: 10px;
+        border-radius: 8px;
     }
 }
+
+/*___________Firs part______________*/
 .pay__forms {
     width: 90%;
-    height:100%;
+    height: 100%;
     display: flex;
-    background-color: red;
-    margin-top: 30px;
+    margin-top: 3%;
     justify-content: space-between;
 }
 
-.pay__formSection{
-    width: 38%;
+.pay__formSection {
+    width: 48%;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
-
-.pay__money{
-    width: 38%;
+.pay__titleSection {
+    p {
+        font-weight: bold;
+        padding: 1% 0;
+    }
 }
 
 .pay__inputData {
     border: 1px solid #707070;
     background-color: white;
-    border-radius: 5px;
-    height: 6%;
-    width: 40%;
-}
-.pay__titleSection {
-    font-weight: bold;
-}
-.pay__subtitleSection {
-    font-weight: 600;
+    border-radius: 7px;
+    height: 50%;
+    width: 65%;
 }
 
+.pay__subtitleSection {
+    font-weight: 600;
+    font-weight: bold;
+
+    &-concept {
+        padding: 1.5% 0;
+    }
+}
+
+.pay__boxData {
+    padding: 2%;
+}
+
+.pay__concept {
+    p {
+        padding: 3% 0;
+    }
+}
+
+.pay__reasonPay {
+    background-color: $yellow-radius;
+    border-radius: 7px;
+    padding: 1.4% 4%;
+    margin-right: 4%;
+    cursor: pointer;
+}
+
+/*__________Second Part_________*/
+.pay__money {
+    width: 38%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.pay__optionsPay {
+    padding: 3% 0%;
+}
+.pay__optionPay {
+    background-color: $yellow-radius;
+    border-radius: 7px;
+    padding: 1.4% 4%;
+    margin-right: 3%;
+    cursor: pointer;
+}
+
+.pay__totalPay {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    padding: 7% 0;
+}
+
+.pay__btnTotalPay {
+    background-color: $blue-button;
+    border-radius: 7px;
+    padding: 3.7% 6%;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    align-self: center;
+}
+
+.pay__quantity {
+    align-self: center;
+    border: 1px solid black;
+    // clip-path: polygon(-15% 0, 100% 0, 100% 100%, -15% 100%, -15% 54%, 0 40%, -15% 30%);
+    width: 25%;
+    height: 100%;
+    
+
+    &::before {
+        content: "";
+        width: 0;
+        height: 0;
+        position: absolute;
+        margin: -11px 0 0 40px;
+        border-bottom: 20px solid chocolate;
+        border-right: 18px solid transparent;
+        border-left: 18px solid transparent;
+    }
+}
+.pay__btnPagar {
+    place-self: center;
+    background-color: $blue-button;
+    border-radius: 7px;
+    padding: 4% 10%;
+    border: none;
+    cursor: pointer;
+    color: #fff;
+    font-weight: bold;
+}
+
+/*_______________Components____________________*/
+
+.pay__component {
+}
+
+/*____________Generals_______*/
 .pay__box {
     font-weight: 600;
+    background-color: #c1e0ff;
+    border-radius: 10px;
+}
+.btn {
+    cursor: pointer;
 }

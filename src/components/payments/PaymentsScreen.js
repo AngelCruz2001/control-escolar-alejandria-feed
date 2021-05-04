@@ -19,9 +19,6 @@ export const PaymentsScreen = () => {
                     <Route exact path="/pagos/abonos" component={Deposit} />
                     <Redirect to="/pagos/pago" />
                 </Switch>
-                {/* <MakePay /> */}
-                {/* <CheckPayment/> */}
-                {/* <Deposit /> */}
             </div>
             <BackTexturePayments />
         </div>
