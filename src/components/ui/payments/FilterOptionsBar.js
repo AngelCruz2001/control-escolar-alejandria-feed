@@ -2,7 +2,7 @@ import React from "react";
 
 export const FilterOptionsBar = ({ className }) => {
   return (
-    <div className={`${className}`} style={{ backdropFilter: "blur(19px)" }}>
+    <div className={`${className}`} style={{ backdropFilter: "blur(80px)" }}>
       <div className="pay__search-nav-container">
         <ul className="pay__search-nav-container-item">
           {[
@@ -25,5 +25,6 @@ export const FilterOptionsBar = ({ className }) => {
         </ul>
       </div>
     </div>
+
   );
 };
