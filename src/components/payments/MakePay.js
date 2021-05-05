@@ -93,7 +93,7 @@ export const MakePay = () => {
           </div>
 
           <div className="pay__component">
-
+            
           </div>
           <button className="pay__btnPagar">Pagar</button>
           {/* <label htmlFor="quantityPayment"></label>
