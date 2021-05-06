@@ -18,6 +18,11 @@
     border-radius: 10px;
     border: 1px solid #c5c5c5;
     box-shadow: 0px 3px 6px #828282e6;
+
+    &-status{
+        width: 70vw!important;
+    }
+
 }
 
 .payment__sectionsChanged {
@@ -27,6 +32,9 @@
     border-color: red;
     width: 28%;
     height: 100px;
+    font-family: "Noto Sans", sans-serif;
+    font-size: calc(0.5rem + 0.5vw);
+    color: $gray-changePage;
 
     &Item {
         h4 {

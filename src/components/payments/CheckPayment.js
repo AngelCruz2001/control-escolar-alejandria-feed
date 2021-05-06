@@ -16,7 +16,7 @@ export const CheckPayment = () => {
         <button className="pay__search-input-filter">
           <i className="fas fa-filter"></i>
         </button>
-        <FilterOptionsBar className="pay__search-nav"/>
+        {/* <FilterOptionsBar className="pay__search-nav"/> */}
         {/* Aqui esta el componente de los Filtros de Nivel Educativo   */}
       </div>
 
@@ -46,6 +46,7 @@ export const CheckPayment = () => {
               <th className="pay__table-view"></th>
             </tr>
           </thead>
+            {/* Aqui esta el TBODY */}
             <CheckStatusRow />       
         </table>
       </div>

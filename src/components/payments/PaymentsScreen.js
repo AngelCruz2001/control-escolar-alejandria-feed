@@ -15,7 +15,9 @@ export const PaymentsScreen = () => {
             <div className="overTexturePayments">
                 <Switch>
                     <Route exact path="/pagos/pago" component={MakePay} />
-                    <Route exact path="/pagos/consulta" component={CheckPayment} />
+                    <Route exact path="/pagos/consulta" component={CheckPayment} 
+                    className="overTexturePayments-status"
+                    />
                     <Route exact path="/pagos/abonos" component={Deposit} />
                     <Redirect to="/pagos/pago" />
                 </Switch>

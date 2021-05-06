@@ -1,5 +1,6 @@
 import React from "react";
 import { Separator } from "../Separator";
+import { TableDescriptionStatus } from "./TableDescriptionStatus";
 
 export const CheckStatusRow = () => {
   const styles = {
@@ -37,33 +38,8 @@ export const CheckStatusRow = () => {
         </td>
       </tr>
       <tr style={styles}></tr>
-{/* 
-      <tr className="check__tableDescription">
-        <td className="check__tableDescription-container">
-        <table className="check__tableDescription-container-table">
-          <thead>
-            <tr>
-              <th>Mes</th>
-              <th>Concepto</th>
-              <th>Estado</th>
-              <th>Costo</th>
-              <th>Pagado</th>
-              <th>Debe</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Junio - 13 - 2021</td>
-              <td>Materia Ejemplo Licenciatura</td>
-              <td>Pagado</td>
-              <td>$0000000</td>
-              <td>$0000000</td>
-              <td>$0000000</td>
-            </tr>
-          </tbody>
-        </table>
-        </td>
-      </tr> */}
+
+      <TableDescriptionStatus />
     </tbody>
   );
 };
