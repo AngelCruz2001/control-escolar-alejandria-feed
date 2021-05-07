@@ -2,6 +2,7 @@ import React from "react";
 import { Bars } from "../ui/icons/Bars";
 import { CheckStatusRow } from "../ui/payments/CheckStatusRow";
 import { FilterOptionsBar } from "../ui/payments/FilterOptionsBar";
+import { MinusMoreFilter } from "../ui/payments/MinusMoreFilter";
 import { Separator } from "../ui/Separator";
 
 export const CheckPayment = () => {
@@ -15,7 +16,8 @@ export const CheckPayment = () => {
         <button className="pay__search-input-filter">
           <i className="fas fa-filter"></i>
         </button>
-        <FilterOptionsBar className="pay__search-nav"/>
+        {/* <FilterOptionsBar className="pay__search-nav"/> */}
+        {/* Aqui esta el componente de los Filtros de Nivel Educativo   */}
       </div>
 
       <div className="pay__table_container">
@@ -26,11 +28,12 @@ export const CheckPayment = () => {
               <th className="pay__table-total">Total</th>
               <th className="pay__table-totalPaid">
                 <div className="pay__table-totalPaid-text">
-                  Total <br/>
+                  Total <br />
                   Pagado
                 </div>
                 {/* <Bars /> */}
-                <Bars className="pay__table-totalPaid-bar"/>
+                <Bars className="pay__table-totalPaid-bar" />
+                {/* <MinusMoreFilter /> */}
               </th>
               <th className="pay__table-owe">
                 <div className="pay__table-owe-text">
@@ -38,19 +41,13 @@ export const CheckPayment = () => {
                   <p>Adeudo</p>
                 </div>
                 <Bars />
+                {/* <MinusMoreFilter marginT="pay__minusMore-margen" /> */}
               </th>
               <th className="pay__table-view"></th>
             </tr>
           </thead>
-
-          <tbody>
-            <CheckStatusRow />
-            <CheckStatusRow />
-            <CheckStatusRow />
-            <CheckStatusRow />
-     
-
-          </tbody>
+            {/* Aqui esta el TBODY */}
+            <CheckStatusRow />       
         </table>
       </div>
     </div>
