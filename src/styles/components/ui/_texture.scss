@@ -1,8 +1,4 @@
 .texture__container_feed {
-    // position: relative;
-    // width: 75%;
-    // height: 100%;
-
     position: absolute;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -39,6 +35,8 @@
     height: 100%;
     align-items: center;
     justify-content: center;
+    top: 0;
+    left: 0;
     z-index: -5;
     &-darkblue {
         height: 100%;

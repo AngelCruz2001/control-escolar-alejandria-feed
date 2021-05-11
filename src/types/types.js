@@ -43,4 +43,6 @@ export const types = {
     panelUpdateData: '[panel] Update Data',
     panelDeleteData: '[panel] Delete Data',
     panelClearData: '[panel] Clear Data',
+
+    paySetActive: '[pay] Set Active',
 }

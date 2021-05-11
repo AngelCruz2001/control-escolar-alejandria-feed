@@ -1,0 +1,139 @@
+.make__ {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    font-family: "Segoe UI", sans-serif !important;
+
+    &date {
+        height: 10%;
+    }
+
+    &container {
+        display: flex;
+        height: 90%;
+        width: 100%;
+        align-items: center;
+        justify-content: space-around;
+    }
+
+    &subContainerLeft,
+    &subContainerRight {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        width: 37%;
+    }
+
+    &subContainerRight {
+        width: 25%;
+    }
+
+    &containerInput {
+        display: flex;
+        flex-direction: column;
+
+        input {
+            border: 1px solid $gray-bars;
+            border-radius: 7px;
+            padding: 5px;
+            width: 70%;
+        }
+    }
+
+    &titleSection {
+        font-size: calc(5px + 0.5vw);
+        font-weight: bold;
+        margin-bottom: 0.3rem;
+    }
+    &subTitleSection {
+        font-size: calc(5px + 0.5vw);
+        font-weight: 600;
+        margin-bottom: 0.3rem;
+    }
+
+    &studentInformation {
+        .data {
+            background-color: $blue-sky3;
+            border-radius: 7px;
+            padding: 0rem 3rem 0px 10px;
+            p {
+                padding: 0.5rem 0px;
+                font-size: calc(6px + 0.5vw);
+                text-transform: uppercase;
+                font-weight: 600;
+            }
+        }
+    }
+
+    &conceptPay {
+        display: flex;
+        flex-direction: column;
+        &-data {
+            input {
+                border: none;
+                background-color: $blue-sky3;
+                text-transform: uppercase;
+                border-radius: 7px;
+                padding: 0.55rem 0.4rem;
+                width: calc(100% - 0.8rem);
+                font-size: calc(4.5px + 0.5vw);
+                font-weight: 600;
+            }
+        }
+    }
+
+    //Right Part
+
+    &total {
+        &-pay {
+            //Button
+        }
+        &-quantity {
+        }
+    }
+
+    &account {
+        select {
+        }
+    }
+
+    &formMoney {
+        div {
+            display: flex;
+            flex-direction: column;
+
+            input {
+                margin-bottom: 0.6rem;
+            }
+        }
+    }
+}
+
+//Generals
+.btn-payContainer {
+    display: flex;
+    justify-content: space-between;
+
+    .btn-payElement {
+        display: flex;
+        font-size: calc(4.5px + 0.5vw);
+        align-items: center;
+        justify-content: center;
+        background-color: $filterPaid-back;
+        border-radius: 7px;
+        padding: 0.5rem 0.7rem;
+        cursor: pointer;
+
+        div {
+            margin-left: 0.3rem;
+            i {
+                font-size: calc(2px + 0.5vw);
+                color: $gray-changePage;
+            }
+        }
+
+        &.selected {
+            background-color: $yellow-radius;
+        }
+    }
+}

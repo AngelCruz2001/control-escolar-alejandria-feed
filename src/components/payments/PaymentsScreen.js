@@ -1,28 +1,31 @@
-import React from 'react'
-import { NavLink, Redirect, Route, Switch } from 'react-router-dom'
+import React, { useEffect } from 'react'
 import { BackTexturePayments } from '../ui/BackTexturePayments'
-import { ChangedPayment } from './ChangedPayment'
-import { CheckPayment } from './CheckPayment'
-import { Deposit } from './Deposit'
-import { MakePay } from './MakePay'
+import { BrowserRouter as Router, NavLink, Redirect, Route, Switch } from 'react-router-dom';
+import { ChangedRouterPay } from './router/ChangedRouterPay';
+import { MakePay } from './makePay/MakePay';
+import { FertilizerPay } from './FertilizerPay';
+import { CheckStatePay } from './CheckStatePay';
+import { useDispatch } from 'react-redux';
+import { setActivePay } from '../../actions/pay';
 
 export const PaymentsScreen = () => {
+
     return (
-        <div className="containerPayments">
-            <div className="payment__sectionsChanged">
-                <ChangedPayment />
+        <>
+            <div className="pay__containerPay">
+                <ChangedRouterPay />
+                <div className="overTexturePay">
+                    <Switch >
+                        <Route path="/pagos/pagar" component={MakePay} />
+                        <Route path="/pagos/estado" component={CheckStatePay} />
+                        <Route path="/pagos/abono" component={FertilizerPay} />
+                        <Redirect to="/pagos/pagar" />
+                    </Switch>
+                </div>
+
+                <BackTexturePayments />
             </div>
-            <div className="overTexturePayments">
-                <Switch>
-                    <Route exact path="/pagos/pago" component={MakePay} />
-                    <Route exact path="/pagos/consulta" component={CheckPayment} 
-                    className="overTexturePayments-status"
-                    />
-                    <Route exact path="/pagos/abonos" component={Deposit} />
-                    <Redirect to="/pagos/pago" />
-                </Switch>
-            </div>
-            <BackTexturePayments />
-        </div>
+        </>
+
     )
 }

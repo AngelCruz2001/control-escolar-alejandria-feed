@@ -1,8 +1,5 @@
 import { types } from "../types/types";
 
-
-// (user) && dispatch(login(user.uid, user.name));
-
 const initialState = JSON.parse(localStorage.getItem('user')) || {
     user: {},
     logged: false,

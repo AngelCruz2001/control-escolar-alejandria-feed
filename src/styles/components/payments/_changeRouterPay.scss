@@ -1,0 +1,28 @@
+.change-router-pay {
+    padding: 2rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+
+    &__link {
+        
+        color: $gray-changePage;
+        border-bottom: 1px solid $gray-changePage;
+        margin: 0 2rem;
+        padding: 0.5rem 0;
+        transition: 0.3s all ease-in-out;
+
+        &:hover {
+            color: $dark-grey;
+            border-color: $dark-grey;
+        }
+
+        &.selected {
+            border-color: $dark-grey;
+            color: $dark-grey;
+        }
+    }
+
+    
+}

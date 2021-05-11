@@ -23,7 +23,20 @@ select {
     border: none;
     width: 100%;
     color: $gray-inputsText;
-    // height: 100%;
-    // max-height: 250px;
-    // overflow: auto;
+}
+
+.date__container {
+    display: flex;
+    font-size: calc(8px + 0.5vw);
+
+}
+
+.date__textTitle {
+    padding: 6px;
+    font-weight: 600;
+}
+.date__data {
+    background-color: $blue-sky3;
+    border-radius: 7px;
+    padding: 6px;
 }

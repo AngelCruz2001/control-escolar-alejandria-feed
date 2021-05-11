@@ -13,11 +13,9 @@ export const DashBoardRoutes = ({ history }) => {
         <>
             <Navbar history={history} />
             <Switch>
-                <Route path="/capturación" component={DashBoardFeed} />
+                <Route path="/capturacion" component={DashBoardFeed} />
                 <Route path="/pagos" component={DashBoardPayment} />
-                <Route exact path="/main" component={DashBoardPayment} /> 
-                {/* HelloWorld */}
-
+                <Route path="/main" component={DashBoardPayment} />
                 <Redirect to="/main" />
 
             </Switch>
