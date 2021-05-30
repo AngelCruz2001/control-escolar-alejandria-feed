@@ -4,23 +4,26 @@
     align-items: center;
     justify-content: center;
     width: 100%;
+    font-family: 'Noto Sans', sans-serif;
+    font-weight: bold;
 
     &__link {
         
         color: $gray-changePage;
-        border-bottom: 1px solid $gray-changePage;
-        margin: 0 2rem;
-        padding: 0.5rem 0;
+        margin: 0 1.3rem;
+        padding: 0.4rem 0;
         transition: 0.3s all ease-in-out;
-
+        
         &:hover {
             color: $dark-grey;
             border-color: $dark-grey;
         }
-
+        
         &.selected {
-            border-color: $dark-grey;
-            color: $dark-grey;
+            border-bottom: 2.5px solid $gray-changePage;
+            border-color: $black;
+            color: $black;
+            transition: 0.3s all ease-in-out;
         }
     }
 

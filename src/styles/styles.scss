@@ -10,6 +10,7 @@
 @import "./components/payments/changeRouterPay";
 @import "./components/payments/makePay";
 @import "./components/payments/checkStatePay";
+@import "./components/payments/fertilizerPay";
 @import "./components/payments/date";
 
 /*Forms*/
@@ -35,3 +36,4 @@
 @import "./components/ui/texture";
 @import "./components/ui/separator";
 @import "./components/ui/animations";
+@import "./components/ui/disabled";

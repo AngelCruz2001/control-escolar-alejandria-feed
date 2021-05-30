@@ -21,14 +21,14 @@ export const DashBoardFeed = () => {
     return (
         <>
             <Switch>
-                <Route exact path="/capturacion/estudiantes" component={Students} />
-                <Route exact path="/capturacion/docentes" component={Teachers} />
-                <Route exact path="/capturacion/personal" component={Personal} />
-                <Route exact path="/capturacion/grupos" component={Groups} />
-                <Route exact path="/capturacion/campus" component={Campus} />
-                <Route exact path="/capturacion/materia" component={Subject} />
-                <Route exact path="/capturacion/carrera" component={Major} />
-                <Route exact path="/capturacion/beca" component={Scholarship} />
+                <Route path="/capturacion/estudiantes" component={Students} />
+                <Route path="/capturacion/docentes" component={Teachers} />
+                <Route path="/capturacion/personal" component={Personal} />
+                <Route path="/capturacion/grupos" component={Groups} />
+                <Route path="/capturacion/campus" component={Campus} />
+                <Route path="/capturacion/materia" component={Subject} />
+                <Route path="/capturacion/carrera" component={Major} />
+                <Route path="/capturacion/beca" component={Scholarship} />
                 <Route exact path="/capturacion" component={FeedScreen} />
 
                 <Redirect to="/capturacion" />

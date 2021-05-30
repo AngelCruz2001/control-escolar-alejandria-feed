@@ -1,4 +1,4 @@
-.ui_loadIcon {
+.animation__loadIcon {
     width: 4vw;
     height: 4vw;
     border: 0.4vw solid $blue-heroLogin;
@@ -8,17 +8,17 @@
     animation-duration: 1.5s;
     animation-iteration-count: infinite;
 }
-.ui_fadeIn {
+.animation__fadeIn {
     animation-name: fadeIn;
-    animation-duration: 1.5s;
+    animation-duration: 1s;
 }
-.ui_blur {
+.animation__blur {
     animation-name: blur;
     animation-duration: 1s;
     animation-fill-mode: forwards;
 }
 
-.ui_aniContainer {
+.animation__aniContainer {
     position: absolute;
 }
 /*Animations*/

@@ -8,7 +8,7 @@ export const ChangedRouterPay = () => {
             <NavLink className="change-router-pay__link" to="/pagos/pagar" activeClassName="selected">
                 Realizar pago
             </NavLink>
-            <NavLink className="change-router-pay__link" to="/pagos/estado" activeClassName="selected">
+            <NavLink className="change-router-pay__link" to="/pagos/estado" activeClassName="selected" >
                 Consultar estado
             </NavLink>
             <NavLink className="change-router-pay__link" to="/pagos/abono" activeClassName="selected">

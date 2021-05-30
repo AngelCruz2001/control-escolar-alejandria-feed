@@ -3,13 +3,10 @@ import { BackTexturePayments } from '../ui/BackTexturePayments'
 import { BrowserRouter as Router, NavLink, Redirect, Route, Switch } from 'react-router-dom';
 import { ChangedRouterPay } from './router/ChangedRouterPay';
 import { MakePay } from './makePay/MakePay';
-import { FertilizerPay } from './FertilizerPay';
-import { CheckStatePay } from './CheckStatePay';
-import { useDispatch } from 'react-redux';
-import { setActivePay } from '../../actions/pay';
+import { CheckStatePay } from './checkStatePay/CheckStatePay';
+import { FertilizerPay } from './fertilizerPay/FertilizerPay';
 
 export const PaymentsScreen = () => {
-
     return (
         <>
             <div className="pay__containerPay">
@@ -19,7 +16,7 @@ export const PaymentsScreen = () => {
                         <Route path="/pagos/pagar" component={MakePay} />
                         <Route path="/pagos/estado" component={CheckStatePay} />
                         <Route path="/pagos/abono" component={FertilizerPay} />
-                        <Redirect to="/pagos/pagar" />
+                        <Redirect to="/pagos/abono" />
                     </Switch>
                 </div>
 

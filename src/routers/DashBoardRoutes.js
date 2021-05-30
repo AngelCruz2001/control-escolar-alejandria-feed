@@ -15,7 +15,7 @@ export const DashBoardRoutes = ({ history }) => {
             <Switch>
                 <Route path="/capturacion" component={DashBoardFeed} />
                 <Route path="/pagos" component={DashBoardPayment} />
-                <Route path="/main" component={DashBoardPayment} />
+                <Route exact path="/main" component={DashBoardPayment} />
                 <Redirect to="/main" />
 
             </Switch>
