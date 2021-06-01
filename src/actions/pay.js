@@ -104,13 +104,13 @@ export const payStartMakePay = () => {
             console.log(dataToSend)
             if (body.ok) {
                 console.log(body)
-                dispatch(payClearModalData())
-                dispatch(payClearActivePay())
                 Swal.fire({
                     title: "¡LO LOGRAMOOOOOOS!",
                     text: "¡LO LOGRAMOOOOOS!" + '.',
                     icon: 'success',
                 })
+                dispatch(payClearModalData())
+                dispatch(payClearActivePay())
             } else {
                 console.log(body)
                 Swal.fire({
