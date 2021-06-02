@@ -1,6 +1,6 @@
 import { types } from "../types/types";
 import Swal from 'sweetalert2';
-import { uiFinishLoading, uiFinishLoadingCards, uiStartLoading, uiStartLoadingCards } from "./ui";
+import { uiFinishLoading, uiFinishLoadingCards, uiFinishLoadingStudents, uiStartLoading, uiStartLoadingCards, uiStartLoadingStudents } from "./ui";
 import { fetchConToken } from "../helpers/fetch";
 export const payStartGetStudentByMatricula = (matricula) => {
     return async (dispatch) => {
@@ -189,10 +189,12 @@ export const payStartGetAllPayments = () => {
         }
     }
 }
+
 export const payStartGetFertilizerPay = (matricula) => {
     return async (dispatch) => {
         try {
 
+            dispatch(uiStartLoadingCards())
             const res = await fetchConToken(`payments/students/${matricula}`, 'GET')
             const body = await res.json();
 
@@ -215,11 +217,38 @@ export const payStartGetFertilizerPay = (matricula) => {
     }
 }
 
+export const payStartGetStudentsByGroup = (id_group) => {
+    return async (dispatch) => {
+        try {
+            dispatch(uiStartLoadingStudents())
+            const res = await fetchConToken(`payments/groups/${id_group}`, 'GET')
+            const body = await res.json();
+
+            if (body.ok) {
+                console.log(body)
+                dispatch(paySetStudents(body.payments));
+            } else {
+                console.log(body)
+                Swal.fire({
+                    title: '¡Oops!',
+                    text: body.msg,
+                    icon: 'question',
+                })
+            }
+            dispatch(uiFinishLoadingStudents())
+        } catch (error) {
+            console.log(error)
+            Swal.fire('Error', 'Hablar con el administrador', 'error')
+        }
+    }
+}
+
 const paySetActivePay = (data) => ({ type: types.paySetActive, payload: data })
 const payClearActivePay = () => ({ type: types.payClearActive })
 const paySetCards = (cards) => ({ type: types.paySetCards, payload: cards })
 const paySetFertilizers = (fertilizers) => ({ type: types.paySetFertilizers, payload: fertilizers })
 const paySetPayments = (payments) => ({ type: types.paySetPayments, payload: payments })
+const paySetStudents = (students) => ({ type: types.paySetStudents, payload: students })
 
 export const paySetPrice = (price) => ({ type: types.paySetPrice, payload: price })
 export const paySetAmountToPay = (amount) => ({ type: types.payAmountToPay, payload: amount })

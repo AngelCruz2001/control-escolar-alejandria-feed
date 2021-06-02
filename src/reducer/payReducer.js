@@ -10,6 +10,7 @@ const initialState = {
     activeAccount: null,
     idPayment: "",
     payments: [],
+    students: [],
     fertilizers: [],
     cards: [{ id_card: "", bank: "", owner: "" }],
 }
@@ -82,6 +83,11 @@ export const payReducer = (state = initialState, action) => {
                 ...state,
                 payments: action.payload
             }
+        case types.paySetStudents:
+            return {
+                ...state,
+                students: action.payload
+            }
         case types.payClearModalData:
             return {
                 ...state,
@@ -93,6 +99,7 @@ export const payReducer = (state = initialState, action) => {
                 idPayment: "",
                 fertilizers: [],
                 payments: [],
+                students: [],
                 method: ""
             }
         default:

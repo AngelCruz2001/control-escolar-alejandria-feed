@@ -6,6 +6,7 @@ const initialState = {
     msgError: null,
     openDropMenu: false,
     correct: null,
+    loadingStudent: false
 }
 
 
@@ -56,6 +57,17 @@ export const uiReducer = (state = initialState, action) => {
             return {
                 ...state,
                 correct: action.payload, 
+            }
+
+        case types.uiStartLoadingStudents:
+            return {
+                ...state,
+                loadingStudent: true
+            }
+        case types.uiFinishLoadingStudents:
+            return {
+                ...state,
+                loadingStudent: false
             }
         default:
             return state;

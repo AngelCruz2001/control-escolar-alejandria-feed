@@ -198,6 +198,14 @@
         }
     }
 
+    &total{
+        &-quantity{
+            background-color: red;
+            
+        }
+
+    }
+
     &formMoney {
         div {
             display: flex;
@@ -251,6 +259,7 @@
 }
 
 .btn-blue {
+    cursor: pointer;
     &.getPay {
         padding: 0.6rem;
         background-color: $blue-solid;

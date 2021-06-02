@@ -22,3 +22,12 @@ export const uiSetCorrect = (value) => ({
     type: types.uiSetCorrect,
     payload: value,
 });
+
+export const uiStartLoadingStudents =() => ({ 
+    type:types.uiStartLoadingStudents
+})
+
+export const uiFinishLoadingStudents = () => ({ 
+    type:types.uiFinishLoadingStudents
+})
+

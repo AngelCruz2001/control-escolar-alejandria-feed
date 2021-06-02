@@ -5,6 +5,7 @@ import { MethodPayButton } from '../ButtonsPay'
 
 export const MethodPay = () => {
     const { concept, method } = useSelector(state => state.pay)
+    
     return (
         <div className={`make__payMethod ${!concept && 'ui__disabledEffect'}`}>
             <p className="make__titleSection">METODO DE PAGO</p>

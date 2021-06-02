@@ -13,6 +13,8 @@ export const types = {
     uiSetActiveScreen: '[UI] Set active Screen',
     uiOpenDropMenu: '[UI] Open drop menu',
     uiCloseDropMenu: '[UI] Close drop menu',
+    uiStartLoadingStudents: '[UI] Start loading students',
+    uiFinishLoadingStudents: '[UI] Finish loading students',
 
     authCheckingStart: '[auth] Start checking login state',
     authCheckingFinish: '[auth] Finish checking login state',
@@ -60,4 +62,6 @@ export const types = {
     paySetFertilizers: "[pay] Set fertilizers",
     paySetIdPayment: "[pay] Set id payment",
     paySetPayments: '[pay] Set payments',
+    paySetStudents: '[pay] set students'
+    
 }

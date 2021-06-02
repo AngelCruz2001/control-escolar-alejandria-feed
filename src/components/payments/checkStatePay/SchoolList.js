@@ -6,7 +6,8 @@ import { types } from '../../../types/types';
 import { ItemPaySchoolList } from './ItemPaySchoolList'
 
 export const SchoolList = () => {
-    const { payments } = useSelector(state => state.pay)
+    const { payments, students } = useSelector(state => state.pay)
+    const { loadingStudent } = useSelector(state => state.ui)
     const { loading } = useSelector(state => state.ui)
     const dispatch = useDispatch();
 
@@ -38,9 +39,22 @@ export const SchoolList = () => {
                 </div>
             </div >
             <div className="check-state-pay__list__container">
-                {payments.map((payment) => (
-                    <ItemPaySchoolList key={payment.id_group} payment={payment} />
-                ))}
+                {
+
+                    !students.length ?
+                    loadingStudent 
+                        ? 
+                        <h1>Cargando...</h1>
+                        :
+                        payments.map((payment) => (
+                            <ItemPaySchoolList key={payment.id_group} data={payment} />
+                        ))
+                    :
+                    students.map((student) => (
+                        <ItemPaySchoolList key={student.id_student} data={student} />
+                    ))
+                    
+                }
 
             </div>
 

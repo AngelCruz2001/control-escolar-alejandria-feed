@@ -35,3 +35,5 @@ export const MethodPayButton = ({ text, isSelected = false, setData }) => {
         </div>
     )
 }
+
+
