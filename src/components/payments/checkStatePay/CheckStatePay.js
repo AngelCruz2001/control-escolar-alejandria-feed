@@ -23,7 +23,7 @@ export const CheckStatePay = () => {
                 <span className="check-state-pay__form__filter btn-filter">
                     <i className="fas fa-filter"></i>
                 </span>
-                <div className="check-state-pay__form__filterList">
+                {/* <div className="check-state-pay__form__filterList">
                     <p className="itemPFilterList" >Todos los grupos</p>
                     <p className="itemPFilterList" >Licenciaturas</p>
                     <p className="itemPFilterList" >Licenciatura en derecho</p>
@@ -33,7 +33,7 @@ export const CheckStatePay = () => {
                     <p className="itemPFilterList" >Maestría en comunicación</p>
                     <p className="itemPFilterList" >Maestría en seguridad publica</p>
                     <p className="itemPFilterList" >Estudiantes</p>
-                </div>
+                </div> */}
             </div>
             <div className="check-state-pay__list">
                 <SchoolList />
