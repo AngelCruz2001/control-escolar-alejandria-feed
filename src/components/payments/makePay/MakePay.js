@@ -14,6 +14,10 @@ import { MethodPay } from './methodPay/MethodPay'
 export const MakePay = () => {
 
     const { concept, method, thingToPay, idPayment } = useSelector(state => state.pay)
+    // useEffect(() => {
+    //     const { concept, method, thingToPay, idPayment } = useSelector(state => state.pay)
+
+    // }, [])
     const { loading } = useSelector(state => state.ui)
     return (
         <div className="make__ ">

@@ -105,8 +105,8 @@ export const payStartMakePay = () => {
             if (body.ok) {
                 console.log(body)
                 Swal.fire({
-                    title: "¡LO LOGRAMOOOOOOS!",
-                    text: "¡LO LOGRAMOOOOOS!" + '.',
+                    title: "Pagos",
+                    text: "Pago realizado con exito" + '.',
                     icon: 'success',
                 })
                 dispatch(payClearModalData())
@@ -146,8 +146,8 @@ export const payStartFertilizer = () => {
                 dispatch(payClearModalData())
                 dispatch(payClearActivePay())
                 Swal.fire({
-                    title: "¡LO LOGRAMOOOOOOS!",
-                    text: "¡LO LOGRAMOOOOOS!" + '.',
+                    title: "Pagos",
+                    text: "Pago realizado con exito" + '.',
                     icon: 'success',
                 })
             } else {

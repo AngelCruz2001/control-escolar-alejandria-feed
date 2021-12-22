@@ -16,7 +16,7 @@ export const PaymentsScreen = () => {
                         <Route path="/pagos/pagar" component={MakePay} />
                         <Route path="/pagos/estado" component={CheckStatePay} />
                         <Route path="/pagos/abono" component={FertilizerPay} />
-                        <Redirect to="/pagos/abono" />
+                        <Redirect to="/pagos/pagar" />
                     </Switch>
                 </div>
 
